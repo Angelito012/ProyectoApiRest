@@ -24,6 +24,11 @@ namespace ProyectoAPIREST.Controllers
         {
             using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
+                var Correos = (from d in db.Usuarios
+                               where d.Correo == modelo.Correo
+                               select d.Correo).ToList();
+                if (Correos.Count == 0)
+                {
                 Models.Usuario usuario = new Models.Usuario();
                 usuario.Nombre = modelo.Nombre;
                 usuario.Apellido = modelo.Apellido;
@@ -37,6 +42,11 @@ namespace ProyectoAPIREST.Controllers
 
                 db.Usuarios.Add(usuario);
                 db.SaveChanges();
+                }
+                else
+                {
+                    return NotFound("Correo ya Regsitrado");
+                }
             }
             return Ok("La empresa se añadio correctamente");
         }
