@@ -48,10 +48,7 @@ namespace ProyectoAPIREST.Controllers
                     return NotFound("Correo ya Regsitrado");
                 }
             }
-            return Ok("La empresa se añadio correctamente");
+            return Ok("El estudiante se añadio correctamente");
         }
-    }
-
-
-    
+    }  
 }

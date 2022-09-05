@@ -55,7 +55,7 @@ namespace ProyectoAPIREST.Controllers
                 }
 
             }
-            return Ok("La empresa se añadio correctamente");
+            return Ok("El instructor se añadio correctamente");
         }
 
     }
