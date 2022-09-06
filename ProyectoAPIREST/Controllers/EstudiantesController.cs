@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -46,6 +46,7 @@ namespace ProyectoAPIREST.Controllers
                 else
                 {
                     return NotFound("Correo ya Registrado");
+
                 }
             }
             return Ok("El estudiante se añadio correctamente");

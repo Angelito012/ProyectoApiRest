@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ProyectoAPIREST.Models;
 
 namespace ProyectoAPIREST.Controllers
 {
@@ -21,7 +22,9 @@ namespace ProyectoAPIREST.Controllers
         [HttpPost]
         public ActionResult Post([FromBody] Models.Solicitudes.SolicitudInstructor modelo)
         {
-            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            
+
+        using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
                 var Correos = (from d in db.Usuarios
                                where d.Correo == modelo.Correo
