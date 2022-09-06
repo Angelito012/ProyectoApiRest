@@ -1,76 +1,38 @@
-
 <!DOCTYPE html>
-<html lang="en">
-
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-    <div id="container" class="flex-row align-items-center">
-        <form id="form" class="form">
-            <div class="form-group input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Correo:</span>
-                </div>
-                <input type="email" name="correo" class="form-control" id="inputEmail" aria-describedby="emailHelp"
-                    required>
-            </div>
-            <div class="form-group input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Contraseña:</span>
-                </div>
-                <input type="password" name="clave" class="form-control" id="inputPassword" required>
-            </div>
-            <div class="form-group input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Nombres:</span>
-                </div>
-                <input type="text" name="nombres" class="form-control" id="inputNames" required>
-            </div>
-            <div class="form-group input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Apellidos:</span>
-                </div>
-                <input type="text" name="apellidos" class="form-control" id="inputSurname" required>
-            </div>
-            <div class="form-group input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Teléfono:</span>
-                </div>
-                <input type="text" name="noTelefono" class="form-control" id="inputPhone" required>
-            </div>
-            <div class="form-group input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">NIT:</span>
-                </div>
-                <input type="text" name="nit" class="form-control" id="inputNIT" required>
-            </div>
-            <div class="form-check form-check-inline">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="inputGroup-sizing-default">Rol:</span>
-                </div>
-                <select class="form-control" id="rolInput" name="rol" required readonly>
-                    <option value="estudiante" selected>Estudiante</option>
-                </select>
-            </div>
+  <form id="form" class="sign-up">
+    <h1 class="sign-up-title">Registro de Estudiantes</h1>
 
-            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                <button id="submitButton" type="submit" class="btn my-1"
-                    style="background-color: #2752c3; color:white; padding-bottom: 10px; padding-top: 10px; margin-right: 10px;">Registrarse</button>
-            </div>
-            <div class="alert alert-danger" role="alert" id="alert" style="text-align: center; display: none;">
-                
-            </div>
-        </form>
-    </div>
-    <script src="./js/usuario.js"></script>
+    <input type="text" name="Nombre" class="sign-up-input" id="inputNombre" placeholder="Nombres:" autofocus required>
+
+    <input type="text" name="Apellido" class="sign-up-input" id="inputApellido" placeholder="Apellidos:" autofocus required>
+
+    <input type="email" name="Correo" class="sign-up-input" id="inputCorreo" placeholder="Correo:" autofocus required>
+
+    <input type="password" name="Contraseña" class="sign-up-input" id="inputContraseña" placeholder="Contraseña:" required>
+
+    <input type="text" name="Telefono" class="sign-up-input" id="inputTelefono" placeholder="Teléfono:" autofocus required>
+
+    <input type="text" name="NIT" class="sign-up-input" id="inputNIT" placeholder="NIT:" autofocus required>
+
+    <input type="text" name="TarjetaCredito" class="sign-up-input" id="inputTarjetaCredito" placeholder="No. Tarjeta de Crédito:" autofocus required>
+
+
+    <button id="submitButton" type="submit"  class="sign-up-button">Registrarme</button>
+
+
+  </form>
+  <script src="./js/estudiante.js"></script>
 </body>
-
 </html>

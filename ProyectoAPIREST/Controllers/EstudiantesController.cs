@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -29,23 +29,24 @@ namespace ProyectoAPIREST.Controllers
                                select d.Correo).ToList();
                 if (Correos.Count == 0)
                 {
-                Models.Usuario usuario = new Models.Usuario();
-                usuario.Nombre = modelo.Nombre;
-                usuario.Apellido = modelo.Apellido;
-                usuario.Correo = modelo.Correo;
-                usuario.Telefono = modelo.Telefono;
-                usuario.Nit = modelo.Nit;
-                usuario.TarjetaCredito = modelo.TarjetaCredito;
-                usuario.Contraseña = modelo.Contraseña;
-                usuario.Estado = "A";
-                usuario.Rol = "ESTUDIANTE";
+                    Models.Usuario usuario = new Models.Usuario();
+                    usuario.Nombre = modelo.Nombre;
+                    usuario.Apellido = modelo.Apellido;
+                    usuario.Correo = modelo.Correo;
+                    usuario.Contraseña = modelo.Contraseña;
+                    usuario.Telefono = modelo.Telefono;
+                    usuario.Nit = modelo.Nit;
+                    usuario.TarjetaCredito = modelo.TarjetaCredito;
+                    usuario.Estado = "A";
+                    usuario.Rol = "ESTUDIANTE";
 
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
                 }
                 else
                 {
-                    return NotFound("Correo ya Regsitrado");
+                    return NotFound("Correo ya Registrado");
+
                 }
             }
             return Ok("El estudiante se añadio correctamente");
