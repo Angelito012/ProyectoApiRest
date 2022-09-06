@@ -244,3 +244,66 @@ input {
   border: 0;
   padding: 0;
 }
+
+
+.seleccion{
+  background-image: url(../images/fondoseleccion.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.fondoestudiantes{
+  background-image: url(../images/fondoEstudiantes.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.fondoinstructores{
+  background-image: url(../images/fondoProfesores.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+h1{
+  text-align: center;
+}
+.contenedorbotones{
+  display: flex;
+  justify-content: center;
+}
+.botones{
+  position: relative;
+  vertical-align: top;
+  width: 300px;
+  height: 300px;
+  padding: 0;
+  font-size: 22px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  background: #f0776c;
+  border: 0;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+
+.link1{
+  margin-left: 50px;
+}
+
+
+.form-seleccion {
+  position: relative;
+  margin: 50px auto;
+  width: 70%;
+  height: 70%;
+  padding: 33px 25px 29px;
+  background: white;
+  border-bottom: 1px solid #c4c4c4;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
