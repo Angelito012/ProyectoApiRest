@@ -5,6 +5,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using ProyectoAPIREST.Models;
 
 namespace ProyectoAPIREST.Controllers
 {
@@ -25,9 +26,19 @@ namespace ProyectoAPIREST.Controllers
         {
             using(Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
-                var usuario = (from user in db.Usuarios
-                               where user.Correo == request.correo && user.Contraseña == request.clave
-                           select user);
+                IQueryable<Usuario> usuario;
+                if(request.clave != "")
+                {
+                    usuario = (from user in db.Usuarios
+                                   where user.Correo == request.correo && user.Contraseña == request.clave && user.Estado == "A"
+                               select user);
+                }else
+                {
+                    usuario = (from user in db.Usuarios
+                                   where user.Correo == request.correo && user.Estado == "A"
+                                   select user);
+                }
+
                 if (usuario.Count() > 0)
                 {
                     var keybytes = Encoding.ASCII.GetBytes(secretkey);
@@ -54,5 +65,7 @@ namespace ProyectoAPIREST.Controllers
                 }
             }
         }
+
+
     }
 }
