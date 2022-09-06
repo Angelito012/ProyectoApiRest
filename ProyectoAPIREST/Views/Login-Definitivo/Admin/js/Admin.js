@@ -14,9 +14,6 @@ window.addEventListener('load',(event) => {
         var h2 = document.getElementById('name');
         h2.innerText = 'Bienvenido de nuevo ' + email
     }
-
-
-
 })
 
 var btnLogout = document.getElementById('btnLogout');
