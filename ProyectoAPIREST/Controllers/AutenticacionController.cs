@@ -26,18 +26,18 @@ namespace ProyectoAPIREST.Controllers
         {
             using(Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
-                IQueryable<Usuario> usuario;
-                if(request.clave != "")
-                {
-                    usuario = (from user in db.Usuarios
+                //IQueryable<Usuario> usuario;
+                //if(request.clave != "")
+                //{
+                    var usuario = (from user in db.Usuarios
                                    where user.Correo == request.correo && user.Contraseña == request.clave && user.Estado == "A"
                                select user);
-                }else
-                {
-                    usuario = (from user in db.Usuarios
-                                   where user.Correo == request.correo && user.Estado == "A"
-                                   select user);
-                }
+                //}else
+                //{
+                //    usuario = (from user in db.Usuarios
+                //                   where user.Correo == request.correo && user.Estado == "A"
+                //                   select user);
+                //}
 
                 if (usuario.Count() > 0)
                 {
