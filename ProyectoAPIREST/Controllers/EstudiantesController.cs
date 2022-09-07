@@ -38,7 +38,7 @@ namespace ProyectoAPIREST.Controllers
                     usuario.Nit = modelo.Nit;
                     usuario.TarjetaCredito = modelo.TarjetaCredito;
                     usuario.Estado = "A";
-                    usuario.Rol = "ESTUDIANTE";
+                    usuario.Rol = "Estudiante";
 
                     db.Usuarios.Add(usuario);
                     db.SaveChanges();

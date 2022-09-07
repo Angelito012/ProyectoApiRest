@@ -38,7 +38,7 @@ namespace ProyectoAPIREST.Controllers
                     usuario.Contraseña = modelo.Contraseña;
                     usuario.Telefono = modelo.Telefono;
                     usuario.Estado = "A";
-                    usuario.Rol = "INSTRUCTOR";
+                    usuario.Rol = "Instructor";
                     usuario.Experiencia = modelo.Experiencia;
                     usuario.Certificaciones = modelo.Certificaciones;
                     usuario.NombreBanco = modelo.NombreBanco;
