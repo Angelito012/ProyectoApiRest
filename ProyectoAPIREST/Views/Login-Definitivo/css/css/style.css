@@ -110,7 +110,6 @@ body {
   color: #404040;
   background-image: url(../../../Register/images/fondoseleccion.jpg);
   background-size: 100%;
-  background-repeat: no-repeat;
 }
 
 .sign-up {
@@ -251,3 +250,9 @@ input {
   height: 100%;
   border-radius:30px;
 }
+
+.divtext{
+  align-items: center;
+}
+
+
