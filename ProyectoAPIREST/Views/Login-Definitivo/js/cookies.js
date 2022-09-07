@@ -1,6 +1,6 @@
 window.addEventListener('load',(event) => {
-    deleteCookie('email');
-    deleteCookie('rol');
+    deleteCookie("email");
+    deleteCookie("rol");
     document.getElementById('correo').value = "";
     document.getElementById('clave').value = "";
 })
@@ -59,10 +59,9 @@ function validarVentana(data,correo,clave){
             console.log(Data);
             var email = correo; //formulario es el name de form y email name del input
             var rol = Data[0].rol;
-
-        setCookie("email",email, 10);
-        setCookie("rol", rol, 10);
-        redireccionarVista(Data[0].rol);
+            setCookie("email",email, 10);
+            setCookie("rol", rol, 10);
+            redireccionarVista(Data[0].rol);
 
         })
     }
@@ -103,5 +102,5 @@ function setCookie(cname, cvalue, exdays) {
   }
 
   function deleteCookie(cname){
-    document.cookie = cname+ "=;expire=-1"
+    setCookie(cname,"",-1)
   }
