@@ -68,6 +68,6 @@ function crearUsuario(){
         document.getElementById("inputTipoCuenta").value="";
         document.getElementById("inputNoCuenta").value="";
 
-        window.location.href = ('../Login-Definitivo/index.html');
+        window.location.href = ('../index.html');
     })
 }
