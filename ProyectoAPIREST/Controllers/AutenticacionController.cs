@@ -24,19 +24,20 @@ namespace ProyectoAPIREST.Controllers
         [Route("Validar")]
         public IActionResult Validar([FromBody] AutorizacionUsuarios request)
         {
-            using(Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
                 IQueryable<Usuario> usuario;
-                if(request.clave != "")
+                if (request.clave != "")
                 {
                     usuario = (from user in db.Usuarios
-                                   where user.Correo == request.correo && user.Contraseña == request.clave && user.Estado == "A"
+                               where user.Correo == request.correo && user.Contraseña == request.clave && user.Estado == "A"
                                select user);
-                }else
+                }
+                else
                 {
                     usuario = (from user in db.Usuarios
-                                   where user.Correo == request.correo && user.Estado == "A"
-                                   select user);
+                               where user.Correo == request.correo && user.Estado == "A"
+                               select user);
                 }
 
                 if (usuario.Count() > 0)
@@ -66,6 +67,18 @@ namespace ProyectoAPIREST.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("ValidarEstado")]
+        public ActionResult ValidarEstado(AutorizacionUsuarios request)
+        {
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                var Usuario = (from d in db.Usuarios
+                               where d.Correo == request.correo
+                               select d).ToList();
 
+                return Ok(Usuario);
+            }
+        }
     }
 }
