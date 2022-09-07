@@ -55,5 +55,7 @@ function crearUsuario(){
         document.getElementById("inputTelefono").value="";
         document.getElementById("inputNIT").value="";
         document.getElementById("inputTarjetaCredito").value="";
+
+        window.location.href = ('../Login-Definitivo/index.html');
     })
 }
