@@ -67,5 +67,7 @@ function crearUsuario(){
         document.getElementById("inputNombreCuenta").value="";
         document.getElementById("inputTipoCuenta").value="";
         document.getElementById("inputNoCuenta").value="";
+
+        window.location.href = ('../index.html');
     })
 }
