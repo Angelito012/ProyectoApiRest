@@ -56,6 +56,6 @@ function crearUsuario(){
         document.getElementById("inputNIT").value="";
         document.getElementById("inputTarjetaCredito").value="";
 
-        window.location.href = ('../Login-Definitivo/index.html');
+        window.location.href = ('../index.html');
     })
 }
