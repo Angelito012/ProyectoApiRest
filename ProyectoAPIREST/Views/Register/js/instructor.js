@@ -9,7 +9,8 @@ window.onload = () => {
 }
 function validarDatos(e) {
     e.preventDefault();
-
+    let validationEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/
+    
     if (document.getElementById("inputNombre").value != "" && 
         document.getElementById("inputApellido").value != "" &&
         document.getElementById("inputCorreo").value != "" &&
