@@ -21,8 +21,17 @@ function validarDatos(e) {
         document.getElementById("inputNombreCuenta").value != "" &&
         document.getElementById("inputTipoCuenta").value != "" &&
         document.getElementById("inputNoCuenta").value != ""
-    ) {
-        crearUsuario();
+    ){
+        if(validationEmail.test(document.getElementById("inputCorreo").value)){
+            if(document.getElementById("inputNombre").value.length > 2 && document.getElementById("inputApellido").value.length > 2){
+                crearUsuario();
+            }
+            else{
+                alert('Nombres y apellidos inválidos')
+            }
+        }else{
+            alert('El correo es inválido')
+        }
     } else {
         alert('Error de conexión, Todos los datos son necesarios');
     }
@@ -50,6 +59,7 @@ function crearUsuario(){
     }).then(function(response){
         if(response.ok){
             alert("Instructor agregado correctamente");
+            window.location.href = ('../index.html');
             return response.text();
         }else{
             alert("Este correo ya fue registrado")
@@ -67,7 +77,5 @@ function crearUsuario(){
         document.getElementById("inputNombreCuenta").value="";
         document.getElementById("inputTipoCuenta").value="";
         document.getElementById("inputNoCuenta").value="";
-
-        window.location.href = ('../index.html');
     })
 }
