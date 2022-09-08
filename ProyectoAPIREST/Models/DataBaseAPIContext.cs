@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -159,3 +159,5 @@ namespace ProyectoAPIREST.Models
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
+
+//"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678"
