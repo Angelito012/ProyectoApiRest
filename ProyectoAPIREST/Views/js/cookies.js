@@ -28,7 +28,7 @@ function obtenerToken(){
         if(response.ok){
             return response.json();
         }else{
-            alert('Usuario o contraseña incorrecta')
+            validarEstado(correo,clave);
         }
     }).then(function(Data){
         console.log(Data.token);
@@ -37,6 +37,33 @@ function obtenerToken(){
         document.getElementById('correo').value = "";
         document.getElementById('clave').value = "";
     })
+}
+
+function validarEstado(correo,clave){
+    if(correo != ""){
+        var url = "https://localhost:7076/api/Autenticacion/ValidarEstado";
+        fetch(url,{
+            method: "POST",
+            body: JSON.stringify({
+                correo : correo,
+                clave: clave
+            }),
+            headers : {
+                'Accept' : "application/json",
+                "Content-Type":"application/json"
+            }
+        }).then(function(respose){
+            return respose.json();
+        }).then(function(Data){
+            console.log(Data[0].estado);
+            if(Data[0].estado == "I"){
+                alert('Usuario Desactivado');
+            }else {
+                alert('Correo o contraseña invalido');
+            }
+
+        })
+    }
 }
 
 function validarVentana(data,correo,clave){
