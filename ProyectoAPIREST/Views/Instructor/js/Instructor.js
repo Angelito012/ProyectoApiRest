@@ -40,4 +40,7 @@ function getCookie(cname) {
       }
     }
     return "";
-  }
+}
+
+
+

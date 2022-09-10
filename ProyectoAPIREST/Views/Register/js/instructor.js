@@ -1,7 +1,9 @@
 var url = "https://localhost:7076/api/Instructor";
+var urlEdit = "https://localhost:7076/api/MainInstructor/EditarInstructor";
 
 const submitButton = document.getElementById("submitButton");
 const form = document.getElementById("form");
+const submitEdit = document.getElementById('submitEdit');
 
 window.onload = () => {
 
