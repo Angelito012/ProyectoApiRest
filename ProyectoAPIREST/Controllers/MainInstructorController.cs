@@ -15,7 +15,7 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class MainInstructorController : ControllerBase
     {
-        [HttpGet]
+        [HttpPost]
         [Route("VerCursos")]
         public ActionResult VerCursos(Models.Solicitudes.AutorizacionUsuarios instructor)
         {

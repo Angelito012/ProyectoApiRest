@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/estilo.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="titulo">EDITAR CURSO</h1>
+    <div class="contformulario" id="contformulario">
+        <form class="formulario" id="formulario">
+            <label for="codigo">Codigo: </label>
+            <input type="text" placeholder="Codigo" id="codigo" class="codigo" disabled><br><br>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" placeholder="Nombre" id="nombre" class="nombre"><br><br>
+
+            <label for="duracion">Duracion:</label>
+            <input type="text" placeholder="Duracion" id="duracion" class="duracion"><br><br>
+
+            <label for="precio">Precio:</label>
+            <input type="text" placeholder="Costo" id="costo" class="costo"><br><br>
+
+            <label for="estado">Estado:</label>
+            <select id="estado" class="estado">
+                <option value="A">A</option>
+                <option value="I">I</option>
+            </select><br><br>
+
+            <label for="descripcion">Descripcion:</label>
+            <textarea  type="text" placeholder="Descripcion" id="descripcion" class="descripcion"></textarea>
+
+            <input type="button" value="Actualizar" id="enviar">
+        </form>
+    </div>
+    <h1>LISTADO DE LECCIONES</h1>
+</body>
+</html>
+<script src="js/app.js"></script>
