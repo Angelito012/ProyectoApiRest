@@ -185,6 +185,16 @@ body{
     background: #0004ff;
     color: #ffffff;
 }
+.card .contenido-card .btn-edit:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #0004ff;
+}
+.card .contenido-card .btn-danger:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #ff0000;
+}
 @media only screen and (min-width:320px) and (max-width:768px){
 	.container-card{
 		flex-wrap: wrap;
@@ -193,3 +203,6 @@ body{
 		margin: 15px;
 	}
 }
+  .btn{
+	margin-left: 5px;
+  }

@@ -6,6 +6,7 @@ window.addEventListener('load',(event) => {
 })
 
 var formulario = document.getElementById('btnLogin');
+localStorage.clear();
 
 formulario.addEventListener('click',obtenerToken);
 
