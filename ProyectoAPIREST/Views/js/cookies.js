@@ -97,7 +97,7 @@ function validarVentana(data,correo,clave){
 
 function redireccionarVista(rol){
     if(rol === "Instructor"){
-        location.href="./Instructor/Instructor.html"
+        location.href="./Instructor/MenuInstructor.html"
     }else if(rol === "Administrador"){
         location.href="./Admin/Admin.html"
     }else if(rol === "Estudiante"){
