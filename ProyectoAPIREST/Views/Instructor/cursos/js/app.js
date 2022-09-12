@@ -1,7 +1,9 @@
 var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email');
+let card = document.getElementById("contenedor")
 // localStorage.clear();
 OpenEdit();
+obtenerToken();
 
 function OpenEdit(){
     document.getElementById('codigo').value = datos.Idcurso;
@@ -15,7 +17,7 @@ function OpenEdit(){
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
-    obtenerToken();
+    ActualizarDatos(tokenValido);
 })
 
 function obtenerToken(){
@@ -40,7 +42,7 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
-        ActualizarDatos(Data.token)
+        verLeccion(tokenValido);
     })
 }
 
@@ -88,4 +90,96 @@ function getCookie(cname) {
       }
     }
     return "";
+}
+
+function verLeccion(token){
+    console.log(token)
+    var url = "https://localhost:7076/api/MainLeccion/VerLecciones";
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify(datos),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.json();
+        }else{
+            alert("Error al ejecutar solicitud")
+        }
+    }).then(function(Data){
+        console.log(Data)
+        for(i=0; i<Data.length; i++){
+            
+            let newcard = document.createElement('div');
+            newcard.classList.add('card');
+
+            let figure = document.createElement('figure');
+            let imagen = document.createElement('img');
+            imagen.src = "/images/cursos.jpg";
+            figure.appendChild(imagen);
+            newcard.appendChild(figure);
+
+            let contenido_card = document.createElement('div');
+            contenido_card.classList.add('contenido-card');
+
+            let nombre = document.createElement('h3');
+            nombre.innerText = Data[i].nombre;
+            contenido_card.appendChild(nombre);
+
+            let descripcion = document.createElement('textarea');
+            descripcion.innerText = Data[i].descripcion;
+            descripcion.setAttribute("readonly","true");
+            descripcion.classList.add('descripcion');
+            contenido_card.appendChild(descripcion);
+
+            contenido_card.innerHTML += `<hr>`
+
+            let duracion = document.createElement('h5');
+            duracion.innerText = "Duracion: " + Data[i].duración;
+            duracion.innerHTML += `<br><br>`;
+            contenido_card.appendChild(duracion);
+
+            contenido_card.innerHTML += `<b>Enlace</b>`
+
+            let enlace = document.createElement('textarea');
+            enlace.innerText = Data[i].enlace;
+            enlace.setAttribute("readonly","true");
+            enlace.classList.add('enlace');
+            contenido_card.appendChild(enlace);
+
+            let botonEditar = document.createElement("button");
+            botonEditar.Idcurso = Data[i].idCurso;
+            botonEditar.Nombre = Data[i].nombre;
+            botonEditar.Descripcion = Data[i].descripcion;
+            botonEditar.Duracion = Data[i].duración;
+            botonEditar.enlace = Data[i].enlace;
+            botonEditar.classList.add('btn');
+            botonEditar.className += " btn-edit"
+            botonEditar.innerHTML = "Editar Leccion"
+            botonEditar.addEventListener("click",function(boton){
+                
+            })
+            contenido_card.appendChild(botonEditar);
+
+            let botonEliminar = document.createElement("button");
+            botonEliminar.Idcurso = Data[i].idCurso;
+            botonEliminar.Nombre = Data[i].nombre;
+            botonEliminar.Descripcion = Data[i].descripcion;
+            botonEditar.Duracion = Data[i].duración;
+            botonEditar.enlace = Data[i].enlace;
+            botonEliminar.classList.add('btn');
+            botonEliminar.className += " btn-danger"
+            botonEliminar.innerHTML = "Eliminar Leccion"
+            contenido_card.appendChild(botonEliminar);
+            botonEliminar.addEventListener('click',function(boton){
+                
+            })
+
+            newcard.appendChild(contenido_card);            
+            card.appendChild(newcard);
+        }
+    })
 }
