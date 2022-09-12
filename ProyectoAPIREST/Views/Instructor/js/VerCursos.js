@@ -42,6 +42,14 @@ function obtenerToken(){
         ValidacionInstructor(Data.token)
     })
 }
+var btnLogout = document.getElementById('btnLogout');
+
+btnLogout.addEventListener('click',salir);
+
+function salir(){
+    alert('Sesion cerrada')
+    location.href="../index.html";
+}
 
 function ValidacionInstructor(token){
     fetch(url, {
