@@ -8,33 +8,34 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 class="titulo">EDITAR CURSO</h1>
     <div class="contformulario" id="contformulario">
-        <form class="formulario" id="formulario">
+        <form class="sign-up" id="formulario">
+            <h1 class="sign-up-title">EDITAR CURSO</h1>
             <label for="codigo">Codigo: </label>
-            <input type="text" placeholder="Codigo" id="codigo" class="codigo" disabled><br><br>
+            <input type="text" placeholder="Codigo" id="codigo" class="sign-up-input" disabled>
 
             <label for="nombre">Nombre:</label>
-            <input type="text" placeholder="Nombre" id="nombre" class="nombre"><br><br>
+            <input type="text" placeholder="Nombre" id="nombre" class="sign-up-input">
 
             <label for="duracion">Duracion:</label>
-            <input type="text" placeholder="Duracion" id="duracion" class="duracion"><br><br>
+            <input type="text" placeholder="Duracion" id="duracion" class="sign-up-input">
 
             <label for="precio">Precio:</label>
-            <input type="text" placeholder="Costo" id="costo" class="costo"><br><br>
+            <input type="text" placeholder="Costo" id="costo" class="sign-up-input">
 
             <label for="estado">Estado:</label>
-            <select id="estado" class="estado">
+            <select id="estado" class="sign-up-input">
                 <option value="A">A</option>
                 <option value="I">I</option>
-            </select><br><br>
+            </select>
 
             <label for="descripcion">Descripcion:</label>
-            <textarea  type="text" placeholder="Descripcion" id="descripcion" class="descripcion"></textarea>
+            <textarea  type="text" placeholder="Descripcion" id="descripcion" class="sign-up-input"></textarea>
 
-            <input type="button" value="Actualizar" id="enviar">
+            <input type="button" class="sign-up-button" value="Actualizar" id="enviar">
         </form>
     </div>
+    
     <h1>LISTADO DE LECCIONES</h1>
 </body>
 </html>

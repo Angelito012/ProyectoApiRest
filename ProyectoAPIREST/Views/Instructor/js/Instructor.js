@@ -23,6 +23,7 @@ btnLogout.addEventListener('click',salir);
 
 function salir(){
     alert('Sesion cerrada')
+    localStorage.clear();
     location.href="../index.html";
 }
 
