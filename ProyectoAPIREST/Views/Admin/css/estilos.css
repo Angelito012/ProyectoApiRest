@@ -38,16 +38,6 @@ a{
 .boton_logout:hover{
     background-color:rgb(36, 36, 36);
 }
-
-.lateral{
-    background-color: #000000;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    padding: 1em;
-    left: 0;
-    width: 350px;
-}
 /* Perfil*/
 .perfil__circulo{
 margin: 0;
