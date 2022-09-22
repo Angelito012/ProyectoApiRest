@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using ProyectoAPIREST.Models;
 using ProyectoAPIREST.Models.Solicitudes;
 using System.Data;
 
@@ -43,6 +44,25 @@ namespace ProyectoAPIREST.Controllers
             }
 
             return Ok(lecciones);
+        }
+
+        [HttpDelete]
+        [Route("EliminarLeccion")]
+        public ActionResult EliminarLeccion(SolicitudCurso curso)
+        {
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ELIMINARLECCION";
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = curso.IdCurso;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
         }
     }
 }

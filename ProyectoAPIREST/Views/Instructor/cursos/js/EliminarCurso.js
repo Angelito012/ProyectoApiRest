@@ -2,6 +2,8 @@ var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 var totalEstudiante = 0;
+var tokenValido;
+
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -82,12 +84,16 @@ function validarCurso(token){
 }
 
 function ValidacionInstructor(token){
-    var url = "https://localhost:7076/api/MainInstructor/VerCursos";
+    var url = "https://localhost:7076/api/MainLeccion/VerLecciones";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({
-            Correo: email,
-            Clave: ""          
+            idCurso: datos.Idcurso,
+            nombre: "string",
+            descripcion: "string",
+            duracion: "string",
+            costo: 0,
+            estado: "string"       
         }),
         headers:{
             'Accept' : "application/json",
@@ -101,6 +107,7 @@ function ValidacionInstructor(token){
             alert("Error al ejecutar solicitud")
         }
     }).then(function(Data){
+        console.log(Data)
         for(i=0; i<Data.length; i++){
             
             let newcard = document.createElement('div');
@@ -119,25 +126,26 @@ function ValidacionInstructor(token){
             nombre.innerText = Data[i].nombre;
             contenido_card.appendChild(nombre);
 
-            let descripcion = document.createElement('p');
+            let descripcion = document.createElement('textarea');
             descripcion.innerText = Data[i].descripcion;
-            descripcion.innerHTML += `<hr>`;
+            descripcion.setAttribute("readonly","true");
+            descripcion.classList.add('descripcion');
             contenido_card.appendChild(descripcion);
 
+            contenido_card.innerHTML += `<hr>`
+
             let duracion = document.createElement('h5');
-            duracion.innerText = "Duracion: " + Data[i].duracion;
+            duracion.innerText = "Duracion: " + Data[i].duración;
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
-            let estado = document.createElement('h5');
-            estado.innerText = "Estado: " + Data[i].estado;
-            estado.innerHTML += `<br><br>`;
-            contenido_card.appendChild(estado);
+            contenido_card.innerHTML += `<b>Enlace</b>`
 
-            let costo = document.createElement('h5');
-            costo.innerText = "Costo: " + Data[i].costo;
-            costo.innerHTML += `<br>`
-            contenido_card.appendChild(costo);
+            let enlace = document.createElement('textarea');
+            enlace.innerText = Data[i].enlace;
+            enlace.setAttribute("readonly","true");
+            enlace.classList.add('enlace');
+            contenido_card.appendChild(enlace);
 
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
@@ -151,6 +159,59 @@ boton.addEventListener('click', () => {
     if(totalEstudiante > 0){
         alert('No se puede eliminar porque este curso ya ha sido comprado por ' + totalEstudiante + " estudiantes")
     }else{
-        alert('Curso borrado')
+        var url = "https://localhost:7076/api/Autenticacion/Validar";
+
+        fetch(url,{
+            method: "POST",
+            body: JSON.stringify({
+                correo: email,
+                clave: ""
+            }),
+            headers:{
+                'Accept' : "application/json",
+                "Content-Type":"application/json"
+            }
+        }).then(function(response){
+            if(response.ok){
+                return response.json();
+            }else{
+            }
+        }).then(function(Data){
+            tokenValido = Data.token;
+            eliminarLeccion(tokenValido);
+        })
+        
     }
 })
+
+function eliminarLeccion(token){
+    var url = "https://localhost:7076/api/MainLeccion/EliminarLeccion";
+    
+    fetch(url,{
+        method: "DELETE",
+        body: JSON.stringify(datos),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then().then(eliminarCurso(token))
+}
+
+function eliminarCurso(token){
+    var url = "https://localhost:7076/api/MainCursos/EliminarCurso";
+    
+    fetch(url,{
+        method: "DELETE",
+        body: JSON.stringify(datos),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then().then(function(respues){
+        alert('curso eliminado junto con sus lecciones')
+        location.href = '/Instructor/VerCursos.html';
+
+    })
+}
