@@ -8,12 +8,14 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class InstructorController : ControllerBase
     {
-        [HttpGet]
-        public ActionResult Get()
+        [HttpPost]
+        [Route("Get")]
+        public ActionResult Get(Models.Solicitudes.AutorizacionUsuarios usuario)
         {
             using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
                 var Usuario = (from d in db.Usuarios
+                               where d.Correo == usuario.correo 
                                select d).ToList();
                 return Ok(Usuario);
             }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+  <link rel="stylesheet" href="css/EditarInstructor.css">
+  <link rel="stylesheet" href="css/fontello.css">
+
+</head>
+<body class="fondoinstructores">
+  <header class="header">
+		<div class="container">
+      <div class="btn-menu">
+        <label for="btn-menu" class="icon-menu"></label>
+      </div>
+			<div class="logo">
+				<h1>MENU PRINCIPAL INSTRUCTOR</h1>
+			</div>
+      <form id="form" class="sign-up">
+        <h1 class="sign-up-title">Editar Instructor</h1>
+    
+        <label for="Name">Codigo:</label>
+        <input type="text" name="Id" class="sign-up-input" id="inputId" placeholder="Codigo:" autofocus required disabled>
+    
+        <label for="Name">Nombres:</label>
+        <input type="text" name="Nombre" class="sign-up-input" id="inputNombre" placeholder="Nombres:" autofocus required>
+    
+        <label for="Name">Apellidos:</label>
+        <input type="text" name="Apellido" class="sign-up-input" id="inputApellido" placeholder="Apellidos:" autofocus required>
+    
+        <label for="Name">Correo:</label>
+        <input type="email" name="Correo" class="sign-up-input" id="inputCorreo" placeholder="Correo:" autofocus required disabled>
+    
+        <label for="Name">Contraseña:</label>
+        <input type="password" name="Contraseña" class="sign-up-input" id="inputContraseña" placeholder="Contraseña:" required>
+    
+        <label for="Name">Teléfono:</label>
+        <input type="text" name="Telefono" class="sign-up-input" id="inputTelefono" placeholder="Teléfono:" autofocus required>
+    
+        <label for="Name">Estado:</label>
+        <input type="text" name="Estado" class="sign-up-input" id="inputEstado" placeholder="Estado:" autofocus required disabled>
+    
+        <label for="Name">Rol:</label>
+        <input type="text" name="Rol" class="sign-up-input" id="inputRol" placeholder="Rol:" autofocus required disabled>
+    
+        <label for="Name">Experiencia Laboral:</label>
+        <input type="text" name="Experiencia" class="sign-up-input" id="inputExperiencia" placeholder="Experiencia Laboral:" autofocus required>
+    
+        <label for="Name">Certificaciones</label>
+        <input type="text" name="Certificaciones" class="sign-up-input" id="inputCertificaciones" placeholder="Certificaciones:" autofocus required>
+    
+        <label for="Name">Nombre del Banco que opera:</label>
+        <input type="text" name="NombreBanco" class="sign-up-input" id="inputNombreBanco" placeholder="Nombre del Banco que opera:" autofocus required>
+    
+        <label for="Name">Nombre de la Cuenta Bancaria:</label>
+        <input type="text" name="NombreCuenta" class="sign-up-input" id="inputNombreCuenta" placeholder="Nombre de la Cuenta Bancaria:" autofocus required>
+    
+        <label for="Name">Tipo de Cuenta Bancaria:</label>
+        <input type="text" name="TipoCuenta" class="sign-up-input" id="inputTipoCuenta" placeholder="Tipo de Cuenta Bancaria:" autofocus required>
+    
+        <label for="Name">No. Cuenta Bancaria:</label>
+        <input type="text" name="NoCuenta" class="sign-up-input" id="inputNoCuenta" placeholder="No. Cuenta Bancaria:" autofocus required>
+    
+    
+        <button id="submitButton" type="button"  class="sign-up-button">Guardar</button>
+      </form>
+		</div>
+	</header>
+  <input type="checkbox" id="btn-menu">
+  <div class="container-menu">
+    <div class="cont-menu">
+      <nav>
+          <a href="/Instructor/MenuInstructor.html">Inicio</a>			
+          <a href="#">Crear un Curso</a>
+          <a href="/Instructor/VerCursos.html">Ver mis Cursos</a>
+          <a href="/Instructor/EditarInstructor.html">Editar mis datos</a>
+          <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+        </nav>
+      <label for="btn-menu" class="icon-cancel"></label>
+    </div>
+  </div>
+</body>
+</html>
+<script src="js/EditarInstructor.js"></script>

@@ -36,11 +36,14 @@
 	.container{
 		width: 90%;
 		max-width: 1200px;
-		margin: auto;
+		margin-left: 91px;
+	}
+	.container .btn-menu{
+		float: left;
 	}
 	.container .btn-menu, .logo{
 		float: left;
-		line-height:100px;
+		line-height:130px;
 	}
 	.container .btn-menu label{
 		color: rgb(0, 0, 0);
