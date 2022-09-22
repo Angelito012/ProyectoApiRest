@@ -65,9 +65,10 @@ table {
 }
 
 .sign-up {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   margin: 50px auto;
-  width: 280px;
+  width: 500px;
   padding: 33px 25px 29px;
   background: white;
   border-bottom: 1px solid #c4c4c4;
@@ -92,6 +93,7 @@ table {
 }
 
 .sign-up-title {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: -25px -25px 25px;
   padding: 15px 25px;
   line-height: 35px;
@@ -148,6 +150,7 @@ input {
 }
 
 .sign-up-button {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   vertical-align: top;
   width: 100%;
@@ -248,8 +251,27 @@ input {
   cursor: pointer;
 }
 label{
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #aaa;
   text-align: center;
+}
+#inputCertificaciones{
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	height: 100px;
+  width: 450px;
+  font-size: 17px;
+}
+#inputId{
+  background-color: #cdf1ff;
+}
+#inputCorreo{
+  background-color: #cdf1ff;
+}
+#inputEstado{
+  background-color: #cdf1ff;
+}
+#inputRol{
+  background-color: #cdf1ff;
 }
 /*Estilos para el encabezado*/
 .header{
