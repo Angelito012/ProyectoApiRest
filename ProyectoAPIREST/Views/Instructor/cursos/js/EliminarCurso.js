@@ -1,6 +1,7 @@
-var url = "https://localhost:7076/api/MainInstructor/VerCursos";
+var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var totalEstudiante = 0;
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -17,6 +18,20 @@ function getCookie(cname) {
     }
     return "";
 }
+
+
+function llenarInformacion(){
+    document.getElementById('codigo').value = datos.Idcurso;
+    document.getElementById('nombre').value = datos.nombre;
+    document.getElementById('descripcion').value = datos.descripcion;
+    document.getElementById('duracion').value = datos.duracion;
+    document.getElementById('estado').value = datos.estado;
+    document.getElementById('costo').value = datos.costo;
+}
+
+obtenerToken();
+llenarInformacion();
+
 function obtenerToken(){
     var url = "https://localhost:7076/api/Autenticacion/Validar";
 
@@ -34,24 +49,40 @@ function obtenerToken(){
         if(response.ok){
             return response.json();
         }else{
-            validarEstado(correo,clave);
         }
     }).then(function(Data){
-        console.log(Data.token);
         tokenValido = Data.token;
-        ValidacionInstructor(Data.token)
+        validarCurso(tokenValido)
+        ValidacionInstructor(tokenValido)
     })
 }
-var btnLogout = document.getElementById('btnLogout');
 
-btnLogout.addEventListener('click',salir);
-
-function salir(){
-    alert('Sesion cerrada')
-    location.href="../index.html";
+function validarCurso(token){
+    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    fetch(url,{
+        method: "POST",
+        body: JSON.stringify({
+            idCurso: datos.Idcurso,
+            nombre: "string",
+            descripcion: "string",
+            duracion: "string",
+            costo: 0,
+            estado: "string"
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type":"application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        return response.json();
+    }).then(function(Data){
+        totalEstudiante = Data
+    })
 }
 
 function ValidacionInstructor(token){
+    var url = "https://localhost:7076/api/MainInstructor/VerCursos";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -108,70 +139,18 @@ function ValidacionInstructor(token){
             costo.innerHTML += `<br>`
             contenido_card.appendChild(costo);
 
-            let botonEditar = document.createElement("button");
-            botonEditar.Idcurso = Data[i].idCurso;
-            botonEditar.Nombre = Data[i].nombre;
-            botonEditar.Descripcion = Data[i].descripcion;
-            botonEditar.Duracion = Data[i].duracion;
-            botonEditar.Estado = Data[i].estado;
-            botonEditar.Costo = Data[i].costo;
-            botonEditar.classList.add('btn');
-            botonEditar.className += " btn-edit"
-            botonEditar.innerHTML = "Editar"
-            botonEditar.addEventListener("click",function(boton){
-                guardarDatos(
-                    boton.target.Idcurso,
-                    boton.target.Nombre,
-                    boton.target.Descripcion,
-                    boton.target.Duracion,
-                    boton.target.Estado,
-                    boton.target.Costo);
-                location.href = "./cursos/index.html"
-            })
-            contenido_card.appendChild(botonEditar);
-
-            let botonEliminar = document.createElement("button");
-            botonEliminar.Idcurso = Data[i].idCurso;
-            botonEliminar.Nombre = Data[i].nombre;
-            botonEliminar.Descripcion = Data[i].descripcion;
-            botonEliminar.Duracion = Data[i].duracion;
-            botonEliminar.Estado = Data[i].estado;
-            botonEliminar.Costo = Data[i].costo;
-            botonEliminar.classList.add('btn');
-            botonEliminar.className += " btn-danger"
-            botonEliminar.innerHTML = "Eliminar"
-            contenido_card.appendChild(botonEliminar);
-            botonEliminar.addEventListener('click',function(boton){
-                guardarDatos(
-                    boton.target.Idcurso,
-                    boton.target.Nombre,
-                    boton.target.Descripcion,
-                    boton.target.Duracion,
-                    boton.target.Estado,
-                    boton.target.Costo);
-                location.href = "./cursos/eliminar.html"
-            })
-
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
         }
     })
 }
 
-function guardarDatos(id,nombre,descripcion,duracion,estado,costo){
-    var InformacionCurso = {
-        Idcurso : id,
-        nombre : nombre,
-        descripcion : descripcion,
-        duracion : duracion,
-        estado : estado,
-        costo : costo
-    };
-    
-    console.log(InformacionCurso)
-    localStorage.setItem("curso",JSON.stringify(InformacionCurso))
-    // alert('hola')
-}
+var boton = document.getElementById('eliminar');
 
-obtenerToken();
-// localStorage.clear();
+boton.addEventListener('click', () => {
+    if(totalEstudiante > 0){
+        alert('No se puede eliminar porque este curso ya ha sido comprado por ' + totalEstudiante + " estudiantes")
+    }else{
+        alert('Curso borrado')
+    }
+})

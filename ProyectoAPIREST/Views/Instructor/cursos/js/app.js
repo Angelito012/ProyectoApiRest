@@ -72,7 +72,7 @@ function ActualizarDatos(token){
     }).then(function(Data){
         alert('Curso Editado')
         localStorage.clear();
-        location.href = '../Instructor.html';
+        location.href = '../VerCursos.html';
     })
 }
 
@@ -158,7 +158,7 @@ function verLeccion(token){
             botonEditar.enlace = Data[i].enlace;
             botonEditar.classList.add('btn');
             botonEditar.className += " btn-edit"
-            botonEditar.innerHTML = "Editar Leccion"
+            botonEditar.innerHTML = "Editar"
             botonEditar.addEventListener("click",function(boton){
                 
             })
@@ -172,7 +172,7 @@ function verLeccion(token){
             botonEditar.enlace = Data[i].enlace;
             botonEliminar.classList.add('btn');
             botonEliminar.className += " btn-danger"
-            botonEliminar.innerHTML = "Eliminar Leccion"
+            botonEliminar.innerHTML = "Eliminar"
             contenido_card.appendChild(botonEliminar);
             botonEliminar.addEventListener('click',function(boton){
                 
