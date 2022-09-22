@@ -1,4 +1,5 @@
 var email = getCookie('email'); 
+var btnLogout = document.getElementById('btnLogout');
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -14,4 +15,12 @@ function getCookie(cname) {
       }
     }
     return "";
+}
+
+btnLogout.addEventListener('click',salir);
+
+function salir(){
+    alert('Sesion cerrada')
+    localStorage.clear();
+    location.href="../index.html";
 }
