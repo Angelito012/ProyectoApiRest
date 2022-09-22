@@ -174,4 +174,5 @@ function guardarDatos(id,nombre,descripcion,duracion,estado,costo){
 }
 
 obtenerToken();
+//obtenerToken2();
 // localStorage.clear();

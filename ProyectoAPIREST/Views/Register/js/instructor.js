@@ -1,9 +1,7 @@
 var url = "https://localhost:7076/api/Instructor";
-var urlEdit = "https://localhost:7076/api/MainInstructor/EditarInstructor";
 
 const submitButton = document.getElementById("submitButton");
 const form = document.getElementById("form");
-const submitEdit = document.getElementById('submitEdit');
 
 window.onload = () => {
 
@@ -26,17 +24,12 @@ function validarDatos(e) {
         document.getElementById("inputNoCuenta").value != ""
     ){
         if(validationEmail.test(document.getElementById("inputCorreo").value)){
-            if(document.getElementById("inputNombre").value.length > 2 && document.getElementById("inputApellido").value.length > 2){
-                crearUsuario();
-            }
-            else{
-                alert('Nombres y apellidos inválidos')
-            }
+            crearUsuario();
         }else{
             alert('El correo es inválido')
         }
     } else {
-        alert('Error de conexión, Todos los datos son necesarios');
+        alert('Todos los datos son necesarios, por favor intente de nuevo');
     }
 }
 function crearUsuario(){
@@ -68,7 +61,6 @@ function crearUsuario(){
             alert("Este correo ya fue registrado")
         }
     }).then(function(Data){
-        console.log(Data);
         document.getElementById("inputNombre").value="";
         document.getElementById("inputApellido").value="";
         document.getElementById("inputCorreo").value="";

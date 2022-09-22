@@ -71,8 +71,12 @@ function ActualizarDatos(token){
         }
     }).then(function(Data){
         alert('Curso Editado')
+<<<<<<< HEAD
         localStorage.clear();
         location.href = '../VerCursos.html';
+=======
+        location.href = '/Instructor/VerCursos.html';
+>>>>>>> 3ad3a2ccf6710f6feb68aa428be370f7c902c651
     })
 }
 

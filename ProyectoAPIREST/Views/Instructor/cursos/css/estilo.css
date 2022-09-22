@@ -176,6 +176,7 @@ body{
 #descripcion{
 	height: 100px;
 }
+<<<<<<< HEAD
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 *{
@@ -305,3 +306,8 @@ body{
   .btn{
 	margin-left: 5px;
   }
+=======
+#codigo{
+	background-color: #cdf1ff;
+}
+>>>>>>> 3ad3a2ccf6710f6feb68aa428be370f7c902c651
