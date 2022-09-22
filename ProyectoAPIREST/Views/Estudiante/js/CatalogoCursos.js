@@ -1,4 +1,4 @@
-var url = "https://localhost:7076/api/MainInstructor/VerCursos";
+var url = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 
@@ -39,7 +39,6 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
-        ValidacionInstructor(Data.token)
     })
 }
 var btnLogout = document.getElementById('btnLogout');
@@ -51,25 +50,19 @@ function salir(){
     location.href="../index.html";
 }
 
-function ValidacionInstructor(token){
-    fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-            Correo: email,
-            Clave: ""          
-        }),
-        headers:{
-            'Accept' : "application/json",
-            "Content-Type" : "application/json",
-            'Authorization': 'Bearer ' + token
-        }
-    }).then(function(response){
+obtenercursos();
+function obtenercursos(token){
+    fetch(url).then(function(response){
         if(response.ok){
             return response.json();
+            
         }else{
             alert("Error al ejecutar solicitud")
         }
-    }).then(function(Data){
+    })
+    
+    .then(function(Data){
+       
         for(i=0; i<Data.length; i++){
             
             let newcard = document.createElement('div');
@@ -107,43 +100,6 @@ function ValidacionInstructor(token){
             costo.innerText = "Costo: " + Data[i].costo;
             costo.innerHTML += `<br>`
             contenido_card.appendChild(costo);
-
-            let botonEditar = document.createElement("button");
-            botonEditar.Idcurso = Data[i].idCurso;
-            botonEditar.Nombre = Data[i].nombre;
-            botonEditar.Descripcion = Data[i].descripcion;
-            botonEditar.Duracion = Data[i].duracion;
-            botonEditar.Estado = Data[i].estado;
-            botonEditar.Costo = Data[i].costo;
-            botonEditar.classList.add('btn');
-            botonEditar.className += " btn-edit"
-            botonEditar.innerHTML = "Editar Curso"
-            botonEditar.addEventListener("click",function(boton){
-                guardarDatos(
-                    boton.target.Idcurso,
-                    boton.target.Nombre,
-                    boton.target.Descripcion,
-                    boton.target.Duracion,
-                    boton.target.Estado,
-                    boton.target.Costo);
-                location.href = "./cursos/index.html"
-            })
-            contenido_card.appendChild(botonEditar);
-
-            let botonEliminar = document.createElement("button");
-            botonEliminar.Idcurso = Data[i].idCurso;
-            botonEliminar.Nombre = Data[i].nombre;
-            botonEliminar.Descripcion = Data[i].descripcion;
-            botonEliminar.Duracion = Data[i].duracion;
-            botonEliminar.Estado = Data[i].estado;
-            botonEliminar.Costo = Data[i].costo;
-            botonEliminar.classList.add('btn');
-            botonEliminar.className += " btn-danger"
-            botonEliminar.innerHTML = "Eliminar Curso"
-            contenido_card.appendChild(botonEliminar);
-            botonEliminar.addEventListener('click',function(boton){
-                guardarDatos(boton);
-            })
 
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);

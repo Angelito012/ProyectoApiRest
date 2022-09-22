@@ -101,7 +101,7 @@ function redireccionarVista(rol){
     }else if(rol === "Administrador"){
         location.href="./Admin/Admin.html"
     }else if(rol === "Estudiante"){
-        location.href="./Estudiante/Estudiante.html"
+        location.href="./Estudiante/MenuEstudiante.html"
     }
 }
 
