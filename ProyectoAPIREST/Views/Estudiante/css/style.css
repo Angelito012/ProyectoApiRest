@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
+
+}
+body{
+    background-image: url(/Estudiante/img/fondo.jpg);
+	background-size: 104%;
+	background-attachment: fixed;
+    align-items: center ;
+}
+.capa{
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	z-index: -1;
+	top: 0;left: 0;
+}
+/*Estilos para el encabezado*/
+.header{
+	width: 100%;
+	height: 100px;
+	top: 0;left: 0;
+}
+.container{
+	width: 90%;
+	max-width: 3000px;
+	margin-left: 81px;
+}
+.container .btn-menu, .logo{
+	float: left;
+	line-height:130px;
+}
+.container .btn-menu label{
+	color: rgb(0, 0, 0);
+	font-size: 25px;
+	cursor: pointer;
+}
+.logo h1{
+	color: rgb(0, 0, 0);
+	font-weight: 400;
+	font-size: 22px;
+	margin-left: 10px;
+	line-height:130px;
+}
+.container .menu{
+	float: right;
+	line-height: 100px;
+}
+.container .menu a{
+	display: inline-block;
+	padding: 15px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: all 0.3s ease;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+.container .menu a:hover{
+	border-bottom: 2px solid #c7c7c7;
+	padding-bottom: 5px;
+}
+
+/*Menù lateral*/
+#btn-menu{
+	display: none;
+}
+.container-menu{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;left: 0;
+	transition: all 500ms ease;
+	opacity: 0;
+	visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu{
+	opacity: 1;
+	visibility: visible;
+}
+.cont-menu{
+	width: 100%;
+	max-width: 250px;
+	background: #1c1c1c;
+	height: 100vh;
+	position: relative;
+	transition: all 500ms ease;
+	transform: translateX(-100%);
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+	transform: translateX(0%);
+}
+#btn-menu:checked ~ .container-menu{
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+}
+.cont-menu nav{
+	transform: translateY(15%);
+}
+.cont-menu nav a{
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: #c7c7c7;
+	border-left: 5px solid transparent;
+	transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+}
+.cont-menu label{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
+}
+/*Cards*/
+.container-card{
+	width: 100%;
+	display: grid;
+	grid-template-columns: 33% 33% 33%;
+	max-width: 1100px;
+	margin: auto;
+}
+.title-cards{
+	width: 100%;
+	max-width: 1080px;
+	margin: auto;
+	padding: 120px;
+	margin-top: 10px;
+	text-align: center;
+	color: #3d3d3d;
+}
+.card{
+	width: 100%;
+	margin: 20px;
+	border-radius: 6px;
+	overflow: hidden;
+	background:#fff;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	transition: all 400ms ease-out;
+	cursor: default;
+}
+.card:hover{
+	box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+	transform: translateY(-3%);
+}
+.card img{
+	width: 100%;
+	height: 210px;
+}
+.card .contenido-card{
+	padding: 15px;
+	text-align: center;
+}
+.card .contenido-card h3{
+	margin-bottom: 15px;
+	color: #7a7a7a;
+}
+.card .contenido-card p{
+	line-height: 1.8;
+	color: #6a6a6a;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+.card .contenido-card a{
+	display: inline-block;
+	padding: 10px;
+	margin-top: 10px;
+	text-decoration: none;
+	color: #ffffff;
+	border: 1px solid #2fb4cc;
+	border-radius: 4px;
+	transition: all 400ms ease;
+	margin-bottom: 5px;
+}
+.card .contenido-card a:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+}
+.card .contenido-card .btn-edit{
+    background: #0004ff;
+    color: #ffffff;
+}
+.card .contenido-card .btn-edit:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #0004ff;
+}
+.card .contenido-card .btn-danger:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #ff0000;
+}
+@media only screen and (min-width:320px) and (max-width:768px){
+	.container-card{
+		flex-wrap: wrap;
+	}
+	.card{
+		margin: 15px;
+	}
+}
+  .btn{
+	margin-left: 5px;
+  }
