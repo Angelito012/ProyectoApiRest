@@ -7,17 +7,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/fontello.css">
-    <title>Instructor</title>
+    <title>Cursos</title>
 </head>
 <body>
     <header class="header">
 		<div class="container">
             <div class="btn-menu">
-                <label for="btn-menu" class="icon-menu"></label>
+                <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
             </div>
 			<div class="logo">
 				<h1>MENU PRINCIPAL INSTRUCTOR</h1>
 			</div>
+            <div class="title-cards">
+                <h1>Mis Cursos</h1>
+            </div>
+            <div class="container-card" id="contenedor"></div>
 		</div>
 	</header>
 	<div class="capa"></div>
@@ -26,18 +30,14 @@
         <div class="cont-menu">
             <nav>
                 <a href="/Instructor/MenuInstructor.html">Inicio</a>			
-                <a href="#">Crear un Curso</a>
+                <a href="/Instructor/cursos/crearCurso.html">Crear un Curso</a>
                 <a href="/Instructor/VerCursos.html">Ver mis Cursos</a>
-                <a href="">Editar mis datos</a>
+                <a href="/Instructor/EditarInstructor.html">Editar mis datos</a>
                 <a id="btnLogout" style="cursor: pointer; color: #c7c7c7;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>
         </div>
     </div>
-    <div class="title-cards">
-		<h1>Mis Cursos</h1>
-	</div>
-    <div class="container-card" id="contenedor"></div>
 </body>
 </html>
 <script src="./js/VerCursos.js"></script>

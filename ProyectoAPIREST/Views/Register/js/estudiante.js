@@ -20,17 +20,12 @@ function validarDatos(e) {
         document.getElementById("inputTarjetaCredito").value != ""
     ) {
         if(validationEmail.test(document.getElementById("inputCorreo").value)){
-            if(document.getElementById("inputNombre").value.length > 2 && document.getElementById("inputApellido").value.length > 2){
-                crearUsuario();
-            }
-            else{
-                alert('Nombres y apellidos inválidos')
-            }
+            crearUsuario();
         }else{
             alert('El correo es inválido')
         }
     } else {
-        alert('Error de conexión, Todos los datos son necesarios');
+        alert('Todos los datos son necesarios, por favor intente de nuevo');
     }
 }
 function crearUsuario(){

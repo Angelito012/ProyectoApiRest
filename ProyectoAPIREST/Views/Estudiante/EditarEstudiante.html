@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse</title>
+  <link rel="stylesheet" href="css/EditarEstudiante.css">
+  <link rel="stylesheet" href="css/fontello.css">
+
+</head>
+<body class="fondoinstructores">
+  <header class="header">
+		<div class="container">
+      <div class="btn-menu">
+        <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
+      </div>
+			<div class="logo">
+				<h1>MENU PRINCIPAL ESTUDIANTE</h1>
+			</div>
+      <form id="form" class="sign-up">
+        <h1 class="sign-up-title">Editar Estudiante</h1>
+    
+        <label for="Name">Codigo:</label>
+        <input type="text" name="Id" class="sign-up-input" id="inputId" placeholder="Codigo:" autofocus required disabled>
+    
+        <label for="Name">Nombres:</label>
+        <input type="text" name="Nombre" class="sign-up-input" id="inputNombre" placeholder="Nombres:" autofocus required>
+    
+        <label for="Name">Apellidos:</label>
+        <input type="text" name="Apellido" class="sign-up-input" id="inputApellido" placeholder="Apellidos:" autofocus required>
+    
+        <label for="Name">Correo:</label>
+        <input type="email" name="Correo" class="sign-up-input" id="inputCorreo" placeholder="Correo:" autofocus required disabled>
+    
+        <label for="Name">Contraseña:</label>
+        <input type="password" name="Contraseña" class="sign-up-input" id="inputContraseña" placeholder="Contraseña:" required>
+    
+        <label for="Name">Teléfono:</label>
+        <input type="text" name="Telefono" class="sign-up-input" id="inputTelefono" placeholder="Teléfono:" autofocus required>
+
+        <label for="Name">NIT:</label>
+        <input type="text" name="Nit" class="sign-up-input" id="inputNit" placeholder="NIT:" autofocus required>
+
+        <label for="Name">Numero Tarjeta:</label>
+        <input type="text" name="TarjetaCredito" class="sign-up-input" id="inputTarjetaCredito" placeholder="Numero Tarjeta:" autofocus required>
+    
+        <label for="Name">Estado:</label>
+        <input type="text" name="Estado" class="sign-up-input" id="inputEstado" placeholder="Estado:" autofocus required disabled>
+    
+        <label for="Name">Rol:</label>
+        <input type="text" name="Rol" class="sign-up-input" id="inputRol" placeholder="Rol:" autofocus required disabled>
+
+
+        <button id="submitButton" type="button"  class="sign-up-button">Guardar</button>
+      </form>
+		</div>
+	</header>
+  <input type="checkbox" id="btn-menu">
+  <div class="container-menu">
+    <div class="cont-menu">
+      <nav>
+        <a href="/Estudiante/Estudiante.html">Inicio</a>			
+        <a href="">Ver catalogo</a>
+        <a href="">Ver mis Cursos</a>
+        <a href="/Estudiante/EditarEstudiante.html">Editar mis datos</a>
+        <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+        </nav>
+      <label for="btn-menu" class="icon-cancel"></label>
+    </div>
+  </div>
+</body>
+</html>
+<script src="js/EditarEstudiante.js"></script>

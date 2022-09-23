@@ -1,31 +1,10 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Montserrat+Alternates|Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat Alternates', sans-serif;
 
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
 }
 
 ol, ul {
@@ -65,15 +44,6 @@ table {
   -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.3), inset 0 0 0 1px rgba(255, 255, 255, 0.1), 0 0 6px rgba(0, 0, 0, 0.2);
 }
-.about a {
-  color: #333;
-  text-decoration: none;
-  border-radius: 2px;
-  -webkit-transition: background 0.1s;
-  -moz-transition: background 0.1s;
-  -o-transition: background 0.1s;
-  transition: background 0.1s;
-}
 .about a:hover {
   text-decoration: none;
   background: #fafafa;
@@ -93,21 +63,12 @@ table {
 .about-author {
   margin-top: 5px;
 }
-.about-author > a {
-  padding: 1px 3px;
-  margin: 0 -1px;
-}
-
-body {
-  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #404040;
-  background: #596778;
-}
 
 .sign-up {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   margin: 50px auto;
-  width: 280px;
+  width: 500px;
   padding: 33px 25px 29px;
   background: white;
   border-bottom: 1px solid #c4c4c4;
@@ -132,6 +93,7 @@ body {
 }
 
 .sign-up-title {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   margin: -25px -25px 25px;
   padding: 15px 25px;
   line-height: 35px;
@@ -188,6 +150,7 @@ input {
 }
 
 .sign-up-button {
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
   vertical-align: top;
   width: 100%;
@@ -238,26 +201,10 @@ input {
   padding: 0;
 }
 
-
-.seleccion{
-  background-image: url(../images/fondoseleccion.jpg);
-  background-size: 100%;
-  background-attachment: fixed;
-}
-
-.fondoestudiantes{
-  background-image: url(../images/fondoEstudiantes.jpg);
-  background-size: 100%;
-  background-attachment: fixed;
-}
-
 .fondoinstructores{
-  background-image: url(../images/fondoProfesores.jpg);
+  background-image: url(/Register/images/fondoProfesores.jpg);
   background-size: 100%;
   background-attachment: fixed;
-}
-h1{
-  text-align: center;
 }
 
 .form-seleccion {
@@ -304,10 +251,127 @@ h1{
   cursor: pointer;
 }
 label{
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #aaa;
   text-align: center;
 }
 #inputCertificaciones{
+  font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	height: 100px;
-  width: 246px;
+  width: 450px;
+  font-size: 17px;
+}
+#inputId{
+  background-color: #cdf1ff;
+}
+#inputCorreo{
+  background-color: #cdf1ff;
+}
+#inputEstado{
+  background-color: #cdf1ff;
+}
+#inputRol{
+  background-color: #cdf1ff;
+}
+/*Estilos para el encabezado*/
+.header{
+	width: 100%;
+	height: 100px;
+	top: 0;left: 0;
+}
+.container{
+	width: 90%;
+	max-width: 3000px;
+	margin: auto;
+}
+.container .btn-menu, .logo{
+	float: left;
+	line-height:35px;
+}
+.container .btn-menu label{
+	color: rgb(0, 0, 0);
+	font-size: 25px;
+	cursor: pointer;
+}
+.logo h1{
+	color: rgb(0, 0, 0);
+	font-weight: 100;
+	font-size: 22px;
+	margin-left: 10px;
+}
+.container .menu{
+	float: right;
+	line-height: 100px;
+}
+.container .menu a{
+	display: inline-block;
+	padding: 15px;
+	line-height: normal;
+	text-decoration: none;
+	color: #fff;
+	transition: all 0.3s ease;
+	border-bottom: 2px solid transparent;
+	font-size: 15px;
+	margin-right: 5px;
+}
+.container .menu a:hover{
+	border-bottom: 2px solid #c7c7c7;
+	padding-bottom: 5px;
+}
+
+/*Menù lateral*/
+#btn-menu{
+	display: none;
+}
+.container-menu{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	top: 0;left: 0;
+	transition: all 500ms ease;
+	opacity: 0;
+	visibility: hidden;
+}
+#btn-menu:checked ~ .container-menu{
+	opacity: 1;
+	visibility: visible;
+}
+.cont-menu{
+	width: 100%;
+	max-width: 250px;
+	background: #1c1c1c;
+	height: 100vh;
+	position: relative;
+	transition: all 500ms ease;
+	transform: translateX(-100%);
+}
+#btn-menu:checked ~ .container-menu .cont-menu{
+	transform: translateX(0%);
+}
+#btn-menu:checked ~ .container-menu{
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+}
+.cont-menu nav{
+	transform: translateY(15%);
+}
+.cont-menu nav a{
+	display: block;
+	text-decoration: none;
+	padding: 20px;
+	color: #c7c7c7;
+	border-left: 5px solid transparent;
+	transition: all 400ms ease;
+}
+.cont-menu nav a:hover{
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+}
+.cont-menu label{
+	position: absolute;
+	right: 5px;
+	top: 10px;
+	color: #fff;
+	cursor: pointer;
+	font-size: 18px;
 }
