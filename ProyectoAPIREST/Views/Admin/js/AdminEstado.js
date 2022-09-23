@@ -161,7 +161,8 @@ function obtenerToken(){
 						var celdaTelefono = document.createElement("td");
 						var celdaEstado = document.createElement("td");
 						var celdaRol = document.createElement("td");
-						var celdaBotones = document.createElement("td");
+						var celdaUsuario = document.createElement("td");
+						var celdaEliminar = document.createElement("td");
 						var textoID = document.createTextNode( Data[i].idUsuario);
 						var textoNombre = document.createTextNode( Data[i].nombre);
 						var textoApelldio = document.createTextNode( Data[i].apellido);
@@ -210,31 +211,49 @@ function obtenerToken(){
 				
 				let divBotonEliminar = document.createElement("button");
 				let divBotonEditar = document.createElement("button");
-				celdaBotones.appendChild(divBotonEditar);
-				celdaBotones.appendChild(divBotonEliminar);				
-				hilera.appendChild(celdaBotones);
+				celdaUsuario.appendChild(divBotonEditar);
+				celdaEliminar.appendChild(divBotonEliminar);				
+				hilera.appendChild(celdaUsuario);
+				hilera.appendChild(celdaEliminar);
 
 				document.getElementById("divLista").appendChild(divElement);
 				if(Data[i].estado === 'A'){
 					divBotonEditar.innerHTML = "Habilitado";
-					divBotonEditar.style.color = "Green"
+					divBotonEditar.style.backgroundColor = 'Green';
+					divBotonEditar.style.color = "White"
 				}else{
 					divBotonEditar.innerHTML = "Inhabilitado";
-					divBotonEditar.style.color = "Red"
+					divBotonEditar.style.backgroundColor = 'Red';
+					divBotonEditar.style.color = "White"
 				}
 				divBotonEditar.MiID = Data[i].idUsuario;
                 divBotonEditar.Estado = Data[i].estado;
         		divBotonEditar.style.fontFamily = "sans-serif";
 				divBotonEditar.style.fontSize = "x-large";
-				divBotonEditar.style.width = '190px';
+				divBotonEditar.style.width = '150px';
+				divBotonEditar.style.borderBlockColor = 'white';
+				divBotonEditar.style.cursor = 'pointer';
 				divBotonEditar.addEventListener("click",function(mibutton){
 					console.log(mibutton.target.MiID,mibutton.target.Estado);
 					Edit(
 						mibutton.target.MiID,
 						mibutton.target.Estado,
-						token
-						
+						token		
 					);
+				})
+				divBotonEliminar.Correo = Data[i].correo;
+				divBotonEliminar.innerHTML = "Eliminar";
+				divBotonEliminar.style.fontFamily = "sans-serif";
+				divBotonEliminar.style.fontSize = "x-large";
+				divBotonEliminar.style.width = '150px';
+				divBotonEliminar.style.backgroundColor = 'Red';
+				divBotonEliminar.style.borderBlockColor = 'white';
+				divBotonEliminar.style.color = 'white';
+				divBotonEliminar.style.cursor = 'pointer';
+				divBotonEliminar.addEventListener("click",function(mibutton){
+					Delete(mibutton.target.Correo,
+						   token
+						);
 				})
 
 			}
@@ -250,7 +269,8 @@ function obtenerToken(){
       tabla.setAttribute("class", "tablaUsuarios");
       tabla.style.backgroundColor = "white";
       tabla.style.color = "black";
-      tabla.style.margin = "25px 0";
+	  tabla.style.margin = "auto";
+      tabla.style.margin = "25px 40px";
       tabla.style.fontSize = "0.9em";
       tabla.style.fontFamily = "sans-serif";
 	  
@@ -264,19 +284,18 @@ function obtenerToken(){
 
 	}
 
-	function Delete(Id){
+	function Delete(correo,token){
+		var url ="https://localhost:7076/api/AdminPantalla/EliminarUsuario";
 		fetch(url, {
-			method: "Delete",
+			method: "DELETE",
 			body: JSON.stringify({
-				id: Id,
-				nombre: "",
-				fechaInicio: "",
-				horaInicio: "",
-				valor: 0
+				correo: correo,
+				clave: ""
 			}),
 			headers:{
 				'Accept' : "application/json",
-				"Content-Type":"application/json"
+				"Content-Type":"application/json",
+				'Authorization': 'Bearer ' + token
 			}	
 		}).then(function(response){
 			if(response.ok){
@@ -285,9 +304,9 @@ function obtenerToken(){
 				alert("Error al ejecutar la solicitud");
 			}
 		}).then(function(Data){
-			
+			alert("El usuario ha sido eliminado correctamente")
 			console.log(Data);
-			Get();
+			Get(token);
 		})
 
 	}
