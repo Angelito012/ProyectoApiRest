@@ -39,8 +39,11 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        obtenercursos(tokenValido);
     })
+
 }
+
 var btnLogout = document.getElementById('btnLogout');
 
 btnLogout.addEventListener('click',salir);
@@ -50,21 +53,28 @@ function salir(){
     location.href="../index.html";
 }
 
-obtenercursos();
 function obtenercursos(token){
-    fetch(url).then(function(response){
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+            Correo: email,
+            Clave: ""          
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
         if(response.ok){
             return response.json();
-            
         }else{
             alert("Error al ejecutar solicitud")
         }
-    })
-    
-    .then(function(Data){
-       
+    }).then(function(Data){
         for(i=0; i<Data.length; i++){
             
+            console.log(Data)
             let newcard = document.createElement('div');
             newcard.classList.add('card');
 
@@ -91,55 +101,31 @@ function obtenercursos(token){
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
-            let estado = document.createElement('h5');
-            estado.innerText = "Estado: " + Data[i].estado;
-            estado.innerHTML += `<br><br>`;
-            contenido_card.appendChild(estado);
+            let precio = document.createElement('h5');
+            precio.innerText = "Precio: " + Data[i].precio;
+            precio.innerHTML += `<br>`
+            contenido_card.appendChild(precio);
 
-            let costo = document.createElement('h5');
-            costo.innerText = "Costo: " + Data[i].costo;
-            costo.innerHTML += `<br>`
-            contenido_card.appendChild(costo);
+            let botonInformacion = document.createElement("button");
+            botonInformacion.classList.add('btn');
+            botonInformacion.className += " btn-info"
+            botonInformacion.innerHTML = "Informacion"
+            
+            contenido_card.appendChild(botonInformacion);
+
+            let botoncomprar = document.createElement("button");
+            botoncomprar.classList.add('btn');
+            botoncomprar.className += " btn-danger"
+            botoncomprar.innerHTML = "Añadir a Carrito"
+            
+            contenido_card.appendChild(botoncomprar);
+
 
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
-
-        //     card.innerHTML += `<div class="card" id="${Data[i].idCurso}">
-        //     <figure>
-        //         <img src="/images/cursos.jpg">
-        //     </figure>
-        //     <div class="contenido-card">
-        //         <h3 id="Nombre">${Data[i].nombre}</h3>
-        //         <p id="Descripcion">${Data[i].descripcion}</p>
-        //         <hr>
-        //         <h5>Duracion: ${Data[i].duracion}<span id="Duracion"></span></h5>
-        //         <br>
-        //         <h5>Estado: ${Data[i].estado}<span id="Estado"></span></h5>
-        //         <br>
-        //         <h5>Costo: ${Data[i].costo}<span id="Costo"></span></h5>
-        //         <br>
-        //         <button type="button" class="btn btn-edit" id="Editar${Data[i].idCurso}">Editar Curso</button>
-        //         <button type="button" class="btn btn-danger" id="Eliminar${Data[i].idCurso}">Eliminar Curso</button>
-        //     </div>
-        // </div>`
         }
     })
 }
 
-function guardarDatos(id,nombre,descripcion,duracion,estado,costo){
-    var InformacionCurso = {
-        Idcurso : id,
-        nombre : nombre,
-        descripcion : descripcion,
-        duracion : duracion,
-        estado : estado,
-        costo : costo
-    };
-    
-    console.log(InformacionCurso)
-    localStorage.setItem("curso",JSON.stringify(InformacionCurso))
-    // alert('hola')
-}
-
 obtenerToken();
-// localStorage.clear();
+//obtenerToken2();
