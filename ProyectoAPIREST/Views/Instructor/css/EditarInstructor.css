@@ -61,13 +61,13 @@ table {
 }
 
 .about-author {
-  margin-top: 5px;
+  margin-top: 0px;
 }
 
 .sign-up {
   font: 13px/20px 'Helvetica Neue', Helvetica, Arial, sans-serif;
   position: relative;
-  margin: 50px auto;
+  margin: 0px auto;
   width: 500px;
   padding: 33px 25px 29px;
   background: white;
@@ -280,24 +280,30 @@ label{
 	top: 0;left: 0;
 }
 .container{
-	width: 90%;
+	width: 95%;
 	max-width: 3000px;
-	margin: auto;
+	margin-left: auto 
 }
 .container .btn-menu, .logo{
-	float: left;
-	line-height:35px;
+  float: top;
+	margin: auto;
+  margin-left: 0px;
 }
 .container .btn-menu label{
+  float: left;
 	color: rgb(0, 0, 0);
 	font-size: 25px;
 	cursor: pointer;
+  line-height: 150px;
+}
+.logo{
+  line-height: 150px;
 }
 .logo h1{
 	color: rgb(0, 0, 0);
 	font-weight: 100;
 	font-size: 22px;
-	margin-left: 10px;
+	margin-left: 45px;
 }
 .container .menu{
 	float: right;
