@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" type="text/css" href="css/vendor/normalize.css">
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="css/menuLateral.css">
+	<link rel="stylesheet" href="css/fontello.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Noto+Sans+JP&display=swap" rel="stylesheet">
 
@@ -16,237 +17,45 @@
 
 </head>
 <body>
+	<header class="header">
+		<div class="container">
+		<div class="btn-menu">
+			<label for="btn-menu" class="icon-menu"></label>
+		</div>
+			<div class="logo">
+				<h1>Habilitar/Deshabilitar de los Usuarios</h1>
+			</div>
+		</div>
+	</header>
 
-
-    <section class="lateral">
-        <div class="prefil">
-            <h1 class="nombre_rol">Administrador</h1>
-            <a href="index.html"><h1 class="botones">Ver Cursos</h1></a>
-            <a href="index.html"><h1 class="botones">Ver Estudiantes</h1></a>
-            <a href="index.html"><h1 class="botones">Ver Instructores</h1></a>
-            <h1 class="boton_logout" id="btnLogout">Logout</h1>
+	<div class="capa"></div>
+    <div class="title-cards">
+		<h2 id="name"></h2>
+	</div>
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="/Admin/Admin.html">Inicio</a>	
+                <a href="/Admin/AdminVerEstudiante.html">Ver Estudiantes</a>
+                <a href="/Admin/AdminVerInstructor.html">Ver Instructores</a>
+                <a href="/Admin/AdminEditarEstado.html">Habilitar/Deshabilitar Usuarios</a>
+                <a href="/Admin/AdminEditarEstado.html">Habilitar/Deshabilitar Cursos</a>
+                <a href="#">Ver Cursos</a>
+                <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+            </nav>
+            <label for="btn-menu" class="icon-cancel"></label>
         </div>
-    </section>
-    <section class="proyectos">
-        <h1>vista admin</h1>
-        <h2 id="name"></h2>
-        <button id="btnLogout">Logout</button>
-        <div class="text-center" id="divLista"></div>
-
-
-    </section>
-
-
+    </div>
+	<div class="container" id="divLista"></div>
 
 </body>
 </html>
 
-<script src="./js/Admin.js"></script>
+<script src="./js/AdminEstado.js"></script>
 <script>
-	var url ="https://localhost:7076/api/AdminPantalla";
-	Get();
-	function Get(){
-		fetch(url).then(function(response){
-			return response.json();
-		}).then(function(Data){
-			document.getElementById("divLista").innerHTML="";
-			var body = document.getElementById("divLista");
-			var tabla   = document.createElement("table");
-			var tblBody = document.createElement("tbody");
-			var hilera = document.createElement("tr")
-			var headID = document.createElement("th")
-			var headNombre = document.createElement("th")
-			var headApellido = document.createElement("th")
-			var headCorreo = document.createElement("th")
-			var headTelefono = document.createElement("th")
-            var headEstado = document.createElement("th")
-            var headRol = document.createElement("th")
-			var textoID = document.createTextNode( "ID");
-			var textoNombre = document.createTextNode( "Nombre");
-			var textoApellido = document.createTextNode( "Apellido");
-			var textoCorreo = document.createTextNode( "Correo");
-            var textoTelefono = document.createTextNode( "Telefono");
-			var textoEstado = document.createTextNode("Estado");
-			var textoRol = document.createTextNode("Rol");
-			headID.appendChild(textoID);
-			headNombre.appendChild(textoNombre)
-			headApellido.appendChild(textoApellido)
-			headCorreo.appendChild(textoCorreo)
-			headTelefono.appendChild(textoTelefono)
-            headEstado.appendChild(textoEstado)
-            headRol.appendChild(textoRol)
-			hilera.appendChild(headID);
-			hilera.appendChild(headNombre);
-			hilera.appendChild(headApellido);
-			hilera.appendChild(headCorreo);
-			hilera.appendChild(headTelefono);
-            hilera.appendChild(headEstado);
-            hilera.appendChild(headRol);
-			tblBody.appendChild(hilera);
-			for(i=0;i < Data.length;i++){
-				let divElement = document.createElement("div");
-				let divSpan= document.createElement("span");
-				let divApellido = document.createElement("Apellido");
-				let divCorreo = document.createElement("Correo");
-				let divTelefono = document.createElement("Telefono");
-                let divEstado = document.createElement("Estado");
-                let divRol = document.createElement("Rol");
-				
-				divElement.appendChild(divSpan);
-				divElement.appendChild(divApellido);
-				divElement.appendChild(divCorreo);
-				divElement.appendChild(divTelefono);
-                divElement.appendChild(divEstado);
-                divElement.appendChild(divRol);
-				var hilera = document.createElement("tr");//Tabla
-
-				var celdaID = document.createElement("td");
-				var celdaNombre = document.createElement("td");
-				var celdaApelldio = document.createElement("td");
-				var celdaCorreo = document.createElement("td");
-				var celdaTelefono = document.createElement("td");
-                var celdaEstado = document.createElement("td");
-                var celdaRol = document.createElement("td");
-				var celdaBotones = document.createElement("td");
-				var textoID = document.createTextNode( Data[i].idUsuario);
-				var textoNombre = document.createTextNode( Data[i].nombre);
-				var textoApelldio = document.createTextNode( Data[i].apellido);
-				var textoCorreo = document.createTextNode( Data[i].correo);
-				var textoTelefono = document.createTextNode( Data[i].telefono);
-                var textoEstado = document.createTextNode( Data[i].estado);
-                var textoRol = document.createTextNode( Data[i].rol);
-				celdaID.appendChild(textoID);
-				celdaNombre.appendChild(textoNombre)
-				celdaApelldio.appendChild(textoApelldio)
-				celdaCorreo.appendChild(textoCorreo)
-				celdaTelefono.appendChild(textoTelefono)
-                celdaEstado.appendChild(textoEstado)
-				celdaRol.appendChild(textoRol)
-				hilera.appendChild(celdaID);
-				hilera.appendChild(celdaNombre);
-				hilera.appendChild(celdaApelldio);
-				hilera.appendChild(celdaCorreo);
-				hilera.appendChild(celdaTelefono);
-                hilera.appendChild(celdaEstado);
-				hilera.appendChild(celdaRol);
-				tblBody.appendChild(hilera);
 
 
-
-
-
-
-				
-				let divBotonEliminar = document.createElement("button");
-				let divBotonEditar = document.createElement("button");
-				celdaBotones.appendChild(divBotonEditar);
-				celdaBotones.appendChild(divBotonEliminar);
-				hilera.appendChild(celdaBotones);
-
-				document.getElementById("divLista").appendChild(divElement);
-
-				divBotonEditar.innerHTML = "Editar";
-				
-                
-                divBotonEliminar.innerHTML = "Eliminar";
-
-				divBotonEditar.MiID = Data[i].id;
-				divBotonEditar.Nombre = Data[i].nombre;
-				divBotonEditar.Apellido = Data[i].apellido;
-				divBotonEditar.Correo = Data[i].correo;
-				divBotonEditar.Telefono = Data[i].telefono;
-                divBotonEditar.Estado = Data[i].estado;
-				divBotonEditar.Rol = Data[i].rol;
-
-				divBotonEditar.addEventListener("click",function(mibutton){
-					Edit(
-						mibutton.target.MiID,
-						mibutton.target.Nombre,
-						mibutton.target.FechaInicio,
-						mibutton.target.HoraInicio,
-						mibutton.target.Valor
-					);
-				})
-				divBotonEliminar.MiID = Data[i].id;
-				divBotonEliminar.addEventListener("click",function(mibutton){
-					ans = confirm('SI elimina esta empresa se eliminaran todas las personas que pertenecen a esta, desea eliminarla?');
-					//returns a boolean response
-					if (ans){
-						Delete(
-						mibutton.target.MiID,
-					
-					);
-					}
-
-
-				})
-			}
-			tabla.appendChild(tblBody);
-			// appends <table> into <body>
-			
-			body.appendChild(tabla);
-			// modifica el atributo "border" de la tabla y lo fija a "2";
-			tabla.setAttribute("border", "2");
-			tabla.setAttribute("align", "center");
-	////////////////////////////////////////////////////////		
-// Crea un elemento <table> y un elemento <tbody>
-
-/////////////////////////
-		})
-
-	}
-
-	function Delete(Id){
-		fetch(url, {
-			method: "Delete",
-			body: JSON.stringify({
-				id: Id,
-				nombre: "",
-				fechaInicio: "",
-				horaInicio: "",
-				valor: 0
-			}),
-			headers:{
-				'Accept' : "application/json",
-				"Content-Type":"application/json"
-			}	
-		}).then(function(response){
-			if(response.ok){
-				return response.text();
-			}else{
-				alert("Error al ejecutar la solicitud");
-			}
-		}).then(function(Data){
-			
-			console.log(Data);
-			Get();
-		})
-
-	}
-
-
-	function Edit(Id){
-		fetch(url,{
-			method: "PUT",
-			body: JSON.stringify({
-				id: Id,
-			}),
-			headers:{
-				'Accept' : "application/json",
-				"Content-Type": "application/json"
-			}
-			}).then(function(response){
-				if(response.ok){
-					return response.text();
-				}else{
-					alert("Error al ejecutar la solicitud");
-				}
-			}).then(function(Data){
-
-			
-			})
-		}
-		
 
 
 </script>
