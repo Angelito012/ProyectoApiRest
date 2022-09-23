@@ -132,3 +132,4 @@ function setCookie(cname, cvalue, exdays) {
   function deleteCookie(cname){
     setCookie(cname,"",-1)
   }
+  

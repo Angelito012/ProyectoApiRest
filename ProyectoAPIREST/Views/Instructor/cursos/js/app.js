@@ -69,8 +69,7 @@ function ActualizarDatos(token){
         }
     }).then(function(Data){
         alert('Curso Editado')
-        localStorage.clear();
-        location.href = '../Instructor.html';
+        location.href = '/Instructor/VerCursos.html';
     })
 }
 
