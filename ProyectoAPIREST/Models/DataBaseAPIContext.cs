@@ -26,15 +26,14 @@ namespace ProyectoAPIREST.Models
 
         public string connectionString()
         {
-
-            return "Server=DESKTOP-4PEGOM0;Database=DataBaseAPI;user=capacitacion;password=123456789";
+            return "Server=DESKTOP-57KII1B;Database=DataBaseAPI;User Id=kevin;Password=081999";
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-4PEGOM0;Database=DataBaseAPI;user=capacitacion;password=123456789");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-57KII1B;Database=DataBaseAPI;User Id=kevin;Password=081999");
             }
         }
 

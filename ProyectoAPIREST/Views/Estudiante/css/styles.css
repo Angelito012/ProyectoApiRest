@@ -7,7 +7,7 @@
 
 }
 body{
-    background-image: url("../img/fondo.jpg");
+    background-image: url(../img/fondo.jpg);
 	background-size: 104%;
 	background-attachment: fixed;
     align-items: center ;
@@ -28,11 +28,11 @@ body{
 .container{
 	width: 90%;
 	max-width: 3000px;
-	margin-left: 81px;
+	margin: auto;
 }
 .container .btn-menu, .logo{
 	float: left;
-	line-height:130px;
+	line-height:2px;
 }
 .container .btn-menu label{
 	color: rgb(0, 0, 0);
@@ -44,7 +44,6 @@ body{
 	font-weight: 400;
 	font-size: 22px;
 	margin-left: 10px;
-	line-height:130px;
 }
 .container .menu{
 	float: right;
@@ -95,10 +94,6 @@ body{
 #btn-menu:checked ~ .container-menu .cont-menu{
 	transform: translateX(0%);
 }
-#btn-menu:checked ~ .container-menu{
-	position: fixed;
-	background: rgba(0,0,0,0.5);
-}
 .cont-menu nav{
 	transform: translateY(15%);
 }
@@ -134,10 +129,10 @@ body{
 	width: 100%;
 	max-width: 1080px;
 	margin: auto;
-	padding: 120px;
+	padding: 5px;
 	margin-top: 10px;
 	text-align: center;
-	color: #3d3d3d;
+	color: #7a7a7a;
 }
 .card{
 	width: 100%;
@@ -182,14 +177,9 @@ body{
 	transition: all 400ms ease;
 	margin-bottom: 5px;
 }
-.card .contenido-card button:hover{
+.card .contenido-card a:hover{
 	background: #ffffff;
 	color: rgb(0, 0, 0);
-}
-.card .contenido-card .btn-edit:hover{
-	background: #ffffff;
-	color: rgb(0, 0, 0);
-	border: solid 1px #0004ff;
 }
 .card .contenido-card .btn-edit{
     background: #0004ff;
@@ -215,6 +205,4 @@ body{
 }
   .btn{
 	margin-left: 5px;
-	height: 35px;
-	width: 120px;
   }

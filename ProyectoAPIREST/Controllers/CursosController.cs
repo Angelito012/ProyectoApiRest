@@ -9,7 +9,7 @@ namespace ProyectoAPIREST.Controllers
     public class CursosController : Controller
     {
 
-        [HttpGet]
+        [HttpPost]
         [Route("CatalogoCursos")]
         public IActionResult Get()
         {
