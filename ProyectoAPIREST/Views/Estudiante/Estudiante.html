@@ -1,16 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<title>Menù Lateral con Css</title>
+	<link rel="stylesheet" href="css/menuLateral.css">
+    <link rel="stylesheet" href="css/fontello.css">
 </head>
 <body>
-    <h1>vista estudiante</h1>
-    <h2 id="name"></h2>
-    <button id="btnLogout">Logout</button>
+	<header class="header">
+		<div class="container">
+		<div class="btn-menu">
+			<label id="btnIcono" for="btn-menu" class="icon-menu"></label>
+		</div>
+			<div class="logo">
+				<h1>MENU PRINCIPAL ESTUDIANTE</h1>
+			</div>
+		</div>
+	</header>
+	<div class="capa"></div>
+    <div class="title-cards">
+		<h2 id="name"></h2>
+	</div>
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="/Estudiante/Estudiante.html">Inicio</a>			
+                <a href="">Ver catalogo</a>
+                <a href="">Ver mis Cursos</a>
+                <a href="/Estudiante/EditarEstudiante.html">Editar mis datos</a>
+                <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+            </nav>
+            <label for="btn-menu" class="icon-cancel"></label>
+        </div>
+    </div>
 </body>
 </html>
-
 <script src="./js/Estudiante.js"></script>
