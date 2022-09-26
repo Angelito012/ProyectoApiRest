@@ -28,11 +28,11 @@ body{
 .container{
 	width: 90%;
 	max-width: 3000px;
-	margin: auto;
+	margin-left: 81px;
 }
 .container .btn-menu, .logo{
 	float: left;
-	line-height:2px;
+	line-height:130px;
 }
 .container .btn-menu label{
 	color: rgb(0, 0, 0);
@@ -44,6 +44,7 @@ body{
 	font-weight: 400;
 	font-size: 22px;
 	margin-left: 10px;
+	line-height:130px;
 }
 .container .menu{
 	float: right;
@@ -94,6 +95,10 @@ body{
 #btn-menu:checked ~ .container-menu .cont-menu{
 	transform: translateX(0%);
 }
+#btn-menu:checked ~ .container-menu{
+	position: fixed;
+	background: rgba(0,0,0,0.5);
+}
 .cont-menu nav{
 	transform: translateY(15%);
 }
@@ -129,10 +134,10 @@ body{
 	width: 100%;
 	max-width: 1080px;
 	margin: auto;
-	padding: 5px;
+	padding: 100px;
 	margin-top: 10px;
 	text-align: center;
-	color: #7a7a7a;
+	color: #3d3d3d;
 }
 .card{
 	width: 100%;
@@ -181,14 +186,14 @@ body{
 	background: #ffffff;
 	color: rgb(0, 0, 0);
 }
-.card .contenido-card .btn-edit{
-    background: #0004ff;
+.card .contenido-card .btn-info{
+    background: #2fb4cc;
     color: #ffffff;
 }
-.card .contenido-card .btn-edit:hover{
+.card .contenido-card .btn-info:hover{
 	background: #ffffff;
 	color: rgb(0, 0, 0);
-	border: solid 1px #0004ff;
+	border: solid 1px #2fb4cc;
 }
 .card .contenido-card .btn-danger:hover{
 	background: #ffffff;
