@@ -299,12 +299,12 @@ function obtenerToken(){
 			}	
 		}).then(function(response){
 			if(response.ok){
+				alert("El usuario ha sido eliminado correctamente")
 				return response.text();
 			}else{
-				alert("Error al ejecutar la solicitud");
+				alert("Este usuario no puede ser eliminador porque tiene asociado un curso");
 			}
 		}).then(function(Data){
-			alert("El usuario ha sido eliminado correctamente")
 			console.log(Data);
 			Get(token);
 		})

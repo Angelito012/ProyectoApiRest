@@ -115,6 +115,6 @@ function EditarEstudiante(token){
         }
     }).then(function(Data){
         alert('Tus datos han sido editados correctamente')
-        location.href = '/Estudiante/Estudiante.html';
+        location.href = '/Estudiante/MenuEstudiante.html';
     })
 }

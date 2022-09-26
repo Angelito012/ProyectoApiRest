@@ -62,7 +62,7 @@ function CrearCursos(token){
         }
     }).then(function(Data){
         alert('Curso Creado')
-        location.href = '../VerCursos.html';
+        location.href = '/Instructor/VerCursos.html';
     })
 }
 
@@ -80,4 +80,12 @@ function getCookie(cname) {
       }
     }
     return "";
+}
+var btnLogout = document.getElementById('btnLogout');
+
+btnLogout.addEventListener('click',salir);
+
+function salir(){
+    alert('Sesion cerrada')
+    location.href="../index.html";
 }

@@ -4,6 +4,11 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat Alternates', sans-serif;
+}
+body{
+  background-image: url(/Instructor/img/fondo.jpg);
+  background-size: 104%;
+  background-attachment: fixed;
 
 }
 
@@ -199,12 +204,6 @@ input {
 ::-moz-focus-inner {
   border: 0;
   padding: 0;
-}
-
-.fondoinstructores{
-  background-image: url(/Register/images/fondoProfesores.jpg);
-  background-size: 100%;
-  background-attachment: fixed;
 }
 
 .form-seleccion {
