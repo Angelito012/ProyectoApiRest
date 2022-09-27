@@ -32,7 +32,7 @@ function obtenerToken(){
             validarEstado(correo,clave);
         }
     }).then(function(Data){
-        console.log(Data.token);
+        console.log(Data);
         tokenValido = Data.token;
         validarVentana(Data.token,correo,clave)
         document.getElementById('correo').value = "";
