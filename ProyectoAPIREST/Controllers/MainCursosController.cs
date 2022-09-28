@@ -37,6 +37,33 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
+        [HttpPost]
+        [Route("ValidarCurso")]
+        public ActionResult ValidarCurso(SolicitudCurso curso)
+        {
+            int cantidad = 0;
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "VALIDARCURSO";
+                cmd.Parameters.Add("@ID", SqlDbType.VarChar).Value = curso.IdCurso;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    cantidad = dr.GetInt32(0);
+                }
+                conn.Close();
+                dr.Close();
+            }
+
+            return Ok(cantidad);
+        }
+
         [HttpDelete]
         [Route("EliminarCurso")]
         public ActionResult EliminarCurso(SolicitudCurso curso)

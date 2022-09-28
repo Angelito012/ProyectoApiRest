@@ -117,7 +117,7 @@ function ValidacionInstructor(token){
             botonEditar.Costo = Data[i].costo;
             botonEditar.classList.add('btn');
             botonEditar.className += " btn-edit"
-            botonEditar.innerHTML = "Editar Curso"
+            botonEditar.innerHTML = "Editar"
             botonEditar.addEventListener("click",function(boton){
                 guardarDatos(
                     boton.target.Idcurso,
@@ -139,33 +139,21 @@ function ValidacionInstructor(token){
             botonEliminar.Costo = Data[i].costo;
             botonEliminar.classList.add('btn');
             botonEliminar.className += " btn-danger"
-            botonEliminar.innerHTML = "Eliminar Curso"
+            botonEliminar.innerHTML = "Eliminar"
             contenido_card.appendChild(botonEliminar);
             botonEliminar.addEventListener('click',function(boton){
-                guardarDatos(boton);
+                guardarDatos(
+                    boton.target.Idcurso,
+                    boton.target.Nombre,
+                    boton.target.Descripcion,
+                    boton.target.Duracion,
+                    boton.target.Estado,
+                    boton.target.Costo);
+                location.href = "./cursos/eliminar.html"
             })
 
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
-
-        //     card.innerHTML += `<div class="card" id="${Data[i].idCurso}">
-        //     <figure>
-        //         <img src="/images/cursos.jpg">
-        //     </figure>
-        //     <div class="contenido-card">
-        //         <h3 id="Nombre">${Data[i].nombre}</h3>
-        //         <p id="Descripcion">${Data[i].descripcion}</p>
-        //         <hr>
-        //         <h5>Duracion: ${Data[i].duracion}<span id="Duracion"></span></h5>
-        //         <br>
-        //         <h5>Estado: ${Data[i].estado}<span id="Estado"></span></h5>
-        //         <br>
-        //         <h5>Costo: ${Data[i].costo}<span id="Costo"></span></h5>
-        //         <br>
-        //         <button type="button" class="btn btn-edit" id="Editar${Data[i].idCurso}">Editar Curso</button>
-        //         <button type="button" class="btn btn-danger" id="Eliminar${Data[i].idCurso}">Eliminar Curso</button>
-        //     </div>
-        // </div>`
         }
     })
 }
@@ -186,4 +174,5 @@ function guardarDatos(id,nombre,descripcion,duracion,estado,costo){
 }
 
 obtenerToken();
+//obtenerToken2();
 // localStorage.clear();
