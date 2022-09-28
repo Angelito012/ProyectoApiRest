@@ -125,5 +125,25 @@ namespace ProyectoAPIREST.Controllers
             }
             return Ok();
         }
+
+        [HttpPut]
+        [Route("ResponderPregunta")]
+        public ActionResult CrearRespuesta(AgregarPregunta respuesta)
+        {
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "CrearRespuesta";
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = respuesta.IdPregunta;
+                cmd.Parameters.Add("@RESPUESTA", SqlDbType.VarChar).Value = respuesta.Respuesta;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
+        }
     }
 }
