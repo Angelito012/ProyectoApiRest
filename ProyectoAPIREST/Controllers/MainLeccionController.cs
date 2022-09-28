@@ -35,7 +35,7 @@ namespace ProyectoAPIREST.Controllers
                     leccion.IdLeccion = dr.GetInt32(0);
                     leccion.Nombre = dr.GetString(1);
                     leccion.Descripcion = dr.GetString(2);
-                    leccion.Duración = dr.GetString(3);
+                    leccion.Duración = dr.GetInt32(3);
                     leccion.Enlace = dr.GetString(4);
                     lecciones.Add(leccion);
                 }
@@ -88,7 +88,7 @@ namespace ProyectoAPIREST.Controllers
                     conpreguntas.IdLeccion = dr.GetInt32(0);
                     conpreguntas.Nombre = dr.GetString(1);
                     conpreguntas.Descripcion = dr.GetString(2);
-                    conpreguntas.Duración = dr.GetString(3);
+                    conpreguntas.Duración = dr.GetInt32(3);
                     conpreguntas.Enlace = dr.GetString(4);
                     pregunta.IdPregunta = dr.GetInt32(5);
                     pregunta.Duda = dr.GetString(6);

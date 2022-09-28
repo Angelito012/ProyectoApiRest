@@ -28,7 +28,7 @@ namespace ProyectoAPIREST.Controllers
                 cmd.CommandText = "CrearCurso";
                 cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = curso.Nombre;
                 cmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = curso.Descripcion;
-                cmd.Parameters.Add("@DURACION", SqlDbType.VarChar).Value = curso.Duracion;
+                cmd.Parameters.Add("@DURACION", SqlDbType.Int).Value = curso.Duracion;
                 cmd.Parameters.Add("@COSTO", SqlDbType.Float).Value = curso.Costo;
                 cmd.Parameters.Add("@PRECIO", SqlDbType.Float).Value = curso.Precio;
                 cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = curso.Estado;
@@ -53,7 +53,7 @@ namespace ProyectoAPIREST.Controllers
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = curso.IdCurso;
                 cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = curso.Nombre;
                 cmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = curso.Descripcion;
-                cmd.Parameters.Add("@DURACION", SqlDbType.VarChar).Value = curso.Duracion;
+                cmd.Parameters.Add("@DURACION", SqlDbType.Int).Value = curso.Duracion;
                 cmd.Parameters.Add("@COSTO", SqlDbType.Float).Value = curso.Costo;
                 cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = curso.Estado;
                 cmd.ExecuteNonQuery();

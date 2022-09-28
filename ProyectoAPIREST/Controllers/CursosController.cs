@@ -18,7 +18,7 @@ namespace ProyectoAPIREST.Controllers
                 var Curso = (from d in db.Cursos
                              where d.Estado == "A"
                               select d).ToList();
-
+                
                 return Ok(Curso);
             }
         }
