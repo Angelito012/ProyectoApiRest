@@ -1,4 +1,4 @@
-var url = "https://localhost:7076/api/MainInstructor/VerCursos";
+var url = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 
@@ -39,9 +39,11 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
-        ValidacionInstructor(Data.token)
+        obtenercursos(tokenValido);
     })
+
 }
+
 var btnLogout = document.getElementById('btnLogout');
 
 btnLogout.addEventListener('click',salir);
@@ -51,7 +53,7 @@ function salir(){
     location.href="../index.html";
 }
 
-function ValidacionInstructor(token){
+function obtenercursos(token){
     fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -72,6 +74,7 @@ function ValidacionInstructor(token){
     }).then(function(Data){
         for(i=0; i<Data.length; i++){
             
+            console.log(Data)
             let newcard = document.createElement('div');
             newcard.classList.add('card');
 
@@ -98,59 +101,25 @@ function ValidacionInstructor(token){
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
-            let estado = document.createElement('h5');
-            estado.innerText = "Estado: " + Data[i].estado;
-            estado.innerHTML += `<br><br>`;
-            contenido_card.appendChild(estado);
+            let precio = document.createElement('h5');
+            precio.innerText = "Precio: " + Data[i].precio;
+            precio.innerHTML += `<br>`
+            contenido_card.appendChild(precio);
 
-            let costo = document.createElement('h5');
-            costo.innerText = "Costo: " + Data[i].costo;
-            costo.innerHTML += `<br>`
-            contenido_card.appendChild(costo);
+            let botonInformacion = document.createElement("button");
+            botonInformacion.classList.add('btn');
+            botonInformacion.className += " btn-info"
+            botonInformacion.innerHTML = "Informacion"
+            
+            contenido_card.appendChild(botonInformacion);
 
-            let botonEditar = document.createElement("button");
-            botonEditar.Idcurso = Data[i].idCurso;
-            botonEditar.Nombre = Data[i].nombre;
-            botonEditar.Descripcion = Data[i].descripcion;
-            botonEditar.Duracion = Data[i].duracion;
-            botonEditar.Estado = Data[i].estado;
-            botonEditar.Costo = Data[i].costo;
-            botonEditar.classList.add('btn');
-            botonEditar.className += " btn-edit"
-            botonEditar.innerHTML = "Editar"
-            botonEditar.addEventListener("click",function(boton){
-                guardarDatos(
-                    boton.target.Idcurso,
-                    boton.target.Nombre,
-                    boton.target.Descripcion,
-                    boton.target.Duracion,
-                    boton.target.Estado,
-                    boton.target.Costo);
-                location.href = "./cursos/index.html"
-            })
-            contenido_card.appendChild(botonEditar);
+            let botoncomprar = document.createElement("button");
+            botoncomprar.classList.add('btn');
+            botoncomprar.className += " btn-danger"
+            botoncomprar.innerHTML = "Añadir a Carrito"
+            
+            contenido_card.appendChild(botoncomprar);
 
-            let botonEliminar = document.createElement("button");
-            botonEliminar.Idcurso = Data[i].idCurso;
-            botonEliminar.Nombre = Data[i].nombre;
-            botonEliminar.Descripcion = Data[i].descripcion;
-            botonEliminar.Duracion = Data[i].duracion;
-            botonEliminar.Estado = Data[i].estado;
-            botonEliminar.Costo = Data[i].costo;
-            botonEliminar.classList.add('btn');
-            botonEliminar.className += " btn-danger"
-            botonEliminar.innerHTML = "Eliminar"
-            contenido_card.appendChild(botonEliminar);
-            botonEliminar.addEventListener('click',function(boton){
-                guardarDatos(
-                    boton.target.Idcurso,
-                    boton.target.Nombre,
-                    boton.target.Descripcion,
-                    boton.target.Duracion,
-                    boton.target.Estado,
-                    boton.target.Costo);
-                location.href = "./cursos/eliminar.html"
-            })
 
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
@@ -158,21 +127,5 @@ function ValidacionInstructor(token){
     })
 }
 
-function guardarDatos(id,nombre,descripcion,duracion,estado,costo){
-    var InformacionCurso = {
-        Idcurso : id,
-        nombre : nombre,
-        descripcion : descripcion,
-        duracion : duracion,
-        estado : estado,
-        costo : costo
-    };
-    
-    console.log(InformacionCurso)
-    localStorage.setItem("curso",JSON.stringify(InformacionCurso))
-    // alert('hola')
-}
-
 obtenerToken();
 //obtenerToken2();
-// localStorage.clear();

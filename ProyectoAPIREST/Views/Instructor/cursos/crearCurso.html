@@ -4,23 +4,42 @@
 	<meta charset="UTF-8">
 	<title>Menù Lateral con Css</title>
 	<link rel="stylesheet" href="css/crearCurso.css">
-    <link rel="stylesheet" href="/Instructor/css/fontello.css">
+	<link rel="stylesheet" href="/Instructor/css/fontello.css">
 </head>
 <body>
-	<header class="header">
+    <header class="header">
 		<div class="container">
-		<div class="btn-menu">
-			<label id="btnIcono" for="btn-menu" class="icon-menu"></label>
-		</div>
+            <div class="btn-menu">
+                <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
+            </div>
 			<div class="logo">
 				<h1>MENU PRINCIPAL INSTRUCTOR</h1>
 			</div>
+                <div class="contformulario" id="contformulario">
+                    <form class="sign-up" id="formulario">
+                        <h1 class="sign-up-title">CREAR CURSO</h1>
+                        <label for="descripcion">Nombre del Curso:</label>
+                    <input type="text" placeholder="Nombre" id="nombre" class="sign-up-input" required>
+        
+                    <label for="descripcion">Descripcion:</label>
+                    <textarea  type="text" placeholder="Descripcion" id="descripcion" class="sign-up-input" required></textarea>
+        
+                    
+                    
+                    <label for="costo">Costo:</label>
+                    <input type="number" placeholder="Costo" id="costo" class="sign-up-input" required>
+        
+                    <label for="estado">Estado:</label>
+                    <select id="estado" class="sign-up-input" required>
+                        <option value="A">A</option>
+                        <option value="I">I</option>
+                    </select>
+                    
+                    <input type="button" class="sign-up-button" value="Crear Curso" id="enviar">
+                    </form>
 		</div>
 	</header>
 	<div class="capa"></div>
-    <div class="title-cards">
-		<h2 id="name"> Crear un Curso</h2>
-	</div>
     <input type="checkbox" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
@@ -29,7 +48,7 @@
                 <a href="/Instructor/cursos/crearCurso.html">Crear un Curso</a>
                 <a href="/Instructor/VerCursos.html">Ver mis Cursos</a>
                 <a href="/Instructor/EditarInstructor.html">Editar mis datos</a>
-                <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+                <a id="btnLogout" style="cursor: pointer; color: #c7c7c7;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>
         </div>

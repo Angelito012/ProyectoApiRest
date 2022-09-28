@@ -13,6 +13,31 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class MainCursosController : ControllerBase
     {
+
+        [HttpPost]
+        [Route("CrearCurso")]
+        public ActionResult CrearCurso(SolicitudCrearCurso curso)
+        {
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "CrearCurso";
+                cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = curso.Nombre;
+                cmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = curso.Descripcion;
+                cmd.Parameters.Add("@DURACION", SqlDbType.Int).Value = curso.Duracion;
+                cmd.Parameters.Add("@COSTO", SqlDbType.Float).Value = curso.Costo;
+                cmd.Parameters.Add("@PRECIO", SqlDbType.Float).Value = curso.Precio;
+                cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = curso.Estado;
+                cmd.Parameters.Add("@IDPROFESOR", SqlDbType.Int).Value = curso.IdProfesor;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
+        }
         [HttpPut]
         [Route("EditarCurso")]
         public ActionResult EditarCurso(SolicitudCurso curso)
@@ -28,7 +53,7 @@ namespace ProyectoAPIREST.Controllers
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = curso.IdCurso;
                 cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = curso.Nombre;
                 cmd.Parameters.Add("@DESCRIPCION", SqlDbType.VarChar).Value = curso.Descripcion;
-                cmd.Parameters.Add("@DURACION", SqlDbType.VarChar).Value = curso.Duracion;
+                cmd.Parameters.Add("@DURACION", SqlDbType.Int).Value = curso.Duracion;
                 cmd.Parameters.Add("@COSTO", SqlDbType.Float).Value = curso.Costo;
                 cmd.Parameters.Add("@ESTADO", SqlDbType.VarChar).Value = curso.Estado;
                 cmd.ExecuteNonQuery();
