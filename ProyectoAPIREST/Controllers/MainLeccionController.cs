@@ -9,7 +9,7 @@ using System.Data;
 namespace ProyectoAPIREST.Controllers
 {
     [Route("api/[controller]")]
-    //[Authorize]
+    [Authorize]
     [ApiController]
     public class MainLeccionController : ControllerBase
     {
@@ -102,6 +102,28 @@ namespace ProyectoAPIREST.Controllers
             }
 
             return Ok(conpreguntas);
+        }
+
+        [HttpPost]
+        [Route("CrearPregunta")]
+        public ActionResult CrearPregunta(AgregarPregunta pregunta)
+        {
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "CREARPREGUNTA";
+                cmd.Parameters.Add("@DUDA", SqlDbType.NVarChar).Value = pregunta.Duda;
+                cmd.Parameters.Add("@RESPUESTA", SqlDbType.NVarChar).Value = pregunta.Respuesta;
+                cmd.Parameters.Add("@LECCION", SqlDbType.Int).Value = pregunta.IdLeccion;
+                cmd.Parameters.Add("@USUARIO", SqlDbType.Int).Value = pregunta.IdUsuario;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
         }
     }
 }
