@@ -32,11 +32,12 @@ function obtenerToken(){
             validarEstado(correo,clave);
         }
     }).then(function(Data){
-        console.log(Data);
-        tokenValido = Data.token;
-        validarVentana(Data.token,correo,clave)
-        document.getElementById('correo').value = "";
-        document.getElementById('clave').value = "";
+        if(Data != undefined){
+            tokenValido = Data.token;
+            validarVentana(Data.token,correo,clave)
+            document.getElementById('correo').value = "";
+            document.getElementById('clave').value = "";
+        }
     })
 }
 
@@ -56,13 +57,13 @@ function validarEstado(correo,clave){
         }).then(function(respose){
             return respose.json();
         }).then(function(Data){
-            console.log(Data[0].estado);
-            if(Data[0].estado == "I"){
+            if(Data[0] == null){
+                alert('Usuario no existe');
+            }else if(Data[0].estado == "I"){
                 alert('Usuario Desactivado');
             }else {
                 alert('Correo o contraseña invalido');
             }
-
         })
     }
 }
