@@ -43,7 +43,7 @@ function CrearCursos(token){
         body: JSON.stringify({ 
             nombre: document.getElementById('nombre').value,        
             descripcion: document.getElementById('descripcion').value,        
-            duracion: document.getElementById('duracion').value,        
+            duracion: '0',        
             costo: document.getElementById('costo').value,
             precio:  document.getElementById('costo').value*1.2,     
             estado: document.getElementById('estado').value, 
