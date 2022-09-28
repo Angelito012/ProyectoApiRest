@@ -27,7 +27,7 @@ namespace ProyectoAPIREST.Models
         public string connectionString()
         {
 
-            return "Server=LAPTOP-0I503ATQ;Database=DataBaseAPI;user=capacitacion;password=loarca12";
+            return "Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678";
 
         }
 
@@ -36,7 +36,7 @@ namespace ProyectoAPIREST.Models
             if (!optionsBuilder.IsConfigured)
             {
 
-                optionsBuilder.UseSqlServer("Server=LAPTOP-0I503ATQ;Database=DataBaseAPI;user=capacitacion;password=loarca12");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678");
 
             }
         }
