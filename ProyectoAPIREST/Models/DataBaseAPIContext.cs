@@ -26,22 +26,14 @@ namespace ProyectoAPIREST.Models
 
         public string connectionString()
         {
-<<<<<<< HEAD
             return "Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678";
-=======
-            return "Server=DESKTOP-4PEGOM0;Database=DataBaseAPI;user=capacitacion;password=123456789";
->>>>>>> 9f72966ce03af59feb6c046e86cca8de86d69a1b
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-<<<<<<< HEAD
                 optionsBuilder.UseSqlServer("Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678");
-=======
-                optionsBuilder.UseSqlServer("Server=DESKTOP-4PEGOM0;Database=DataBaseAPI;user=capacitacion;password=123456789");
->>>>>>> 9f72966ce03af59feb6c046e86cca8de86d69a1b
             }
         }
 
