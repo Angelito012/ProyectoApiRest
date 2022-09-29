@@ -1,5 +1,5 @@
 var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
-var urlFiltrado = "https://localhost:7076/api/MainInstructor/VerCursos";;
+var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";;
 var url = urlTotal
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
