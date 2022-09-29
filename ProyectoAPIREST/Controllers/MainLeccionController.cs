@@ -89,7 +89,7 @@ namespace ProyectoAPIREST.Controllers
                     conpreguntas.Nombre = dr.GetString(1);
                     conpreguntas.Descripcion = dr.GetString(2);
                     conpreguntas.Duración = dr.GetInt32(3);
-                    conpreguntas.Enlace = dr.GetString(4);
+                    conpreguntas.Enlace = obtnerId(dr.GetString(4));
                     pregunta.IdPregunta = dr.GetInt32(5);
                     pregunta.Duda = dr.GetString(6);
                     pregunta.usuario = dr.GetString(8);
@@ -102,6 +102,12 @@ namespace ProyectoAPIREST.Controllers
             }
 
             return Ok(conpreguntas);
+        }
+
+        public string obtnerId(string enlace)
+        {
+            var idLeccion = enlace.Split("=");
+            return idLeccion[1];
         }
 
         [HttpPost]
