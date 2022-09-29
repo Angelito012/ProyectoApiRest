@@ -106,12 +106,6 @@ namespace ProyectoAPIREST.Controllers
             return Ok(conpreguntas);
         }
 
-        //public string obtnerId(string enlace)
-        //{
-        //    var idLeccion = enlace.Split("=");
-        //    return idLeccion[1];
-        //}
-
         [HttpPost]
         [Route("CrearPregunta")]
         public ActionResult CrearPregunta(AgregarPregunta pregunta)
