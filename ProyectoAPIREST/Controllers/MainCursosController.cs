@@ -120,6 +120,7 @@ namespace ProyectoAPIREST.Controllers
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "BusquedaCurso";
+                cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = BusquedaCurso.correo;
                 cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = BusquedaCurso.Nombre;
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -153,6 +154,7 @@ namespace ProyectoAPIREST.Controllers
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "BusquedaCursoComprados";
+                cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = BusquedaCurso.correo;
                 cmd.Parameters.Add("@NOMBRE", SqlDbType.VarChar).Value = BusquedaCurso.Nombre;
                 SqlDataReader dr = cmd.ExecuteReader();
 
