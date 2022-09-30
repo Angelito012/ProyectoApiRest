@@ -90,6 +90,8 @@ namespace ProyectoAPIREST.Controllers
                     conpreguntas.Descripcion = dr.GetString(2);
                     conpreguntas.Duración = dr.GetInt32(3);
                     conpreguntas.Enlace = dr.GetString(4);
+                    var idLeccion = conpreguntas.Enlace.Split("=");
+                    conpreguntas.Enlace = idLeccion[1];
                     pregunta.IdPregunta = dr.GetInt32(5);
                     pregunta.Duda = dr.GetString(6);
                     pregunta.usuario = dr.GetString(8);
