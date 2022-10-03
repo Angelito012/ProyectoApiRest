@@ -12,6 +12,10 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class LeccionController : ControllerBase
     {
+
+
+
+
         [HttpPost]
         [Route ("CrearLeccion")]
         public ActionResult Post([FromBody] Models.Solicitudes.SolicitudLeccion modelo)

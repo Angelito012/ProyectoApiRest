@@ -75,6 +75,57 @@ namespace ProyectoAPIREST.Controllers
             }
             return Ok(detalles);
         }
-      
+
+        [HttpPost]
+        [Route("VerFactura")]
+
+        public ActionResult FacturaDetalle(Models.Solicitudes.numeroFactura detalleNum)
+        {
+            List<SolicitudDetalleParaFactura> detalles = new List<SolicitudDetalleParaFactura>();
+            using (Models.DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "MostrarFacturaPorID";
+                cmd.Parameters.Add("@NFAC", SqlDbType.Int).Value = detalleNum.NoFactura;
+                SqlDataReader dr = cmd.ExecuteReader();
+                SolicitudFacturaParaDetalle DFactura = new SolicitudFacturaParaDetalle();
+                while (dr.Read())
+                {
+                    DFactura.NoFactura = dr.GetInt32(0);
+                    DFactura.Fecha = dr.GetDateTime(1);
+                    DFactura.Total = dr.GetDouble(2);
+                    DFactura.nombre = dr.GetString(3) + " " + dr.GetString(4);
+                }
+                conn.Close();
+                dr.Close();
+
+
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "MostrarDetallePorID";;
+                SqlDataReader det = cmd.ExecuteReader();
+                while (det.Read())
+                {
+                    SolicitudDetalleParaFactura Detalle = new SolicitudDetalleParaFactura();
+                    Detalle.NoFactura = det.GetInt32(0);
+                    Detalle.IdCurso = det.GetInt32(1);
+                    Detalle.Precioactual = det.GetDouble(2);
+                    Detalle.nombre = det.GetString(3);
+                    DFactura.detalle.Add(Detalle);
+                }
+                dr.Close();
+                conn.Close();
+                
+
+                return Ok(DFactura);
+
+            }
+            
+        }
+
     }
 }

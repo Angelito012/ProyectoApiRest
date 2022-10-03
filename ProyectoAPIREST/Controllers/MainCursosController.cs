@@ -174,5 +174,154 @@ namespace ProyectoAPIREST.Controllers
             }
             return Ok(BusquedaCursos);
         }
+
+
+        [HttpPost]
+        [Route("MostrarCursosComprados")]
+        public ActionResult GetCurso(AutorizacionUsuarios usuario)
+        {
+            List<SolicitudCurso> listaCursos = new List<SolicitudCurso>(); ;
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "BusquedaCursoCompradosEstudiante";
+                cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = usuario.correo;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    SolicitudCurso curso = new SolicitudCurso();
+                    curso.IdCurso = dr.GetInt32(0);
+                    curso.Nombre = dr.GetString(1);
+                    curso.Descripcion = dr.GetString(2);
+                    curso.Duracion = dr.GetInt32(3);
+                    curso.Costo = dr.GetDouble(4);
+                    curso.Estado = dr.GetString(5);
+                    if (curso.Estado == "A")
+                    {
+                        listaCursos.Add(curso);
+                    }
+                }
+                conn.Close();
+                dr.Close();
+            }
+
+            return Ok(listaCursos);
+        }
+
+        //filtros
+        [HttpPost]
+        [Route("FiltrosComprados")]
+        public ActionResult GetCursosComprados(AutorizacionUsuarios usuario)
+        {
+            List<SolicitudCurso> listaCursos = new List<SolicitudCurso>(); ;
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "BusquedaCursoCompradosEstudiante";
+                cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = usuario.correo;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    SolicitudCurso curso = new SolicitudCurso();
+                    curso.IdCurso = dr.GetInt32(0);
+                    curso.Nombre = dr.GetString(1);
+                    curso.Descripcion = dr.GetString(2);
+                    curso.Duracion = dr.GetInt32(3);
+                    curso.Costo = dr.GetDouble(4);
+                    curso.Estado = dr.GetString(5);
+                    if (curso.Estado == "A")
+                    {
+                        listaCursos.Add(curso);
+                    }
+                }
+                conn.Close();
+                dr.Close();
+            }
+
+            return Ok(listaCursos);
+        }
+        [HttpPost]
+        [Route("FiltrosNoComprados")]
+        public ActionResult GetCursoNoComprados(AutorizacionUsuarios usuario)
+        {
+            List<SolicitudCurso> listaCursos = new List<SolicitudCurso>(); ;
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "BusquedaCursoNoCompradosEstudiante";
+                cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = usuario.correo;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    SolicitudCurso curso = new SolicitudCurso();
+                    curso.IdCurso = dr.GetInt32(0);
+                    curso.Nombre = dr.GetString(1);
+                    curso.Descripcion = dr.GetString(2);
+                    curso.Duracion = dr.GetInt32(3);
+                    curso.Costo = dr.GetDouble(4);
+                    curso.Estado = dr.GetString(5);
+                    if (curso.Estado == "A")
+                    {
+                        listaCursos.Add(curso);
+                    }
+                }
+                conn.Close();
+                dr.Close();
+            }
+
+            return Ok(listaCursos);
+        }
+        [HttpPost]
+        [Route("FiltrosTodos")]
+        public ActionResult GetCursoTodos(AutorizacionUsuarios usuario)
+        {
+            List<SolicitudCurso> listaCursos = new List<SolicitudCurso>(); ;
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "BusquedaCursoTodosCompradosEstudiante";
+                cmd.Parameters.Add("@CORREO", SqlDbType.VarChar).Value = usuario.correo;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    SolicitudCurso curso = new SolicitudCurso();
+                    curso.IdCurso = dr.GetInt32(0);
+                    curso.Nombre = dr.GetString(1);
+                    curso.Descripcion = dr.GetString(2);
+                    curso.Duracion = dr.GetInt32(3);
+                    curso.Costo = dr.GetDouble(4);
+                    curso.Estado = dr.GetString(5);
+                    if (curso.Estado == "A")
+                    {
+                        listaCursos.Add(curso);
+                    }
+                }
+                conn.Close();
+                dr.Close();
+            }
+
+            return Ok(listaCursos);
+        }
+
     }
 }

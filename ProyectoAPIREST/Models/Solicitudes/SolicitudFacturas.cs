@@ -6,5 +6,6 @@
         public DateTime? Fecha { get; set; }
         public double? Total { get; set; }
         public string nombre{ get; set; }
+
     }
 }
