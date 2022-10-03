@@ -67,7 +67,7 @@ function validarCurso(token){
             idCurso: datos.Idcurso,
             nombre: "string",
             descripcion: "string",
-            duracion: "string",
+            duracion: 0,
             costo: 0,
             estado: "string"
         }),
@@ -91,7 +91,7 @@ function ValidacionInstructor(token){
             idCurso: datos.Idcurso,
             nombre: "string",
             descripcion: "string",
-            duracion: "string",
+            duracion: 0,
             costo: 0,
             estado: "string"       
         }),
