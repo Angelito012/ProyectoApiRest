@@ -141,44 +141,67 @@ function verLeccion(token){
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
-            contenido_card.innerHTML += `<b>Enlace</b>`
-
-            let enlace = document.createElement('textarea');
-            enlace.innerText = Data[i].enlace;
-            enlace.setAttribute("readonly","true");
-            enlace.classList.add('enlace');
-            contenido_card.appendChild(enlace);
-
             let botonEditar = document.createElement("button");
-            botonEditar.Idcurso = Data[i].idCurso;
+            botonEditar.IdLeccion = Data[i].idLeccion;
             botonEditar.Nombre = Data[i].nombre;
             botonEditar.Descripcion = Data[i].descripcion;
             botonEditar.Duracion = Data[i].duración;
-            botonEditar.enlace = Data[i].enlace;
+            botonEditar.Enlace = Data[i].enlace;
+            botonEditar.Idcurso = Data[i].idCurso;
             botonEditar.classList.add('btn');
             botonEditar.className += " btn-edit"
             botonEditar.innerHTML = "Editar"
             botonEditar.addEventListener("click",function(boton){
-                
+                guardarDatos(
+                    boton.target.IdLeccion,
+                    boton.target.Nombre,
+                    boton.target.Descripcion,
+                    boton.target.Duracion,
+                    boton.target.Enlace,
+                    boton.target.Idcurso);
+                location.href = "lecciones/EditarLeccion.html"
             })
             contenido_card.appendChild(botonEditar);
 
             let botonEliminar = document.createElement("button");
-            botonEliminar.Idcurso = Data[i].idCurso;
+            botonEliminar.IdLeccion = Data[i].idLeccion;
             botonEliminar.Nombre = Data[i].nombre;
             botonEliminar.Descripcion = Data[i].descripcion;
-            botonEditar.Duracion = Data[i].duración;
-            botonEditar.enlace = Data[i].enlace;
+            botonEliminar.Duracion = Data[i].duración;
+            botonEliminar.Enlace = Data[i].enlace;
+            botonEliminar.Idcurso = Data[i].idCurso;
             botonEliminar.classList.add('btn');
             botonEliminar.className += " btn-danger"
             botonEliminar.innerHTML = "Eliminar"
             contenido_card.appendChild(botonEliminar);
             botonEliminar.addEventListener('click',function(boton){
-                
+                guardarDatos(
+                    boton.target.IdLeccion,
+                    boton.target.Nombre,
+                    boton.target.Descripcion,
+                    boton.target.Duracion,
+                    boton.target.Enlace,
+                    boton.target.Idcurso);
+                location.href = "lecciones/EliminarLeccion.html"
             })
 
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
         }
     })
+}
+
+function guardarDatos(id,nombre,descripcion,duracion,enlace,idcurso){
+    var InformacionLeccion = {
+        Idleccion : id,
+        nombre : nombre,
+        descripcion : descripcion,
+        duración : duracion,
+        enlace : enlace,
+        Idcurso: idcurso
+    };
+    
+    console.log(InformacionLeccion)
+    localStorage.setItem("leccion",JSON.stringify(InformacionLeccion))
+    // alert('hola')
 }
