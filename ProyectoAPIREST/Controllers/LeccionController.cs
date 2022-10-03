@@ -10,6 +10,10 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class LeccionController : ControllerBase
     {
+
+
+
+
         [HttpPost]
         public ActionResult Post([FromBody] Models.Solicitudes.SolicitudLeccion modelo)
         {
