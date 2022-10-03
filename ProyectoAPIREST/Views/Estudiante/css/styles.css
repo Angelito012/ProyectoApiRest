@@ -226,6 +226,12 @@ body{
 	padding-left: 2px;
 }
 
+.notFound{
+	margin-left: 280px;
+	margin-top: 25px;
+	position: absolute;
+}
+
 @media only screen and (min-width:320px) and (max-width:768px){
 	.container-card{
 		flex-wrap: wrap;

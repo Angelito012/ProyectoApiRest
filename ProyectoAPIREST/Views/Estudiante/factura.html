@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Estudiante/css/factura.css">
+    <title>FACTURA</title>
+</head>
+<body>
+    <center>
+        <div class="factura" id="factura">
+            <div class="banda" id="banda">
+                <div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div>
+                <div class="b5"></div><div class="b6"></div><div class="b7"></div><div class="b8"></div>
+            </div>
+            <div class="titulo">
+                <center class="titulo">FACTURA</center>
+            </div>
+            <div class="header" id="header">
+                <label for="noFactura">No.Factura <input type="text" name="" id="noFactura" disabled></label>
+                <label for="fecha" class="fecha">Fecha <input type="text" name="" id="fecha" disabled></label>
+                <label for="total" class="total">Total <input type="text" name="" id="total" disabled></label>
+                <label for="Cliente" class="cliente">Cliente <input type="text" name="" id="cliente" disabled></label>
+            </div>
+            <div class="titulo">
+                <center class="titulo">DETALLE DE COMPRA</center>
+            </div>
+            <div class="detalle" id="detalle">
+                <table class="tabla" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>CODIGO</th>
+                            <th>CURSO</th>
+                            <th>TOTAL</th>
+                        </tr> 
+                    </thead>
+                    <tbody class="tablaDetalle" id="tablaDetalle">
+                        <tr>
+                            <td>1</td>
+                            <td>MATEMATICAS</td>
+                            <td>100</td>
+                        </tr>
+                        <tr class="active-row">
+                            <td>2</td>
+                            <td>SOCIALES</td>
+                            <td>300</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>IDIOMA</td>
+                            <td>150</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>TOTAL</td>
+                            <td></td>
+                            <td>550</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </center>
+</body>
+<script src="/Estudiante/js/factura.js"></script>
+</html>
