@@ -108,6 +108,29 @@ function ValidacionInstructor(token){
             costo.innerHTML += `<br>`
             contenido_card.appendChild(costo);
 
+            let botonLeccion = document.createElement("button");
+            botonLeccion.Idcurso = Data[i].idCurso;
+            botonLeccion.Nombre = Data[i].nombre;
+            botonLeccion.Descripcion = Data[i].descripcion;
+            botonLeccion.Duracion = Data[i].duracion;
+            botonLeccion.Estado = Data[i].estado;
+            botonLeccion.Costo = Data[i].costo;
+            botonLeccion.classList.add('btn2');
+            botonLeccion.className += " btn-leccion"
+            botonLeccion.innerHTML = "Crear Lección"
+            botonLeccion.style.width
+            botonLeccion.addEventListener("click",function(boton){
+                guardarDatos(
+                    boton.target.Idcurso,
+                    boton.target.Nombre,
+                    boton.target.Descripcion,
+                    boton.target.Duracion,
+                    boton.target.Estado,
+                    boton.target.Costo);
+                location.href = "./cursos/lecciones/crearLeccion.html"
+            })
+            contenido_card.appendChild(botonLeccion);
+
             let botonEditar = document.createElement("button");
             botonEditar.Idcurso = Data[i].idCurso;
             botonEditar.Nombre = Data[i].nombre;
@@ -126,10 +149,10 @@ function ValidacionInstructor(token){
                     boton.target.Duracion,
                     boton.target.Estado,
                     boton.target.Costo);
-                location.href = "./cursos/index.html"
+                location.href = "./cursos/editarCurso.html"
             })
             contenido_card.appendChild(botonEditar);
-
+            
             let botonEliminar = document.createElement("button");
             botonEliminar.Idcurso = Data[i].idCurso;
             botonEliminar.Nombre = Data[i].nombre;
@@ -149,7 +172,7 @@ function ValidacionInstructor(token){
                     boton.target.Duracion,
                     boton.target.Estado,
                     boton.target.Costo);
-                location.href = "./cursos/eliminar.html"
+                location.href = "./cursos/eliminarCurso.html"
             })
 
             newcard.appendChild(contenido_card);            

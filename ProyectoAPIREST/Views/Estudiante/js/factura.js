@@ -3,7 +3,6 @@ var fecha = document.querySelector('fecha');
 var total = document.querySelector('total');
 var cliente = document.querySelector('cliente');
 var tablaDetalle = document.querySelector('tablaDetalle');
-var url = "";
 
 //COOKIES
 function getCookie(cname) {
@@ -49,7 +48,9 @@ function obtenerToken(){
 }
 
 //LEER DETALLE DE LA FACTURA
+function leerFactura(){
 
+}
 
 //COLOR DE FACTURA
 var aleatorio = Math.floor(Math.random() * 8);
@@ -73,4 +74,4 @@ if(aleatorio === 0){
 
 //MANEJO DE LOCALSTORAGE
 localStorage.setItem("factura",1)
-var datos = localStorage.getItem('factura')
+var factura = localStorage.getItem('factura')
