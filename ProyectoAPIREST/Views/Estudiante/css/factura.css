@@ -2,21 +2,34 @@
     --main: #62c2e4;
 }
 
+body{
+    background-image: url(/Estudiante/img/fondo.jpg);
+}
+
+a{
+    text-decoration: none;
+}
+
+
 .factura{
-    width: 50%;
+    width: 55%;
     min-width: 350px;
-    background-color: #f7f7f7;
+    padding-bottom: 0%;
+    border: 0ch;
 }
 
 .titulo{
     background-color: #f7f7f7;
     margin: 0%;
-    height: 35px;
+    height: 45px;
     padding-top: 10px;
     color: #aaa;
+    text-align: center;
+    padding: 0%;
+    padding-top: 10px;
 }
 
-.header{
+.headerfact{
     width: 100%;
     display: grid;
     grid-template-columns: 50% 50%;
@@ -93,15 +106,20 @@ label{
 }
 
 .detalle{
-    height: 50px;
     background-color: #f7f7f7;
+    border: 0ch;
+    margin: 0%;
+    padding: 0%;
 }
 
 .tabla{
+    border-top: 0ch;
+    margin-top: 0%;
+    padding-top: 0%;
     background-color: #f7f7f7;
     width: 100%;
     border-collapse: collapse;
-    margin: 25px 0;
+    /* margin: 25px 0; */
     font-size: 0.9em;
     min-width: 350px;
     border-radius: 5px 5px 0 0;
@@ -163,5 +181,11 @@ label{
     .cliente{
         padding-left: 20px;
         padding-right: 0%;
+    }
+
+    .header{
+        margin: 0;
+        padding: 0%;
+        border: 0ch;
     }
 }

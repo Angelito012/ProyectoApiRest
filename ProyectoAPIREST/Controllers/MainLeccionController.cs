@@ -5,11 +5,12 @@ using Microsoft.Data.SqlClient;
 using ProyectoAPIREST.Models;
 using ProyectoAPIREST.Models.Solicitudes;
 using System.Data;
+using System.Data.SqlTypes;
 
 namespace ProyectoAPIREST.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    //[Authorize]
     [ApiController]
     public class MainLeccionController : ControllerBase
     {
@@ -92,12 +93,17 @@ namespace ProyectoAPIREST.Controllers
                     conpreguntas.Enlace = dr.GetString(4);
                     var idLeccion = conpreguntas.Enlace.Split("=");
                     conpreguntas.Enlace = idLeccion[1];
-                    pregunta.IdPregunta = dr.GetInt32(5);
-                    pregunta.Duda = dr.GetString(6);
-                    pregunta.usuario = dr.GetString(8);
-                    pregunta.Correo = dr.GetString(9);
-                    pregunta.Respuesta = dr.GetString(7);
-                    conpreguntas.preguntas.Add(pregunta);
+
+                    if(! dr.IsDBNull(5))
+                    {
+                        pregunta.IdPregunta = dr.GetInt32(5);
+                        pregunta.Duda = dr.GetString(6);
+                        pregunta.usuario = dr.GetString(8);
+                        pregunta.Correo = dr.GetString(9);
+                        pregunta.Respuesta = dr.GetString(7);
+                        conpreguntas.preguntas.Add(pregunta);
+                    }
+                    
                 }
                 conn.Close();
                 dr.Close();
