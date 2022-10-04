@@ -10,7 +10,7 @@ using System.Data;
 
 namespace ProyectoAPIREST.Controllers
 {
-    [Route ("api/controller")]
+    [Route ("api/[controller]")]
     [Authorize]
     [ApiController]
     public class FacturasController : Controller
