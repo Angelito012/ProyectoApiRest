@@ -149,7 +149,7 @@ function ValidacionInstructor(token){
                     boton.target.Duracion,
                     boton.target.Estado,
                     boton.target.Costo);
-                location.href = "./cursos/index.html"
+                location.href = "./cursos/editarCurso.html"
             })
             contenido_card.appendChild(botonEditar);
             
@@ -172,7 +172,7 @@ function ValidacionInstructor(token){
                     boton.target.Duracion,
                     boton.target.Estado,
                     boton.target.Costo);
-                location.href = "./cursos/eliminar.html"
+                location.href = "./cursos/eliminarCurso.html"
             })
 
             newcard.appendChild(contenido_card);            
