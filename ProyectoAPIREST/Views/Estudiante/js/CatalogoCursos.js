@@ -7,6 +7,7 @@ var url = urlTotal
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
+let contenedorbuscador = document.getElementById('container-buscador');
 var DatosApi;
 
 buscador.addEventListener('input',() => {
@@ -199,6 +200,7 @@ function obtenercursos(token){
             }else{
                 card.innerHTML = "";
                 let anuncio = document.createElement('h1');
+                anuncio.classList.add('notFound');
                 anuncio.innerHTML = "La busqueda no coincide";           
                 card.appendChild(anuncio);
             }
