@@ -1,21 +1,55 @@
 var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
-var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";;
+var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
+var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
+var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
+var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
+var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
+var urlEliminarCarrito = "https://localhost:7076/api/MainCursos/EliminarCarrito"
 var url = urlTotal
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
 let contenedorbuscador = document.getElementById('container-buscador');
 var DatosApi;
+let carrito = document.querySelector('#carrito');
+let listaCursos = document.querySelector('#lista-cursos');
+let contenedorCarrito = document.querySelector('#lista-carrito tbody');
+let articulosCarrito = [];
+let idsMisCursos = [];
+let carritocursos = [];
+let validate;
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
     if(buscador.value != ""){
         url = urlFiltrado
+        document.getElementById('rb1').checked=false
+        document.getElementById('rb2').checked=false
+        document.getElementById('rb3').checked=false
+
     }else if(buscador.value == ""){
         url = urlTotal
+        
     }
     obtenerToken()
 })
+
+function verificar(){
+
+    if(document.getElementById('rb1').checked){
+        url = urlfiltro1
+        obtenerToken()
+    }
+    if(document.getElementById('rb2').checked){
+        url = urlfiltro2
+        obtenerToken()
+    }
+    if(document.getElementById('rb3').checked){
+        url = urlfiltro3
+        obtenerToken()
+    }
+}
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -69,6 +103,8 @@ function salir(){
 
 function obtenercursos(token){
 
+    
+
     if(url == urlTotal){
         var InformacionCurso = {
             Correo: email,
@@ -79,7 +115,23 @@ function obtenercursos(token){
             Correo: email,
             nombre: buscador.value  
         };
+    }else if(url == urlfiltro1){
+        var InformacionCurso = {
+            Correo: email,
+            Clave: ""  
+        };
+    }else if(url == urlfiltro2){
+        var InformacionCurso = {
+            Correo: email,
+            Clave: ""  
+        };
+    }else if(url == urlfiltro3){
+        var InformacionCurso = {
+            Correo: email,
+            Clave: ""  
+        };
     }
+
 
     fetch(url, {
         method: "POST",
@@ -146,10 +198,17 @@ function obtenercursos(token){
         
                     let botoncomprar = document.createElement("button");
                     botoncomprar.classList.add('btn');
-                    botoncomprar.className += " btn-danger"
+                    botoncomprar.className += "agregar-carrito"
                     botoncomprar.innerHTML = "Añadir a Carrito"
-                    
+                    botoncomprar.idCursoCarrito = Data[i].idCurso;
+                    botoncomprar.precioCarrito = Data[i].precio;
+                    botoncomprar.addEventListener ("click", function (button){
+                        agregarCurso(button.target.idCursoCarrito, 
+                                        button.target.precioCarrito,
+                                        token);
+                    })
                     contenido_card.appendChild(botoncomprar);
+
         
         
                     newcard.appendChild(contenido_card);            
@@ -165,5 +224,36 @@ function obtenercursos(token){
         }
     })
 }
+
+function agregarCurso(idCursoCarrito,precioCarrito,token){
+        fetch(urlAgregarCarrito, {
+            method: "POST",
+            body: JSON.stringify({ 
+                idUsuario: DatosEstudianteCarrito.idUsuario,
+                idCurso: idCursoCarrito, 
+                precioactual: precioCarrito
+            }),
+            headers:{
+                'Accept' : "application/json",
+                "Content-Type" : "application/json",
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(function(response){
+            if(response.ok){
+                alert("Curso agregado correctamente al carrito");
+                return response.text();
+            }else{
+                alert("Este curso ya fue agregado anteriormente")
+            }
+        }).then(function(Data){
+            
+        })
+   }
+
+function CursoHtml(){
+
+}
+
+
 
 obtenerToken();
