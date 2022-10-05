@@ -255,3 +255,14 @@ body{
     -ms-appearance: checkbox; 
 	background-color: #eaeaea;
 }
+#btn1{
+	width: 80%;
+	background: #2fb4cc;
+    color: #ffffff;
+	border: solid 1px #2fb4cc;
+}
+#btn1:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #2fb4cc;
+}
