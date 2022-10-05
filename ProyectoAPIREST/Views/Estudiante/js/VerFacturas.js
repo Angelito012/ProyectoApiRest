@@ -1,4 +1,4 @@
-var url = "https://localhost:7076/api/Facturas/VerFacturas";
+var url = "https://localhost:7076/api/controller/VerFacturas";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 
@@ -95,6 +95,13 @@ function obtenerFacturas(token){
             contenido_card.appendChild(label_NoFactura)
             contenido_card.appendChild(noFactura);
 
+            let nombre = document.createElement('h5');
+            let label_nombre = document.createElement('label')
+            label_nombre.innerText = "Cliente: ";
+            nombre.innerText = Data[i].nombre;
+            contenido_card.appendChild(label_nombre);
+            contenido_card.appendChild(nombre);
+
             let fecha = document.createElement('h5');
             let label_fecha = document.createElement('label')
             label_fecha.innerText = "Fecha: ";
@@ -106,27 +113,26 @@ function obtenerFacturas(token){
             let label_total = document.createElement('label')
             label_total.innerText = "Total: ";
             total.innerText = "Q " + Data[i].total;
+            nombre.innerHTML += `<br>`
             contenido_card.appendChild(label_total);
             contenido_card.appendChild(total);
 
-            let nombre = document.createElement('h5');
-            let label_nombre = document.createElement('label')
-            label_nombre.innerText = "Usuario: ";
-            nombre.innerText = Data[i].nombre;
-            nombre.innerHTML += `<br>`
-            contenido_card.appendChild(label_nombre);
-            contenido_card.appendChild(nombre);
-
-            let botonVerLecciones = document.createElement("button");
-            botonVerLecciones.Idcurso = Data[i].noFactura;
-            botonVerLecciones.classList.add('btn');
-            botonVerLecciones.className += " btn-info"
-            botonVerLecciones.innerHTML = "Ver Detalle"
-            botonVerLecciones.addEventListener("click",function(boton){
-                guardarDatos(boton.target.NoFactura);
-                location.href = "../Estudiante/VerDetalle.html" 
+            let botonVerDetalle = document.createElement("button");
+            botonVerDetalle.NoFactura = Data[i].noFactura;
+            botonVerDetalle.Nombre = Data[i].nombre;
+            botonVerDetalle.Fecha = Data[i].fecha;
+            botonVerDetalle.Total = Data[i].total;
+            botonVerDetalle.classList.add('btn');
+            botonVerDetalle.className += " btn-info"
+            botonVerDetalle.innerHTML = "Ver Detalle"
+            botonVerDetalle.addEventListener("click",function(boton){
+                guardarDatos(boton.target.NoFactura,
+                            boton.target.Nombre,
+                            boton.target.Fecha,
+                            boton.target.Total);
+                location.href = "../Estudiante/InformeDetalle.html" 
             })
-            contenido_card.appendChild(botonVerLecciones);
+            contenido_card.appendChild(botonVerDetalle);
             
 
 
@@ -135,10 +141,14 @@ function obtenerFacturas(token){
         }
     })
 }
-function guardarDatos(id){
+function guardarDatos(noFactura,nombre,fecha,total){
     var InformacionFactura = {
-        NoFactura : id,
+        NoFactura : noFactura,
+        Nombre: nombre,
+        Fecha: fecha,
+        Total: total
     };
+    console.log(InformacionFactura)
     localStorage.setItem("Facturas",JSON.stringify(InformacionFactura))
     
 }

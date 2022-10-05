@@ -10,7 +10,7 @@ using System.Data;
 
 namespace ProyectoAPIREST.Controllers
 {
-    [Route ("api/[controller]")]
+    [Route ("api/controller")]
     [Authorize]
     [ApiController]
     public class FacturasController : Controller
@@ -66,8 +66,9 @@ namespace ProyectoAPIREST.Controllers
                 {
                     SolicitudDetalle paramsDetalle = new SolicitudDetalle();
                     paramsDetalle.NoFactura = dr.GetInt32(0);
-                    paramsDetalle.nombre = dr.GetString(1);
-                    paramsDetalle.Precioactual = dr.GetDouble(2);
+                    paramsDetalle.IdCurso = dr.GetInt32(1);
+                    paramsDetalle.nombre = dr.GetString(2);
+                    paramsDetalle.Precioactual = dr.GetDouble(3);
                     detalles.Add(paramsDetalle);
                 }
                 conn.Close();
