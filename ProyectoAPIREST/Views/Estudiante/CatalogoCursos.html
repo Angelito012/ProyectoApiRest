@@ -26,6 +26,18 @@
                 <img src="./img/lupa.png" alt="" class="lupa">
                 <input type="text" class="buscador" placeholder="Buscar" id="buscador">
             </div>
+            <p></p>
+            <div class="container-buscador">
+                <div class="filtros">
+                    <label for="seleccion">-Comprados:</label>
+                    <input id="rb1" type="radio" name="seleccion" value="comprado">
+                    <label for="seleccion"> -No Comprados:</label>
+                    <input id="rb2" type="radio" name="seleccion" value="Nocomprado">
+                    <label for="seleccion"> -Todos los cursos:</label>
+                    <input id="rb3" type="radio" name="seleccion" value="Todos">
+                    <button onclick="verificar()" id="btn1">Aplicar Filtro</button>
+                </div>
+            </div>
             <div class="container-card" id="contenedor">
             </div>
 		</div>
