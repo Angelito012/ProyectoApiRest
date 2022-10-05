@@ -9,6 +9,7 @@
         background-image: url(/Estudiante/img/fondo.jpg);
 		background-size: 100vw 100vh;
 		background-repeat: no-repeat;
+		background-attachment: fixed;
 	}
     .title-cards{
         width: 100%;

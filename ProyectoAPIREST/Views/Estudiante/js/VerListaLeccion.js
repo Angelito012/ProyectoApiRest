@@ -140,14 +140,14 @@ function getCookie(cname) {
             botonVerLeccion.Descripcion = Data[i].descripcion;
             botonVerLeccion.Duracion = Data[i].duración;
             botonVerLeccion.enlace = Data[i].enlace;
-            botonVerLeccion.enlace = Data[i].IdLeccion;
+            botonVerLeccion.idLeccion = Data[i].idLeccion;
             botonVerLeccion.classList.add('btn');
             botonVerLeccion.className += " btn-edit"
             botonVerLeccion.innerHTML = "Ver Leccion"
             botonVerLeccion.addEventListener("click",function(boton){
-               guardarDatos(
-                    boton.target.Idcurso,
-                    location.href = "/ListadoLecciones.html" )
+                
+                guardarDatos(boton.target.idLeccion);
+                location.href = "../Estudiante/VerLeccion.html";
             })
             contenido_card.appendChild(botonVerLeccion);
            
@@ -161,10 +161,16 @@ function getCookie(cname) {
 }
 
 function guardarDatos(id){
-    var InformacionCurso = {
-        Idcurso : id
+    var InformacionLeccion = {
+            idLeccion: id,
+            nombre: "string",
+            descripcion: "string",
+            duración: 0,
+            enlace: "string",
+            idCurso: 0
+          };
+    localStorage.setItem("LeccionSelect",JSON.stringify(InformacionLeccion))
     };
-    localStorage.setItem("Leccion",JSON.stringify(InformacionCurso))
     
-}
+
   obtenerToken();
