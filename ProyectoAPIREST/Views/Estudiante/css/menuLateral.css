@@ -107,6 +107,10 @@
 	#btn-menu:checked ~ .container-menu .cont-menu{
 		transform: translateX(0%);
 	}
+	#btn-menu:checked ~ .container-menu{
+		position: fixed;
+		background: rgba(0,0,0,0.5);
+	}
 	.cont-menu nav{
 		transform: translateY(15%);
 	}

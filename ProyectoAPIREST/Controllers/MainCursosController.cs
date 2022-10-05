@@ -237,7 +237,7 @@ namespace ProyectoAPIREST.Controllers
                     curso.Nombre = dr.GetString(1);
                     curso.Descripcion = dr.GetString(2);
                     curso.Duracion = dr.GetInt32(3);
-                    curso.Costo = dr.GetDouble(4);
+                    curso.Precio = dr.GetDouble(4);
                     curso.Estado = dr.GetString(5);
                     if (curso.Estado == "A")
                     {
@@ -273,7 +273,7 @@ namespace ProyectoAPIREST.Controllers
                     curso.Nombre = dr.GetString(1);
                     curso.Descripcion = dr.GetString(2);
                     curso.Duracion = dr.GetInt32(3);
-                    curso.Costo = dr.GetDouble(4);
+                    curso.Precio = dr.GetDouble(4);
                     curso.Estado = dr.GetString(5);
                     if (curso.Estado == "A")
                     {
@@ -309,7 +309,7 @@ namespace ProyectoAPIREST.Controllers
                     curso.Nombre = dr.GetString(1);
                     curso.Descripcion = dr.GetString(2);
                     curso.Duracion = dr.GetInt32(3);
-                    curso.Costo = dr.GetDouble(4);
+                    curso.Precio = dr.GetDouble(4);
                     curso.Estado = dr.GetString(5);
                     if (curso.Estado == "A")
                     {
