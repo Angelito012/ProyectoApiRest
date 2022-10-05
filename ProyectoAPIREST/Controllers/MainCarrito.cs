@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using ProyectoAPIREST.Models;
@@ -15,9 +16,9 @@ namespace ProyectoAPIREST.Controllers
     {
         [HttpPost]
         [Route("AñadirCarrito")]
-        public ActionResult AñadirCarrito([FromBody] Models.Carrito carrito)
+        public ActionResult AñadirCarrito(SolicitudCarrito carrito)
         {
-            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
             {
                 string conexion = db.connectionString();
                 SqlConnection conn = new SqlConnection(conexion);
@@ -25,9 +26,9 @@ namespace ProyectoAPIREST.Controllers
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "AñadiraCarrito";
-                cmd.Parameters.Add("@IDUSUARIO", SqlDbType.VarChar).Value = carrito.IdUsuario;
-                cmd.Parameters.Add("@IDCURSO", SqlDbType.VarChar).Value = carrito.IdCurso;
-                cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.VarChar).Value = carrito.Precioactual;
+                cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = carrito.IdUsuario;
+                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = carrito.IdCurso;
+                cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.Float).Value = carrito.Precioactual;
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -36,9 +37,9 @@ namespace ProyectoAPIREST.Controllers
 
         [HttpDelete]
         [Route("EliminardeCarrito")]
-        public ActionResult EliminardeCarrito(Models.Carrito carrito)
+        public ActionResult EliminardeCarrito(SolicitudCarrito carrito)
         {
-            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
             {
                 string conexion = db.connectionString();
                 SqlConnection conn = new SqlConnection(conexion);
