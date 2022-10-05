@@ -1,5 +1,8 @@
 var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
-var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";;
+var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
+var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
+var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
+var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
 var url = urlTotal
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
@@ -11,11 +14,32 @@ buscador.addEventListener('input',() => {
     card.innerHTML = "";
     if(buscador.value != ""){
         url = urlFiltrado
+        document.getElementById('rb1').checked=false
+        document.getElementById('rb2').checked=false
+        document.getElementById('rb3').checked=false
+
     }else if(buscador.value == ""){
         url = urlTotal
+        
     }
     obtenerToken()
 })
+
+function verificar(){
+
+    if(document.getElementById('rb1').checked){
+        url = urlfiltro1
+        obtenerToken()
+    }
+    if(document.getElementById('rb2').checked){
+        url = urlfiltro2
+        obtenerToken()
+    }
+    if(document.getElementById('rb3').checked){
+        url = urlfiltro3
+        obtenerToken()
+    }
+}
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -69,6 +93,8 @@ function salir(){
 
 function obtenercursos(token){
 
+    
+
     if(url == urlTotal){
         var InformacionCurso = {
             Correo: email,
@@ -79,7 +105,23 @@ function obtenercursos(token){
             Correo: email,
             nombre: buscador.value  
         };
+    }else if(url == urlfiltro1){
+        var InformacionCurso = {
+            Correo: email,
+            Clave: ""  
+        };
+    }else if(url == urlfiltro2){
+        var InformacionCurso = {
+            Correo: email,
+            Clave: ""  
+        };
+    }else if(url == urlfiltro3){
+        var InformacionCurso = {
+            Correo: email,
+            Clave: ""  
+        };
     }
+
 
     fetch(url, {
         method: "POST",
