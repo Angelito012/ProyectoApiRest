@@ -145,15 +145,17 @@ function getCookie(cname) {
         `
         document.getElementById("foro").innerHTML=foro;
         
-        let botonPreguntar = document.createElement("button");
-        botonPreguntar.classList.add('btn');
-        botonPreguntar.className += " btn btn-primary"
-        botonPreguntar.innerHTML = "Preguntar"
-        botonPreguntar.setAttribute('id', 'botonpreguntar');
-        botonPreguntar.addEventListener("click",function(){
-                Preguntar(token); 
-            })
-        document.getElementById("foro").appendChild(botonPreguntar);
+        if(ps == 1){
+            let botonPreguntar = document.createElement("button");
+            botonPreguntar.classList.add('btn');
+            botonPreguntar.className += " btn btn-primary"
+            botonPreguntar.innerHTML = "Preguntar"
+            botonPreguntar.setAttribute('id', 'botonpreguntar');
+            botonPreguntar.addEventListener("click",function(){
+                    Preguntar(token); 
+                })
+            document.getElementById("foro").appendChild(botonPreguntar);
+        }
         ps = 2;
     
         
