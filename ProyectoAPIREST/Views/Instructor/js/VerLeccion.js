@@ -93,7 +93,7 @@ function getCookie(cname) {
         }
   }).then(function(Data){
         console.log(Data)
-        let foro = "";
+        
         var h2 = document.getElementById('name');
         h2.innerText = Data.nombre  
         var h4 = document.getElementById('desc');
@@ -106,7 +106,7 @@ function getCookie(cname) {
             if(Data.preguntas[i].respuesta != ""){
             
             document.getElementById("foro").innerHTML += 
-        `
+            `
             <form>
             <div class="form-group">
             <label>Pregunta por ${Data.preguntas[i].usuario}</label>
@@ -126,49 +126,48 @@ function getCookie(cname) {
                 <label>Pregunta por ${Data.preguntas[i].usuario}</label>
                 <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
                 </div>
-                <div class="form-group">
+                <div id="div-respuesta" class="form-group">
                 <label>Respuesta</label>
                 <textarea id="respuesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
                 </div>
-                <div id="button-${Data.preguntas[i].idPregunta}"></div>
+                <button id="button-${Data.preguntas[i].idPregunta}"></button>
                 </form>
+                
                 `   
-                
-                let botonResponder = document.createElement("button");
-                
-                botonResponder.classList.add('btn');
-                botonResponder.className += " btn btn-primary"
-                botonResponder.innerHTML = "Reponder"
 
-                botonResponder.idPregunta = Data.preguntas[i].idPregunta;
-                 
+                //document.getElementById("button-"+ Data.preguntas[i].idPregunta).appendChild(botonResponder);
                 
-
-                botonResponder.addEventListener("click",function(button){
-                
-                    console.log(button.target.idPregunta);
-                   // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
-                   
-                   
-                   
-                    Responder(button.target.idPregunta,token);
-                   
-                })
-                
-                document.getElementById("button-"+ Data.preguntas[i].idPregunta).appendChild(botonResponder);
             }
         }
+        for(i=0; i<Data.preguntas.length; i++){
+            console.log(Data.preguntas[i])
+            if(Data.preguntas[i].respuesta == ""){
+            console.log(Data.preguntas[i].idPregunta);
+            const botonResponder = document.getElementById("button-"+ Data.preguntas[i].idPregunta);
+            
+            botonResponder.classList.add('btn');
+            botonResponder.className += " btn btn-primary"
+            botonResponder.innerHTML = "Reponder a "+Data.preguntas[i].usuario;
+
+            botonResponder.IdPregunta = Data.preguntas[i].idPregunta;
+            
+            
+            botonResponder.addEventListener("click",function(button){
         
+            console.log(button.target.IdPregunta);
+           // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
+           if(confirm("Esta seguro responder?")==true){
+            Responder(botonResponder.IdPregunta,token);
+
+            }
         
-        
-        
-        
-  })
-}
+        })
+    }
+    }
+})}
+  
+  
 function Responder(idPregunta,token){
-   
-    alert("respuesta guardada")
-    
     var url = "https://localhost:7076/api/MainLeccion/ResponderPregunta";
     fetch(url, {
         method: "PUT",
@@ -187,7 +186,6 @@ function Responder(idPregunta,token){
         }
     }).then(function(response){
         if(response.ok){
-            alert("sdfdsfds")
             return response.json();
         }else{
             alert("Error al ejecutar solicitud")
