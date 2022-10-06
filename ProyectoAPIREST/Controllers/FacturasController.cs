@@ -12,7 +12,7 @@ using System.Diagnostics.CodeAnalysis;
 namespace ProyectoAPIREST.Controllers
 {
     [Route ("api/controller")]
-    [Authorize]
+    
     [ApiController]
     public class FacturasController : Controller
     {
@@ -148,27 +148,62 @@ namespace ProyectoAPIREST.Controllers
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
-            return Ok();
+            var factura = VerUltimaFactura(facturas.IdUsuario);
+            return Ok(factura);
+            
+        }
+        [HttpGet]
+        [Route("VerUltimaFacturaUser")]
+        public ActionResult VerUltimaFactura(int? idUsuario)
+        {
+            var facturas = new SolicitudFacturas();
+
+            using (Models.DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+
+                 facturas = (from d in db.Facturas
+                              where d.IdUsuario == idUsuario
+                              orderby d.Fecha descending
+                              select new SolicitudFacturas
+                              {
+                                  IdUsuario = d.IdUsuario,
+                                  Fecha = d.Fecha,
+                                  NoFactura = d.NoFactura,
+                                  Total = d.Total
+                              }).FirstOrDefault();
+            }
+
+            return Ok(facturas);
+
         }
 
         [HttpPost]
         [Route("CrearDetalleFactura")]
 
-        public ActionResult CrearDetalleFactura(Models.Solicitudes.SolicitudDetalle facturas)
+        public ActionResult CrearDetalleFactura(Models.Solicitudes.DetalleFacturaList facturas)
         {
             using (Models.DataBaseAPIContext db = new DataBaseAPIContext())
             {
-                string conexion = db.connectionString();
-                SqlConnection conn = new SqlConnection(conexion);
-                SqlCommand cmd = conn.CreateCommand();
-                conn.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "CrearDetalleFactura";
-                cmd.Parameters.Add("@NOFACTURA", SqlDbType.Int).Value = facturas.NoFactura;
-                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = facturas.IdCurso;
-                cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.Float).Value = facturas.Precioactual;
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                
+                
+                
+                foreach (SolicitudDetalleFactura facturaItem in facturas.detalleFacturaList)
+                {
+                    string conexion = db.connectionString();
+                    SqlConnection conn = new SqlConnection(conexion);
+                    SqlCommand cmd = conn.CreateCommand();
+                    conn.Open();
+
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "CrearDetalleFactura";
+                    cmd.Parameters.Add("@NOFACTURA", SqlDbType.Int).Value = facturas.NoFactura;
+                    cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = facturaItem.IdCurso;
+                    cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.Float).Value = facturaItem.Precioactual;
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+                }
+                
             }
             return Ok();
         }

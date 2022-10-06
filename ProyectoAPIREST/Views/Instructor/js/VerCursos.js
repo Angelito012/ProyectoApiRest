@@ -175,6 +175,17 @@ function ValidacionInstructor(token){
                 location.href = "./cursos/eliminarCurso.html"
             })
 
+            let botonVerLecciones = document.createElement("button");
+            botonVerLecciones.Idcurso = Data[i].idCurso;
+            botonVerLecciones.classList.add('btn');
+            botonVerLecciones.className += " btn-info"
+            botonVerLecciones.innerHTML = "Lecciones"
+            botonVerLecciones.addEventListener("click",function(boton){
+                guardarDatos(boton.target.Idcurso);
+                location.href = "../Instructor/ListadoLecciones.html" 
+            })
+            contenido_card.appendChild(botonVerLecciones);
+
             newcard.appendChild(contenido_card);            
             card.appendChild(newcard);
         }
