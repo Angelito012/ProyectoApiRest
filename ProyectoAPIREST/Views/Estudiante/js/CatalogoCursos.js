@@ -4,7 +4,9 @@ var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
 var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
 var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
 var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
-var urlEliminarCarrito = "https://localhost:7076/api/MainCursos/EliminarCarrito"
+var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
+var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
+var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
 var url = urlTotal
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
@@ -13,12 +15,14 @@ let contenedorbuscador = document.getElementById('container-buscador');
 var DatosApi;
 let carrito = document.querySelector('#carrito');
 let listaCursos = document.querySelector('#lista-cursos');
-let contenedorCarrito = document.querySelector('#lista-carrito tbody');
+let contenedorCarrito = document.getElementById('bodyCarrito');
 let articulosCarrito = [];
 let idsMisCursos = [];
 let carritocursos = [];
 let validate;
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
+
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
@@ -88,11 +92,15 @@ function obtenerToken(){
     }).then(function(Data){
         tokenValido = Data.token;
         obtenercursos(tokenValido);
+        CursoHtml(tokenValido);
+      
     })
 
 }
 
 var btnLogout = document.getElementById('btnLogout');
+
+vaciarCarritoBtn.addEventListener('click',vaciarCarrito);
 
 btnLogout.addEventListener('click',salir);
 
@@ -241,19 +249,134 @@ function agregarCurso(idCursoCarrito,precioCarrito,token){
         }).then(function(response){
             if(response.ok){
                 alert("Curso agregado correctamente al carrito");
+                CursoHtml(token);
                 return response.text();
+                
             }else{
                 alert("Este curso ya fue agregado anteriormente")
             }
         }).then(function(Data){
             
         })
+        
    }
 
-function CursoHtml(){
+function CursoHtml(token){
+    
+    console.log(DatosEstudianteCarrito)
+    fetch(urlGetCarrito, {
+        method: "POST",
+        body: JSON.stringify({
+            
+            idUsuario: DatosEstudianteCarrito.idUsuario,
+            idCurso: 0,
+            nombre: '',
+            precioactual: 0          
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.json();
+        }else{
+            alert("Error al ejecutar solicitud")
+        }
+    }).then(function(Data){
+
+        contenedorCarrito.innerHTML = "";
+
+        for(i=0; i<Data.length; i++){
+            
+            console.log(Data)
+            let row = document.createElement("tr");
+            row.innerHTML = `
+               <td>${Data[i].idCurso}</td>
+               <td>${Data[i].nombre}</td>
+               <td>${Data[i].precioactual} </td>
+               <td >
+                    <div id="${Data[i].idCurso}">
+                    
+                    </div>
+               </td>`;
+               
+            let botonEliminarCurso = document.createElement("button");
+
+            botonEliminarCurso.idCurso = Data[i].idCurso;
+
+            
+
+            botonEliminarCurso.innerHTML = "X"
+
+            botonEliminarCurso.addEventListener("click", function(button){
+                EliminarElementoCarrito(button.target.idCurso,token);
+            })
+            
+            
+               contenedorCarrito.appendChild(row);
+               var carritoDocument = document.getElementById(Data[i].idCurso).appendChild(botonEliminarCurso);
+        
+        }
+    })
 
 }
 
+function EliminarElementoCarrito(idCurso,token){
+		fetch(urlEliminarCarrito, {
+			method: "DELETE",
+			body: JSON.stringify({
+				idUsuario: DatosEstudianteCarrito.idUsuario,
+                idCurso: idCurso,
+                nombre: "",
+                precioactual: 0
+			}),
+			headers:{
+				'Accept' : "application/json",
+				"Content-Type":"application/json",
+				'Authorization': 'Bearer ' + token
+			}	
+		}).then(function(response){
+			if(response.ok){
+				
+				return response.text();
+			}else{
+				alert("No se logro eliminar el curso");
+			}
+		}).then(function(Data){
+			console.log(Data);
+            CursoHtml(token);
+		})  
+}
+
+function vaciarCarrito(token){
+    fetch(urlVaciarCarrito, {
+        method: "DELETE",
+        body: JSON.stringify({
+            idUsuario: DatosEstudianteCarrito.idUsuario,
+            idCurso: 0,
+            nombre: "",
+            precioactual: 0
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type":"application/json",
+            'Authorization': 'Bearer ' + token
+        }	
+    }).then(function(response){
+        if(response.ok){
+            obtenerToken();
+            return response.text();
+        }else{
+            alert("No se logro Vaciar el carrito");
+        }
+    }).then(function(Data){
+        console.log(Data);
+        
+    })  
+    
+}
 
 
 obtenerToken();

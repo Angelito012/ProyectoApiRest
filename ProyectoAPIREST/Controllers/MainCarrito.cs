@@ -14,7 +14,7 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class MainCarrito : ControllerBase
     {
-        [HttpGet]
+        [HttpPost]
         [Route("ObtenerCarrito")]
         public ActionResult ObtenerCarrito(SolicitudCarrito carrito)
         {
@@ -100,23 +100,6 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        [Route("VaciarCarrito")]
-        public ActionResult VaciarCarrito(SolicitudCarrito carrito)
-        {
-            using (DataBaseAPIContext db = new DataBaseAPIContext())
-            {
-                string conexion = db.connectionString();
-                SqlConnection conn = new SqlConnection(conexion);
-                SqlCommand cmd = conn.CreateCommand();
-                conn.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "VaciarCarrito";
-                cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = carrito.IdUsuario;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
-            return Ok();
-        }
+        
     }
 }
