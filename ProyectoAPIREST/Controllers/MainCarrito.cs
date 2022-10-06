@@ -14,7 +14,7 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class MainCarrito : ControllerBase
     {
-        [HttpGet]
+        [HttpPost]
         [Route("ObtenerCarrito")]
         public ActionResult ObtenerCarrito(SolicitudCarrito carrito)
         {
@@ -50,21 +50,35 @@ namespace ProyectoAPIREST.Controllers
         [Route("AñadirCarrito")]
         public ActionResult AñadirCarrito(SolicitudCarrito carrito)
         {
+         
+
             using (DataBaseAPIContext db = new DataBaseAPIContext())
             {
-                string conexion = db.connectionString();
-                SqlConnection conn = new SqlConnection(conexion);
-                SqlCommand cmd = conn.CreateCommand();
-                conn.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "AñadiraCarrito";
-                cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = carrito.IdUsuario;
-                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = carrito.IdCurso;
-                cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.Float).Value = carrito.Precioactual;
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                var crusos = (from d in db.Carritos
+                              where d.IdCurso == carrito.IdCurso && d.IdUsuario == carrito.IdUsuario
+                              select d.IdCurso).ToList();
+
+                if(crusos.Count == 0)
+                {
+                    string conexion = db.connectionString();
+                    SqlConnection conn = new SqlConnection(conexion);
+                    SqlCommand cmd = conn.CreateCommand();
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "AñadiraCarrito";
+                    cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = carrito.IdUsuario;
+                    cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = carrito.IdCurso;
+                    cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.Float).Value = carrito.Precioactual;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                else
+                {
+                    return NotFound("Este curso ya fue agregado al carrito");
+                }
+                
             }
-            return Ok();
+            return Ok("El curso se agrego correctamente al carrito");
         }
 
         [HttpDelete]
@@ -87,23 +101,6 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpDelete]
-        [Route("VaciarCarrito")]
-        public ActionResult VaciarCarrito(SolicitudCarrito carrito)
-        {
-            using (DataBaseAPIContext db = new DataBaseAPIContext())
-            {
-                string conexion = db.connectionString();
-                SqlConnection conn = new SqlConnection(conexion);
-                SqlCommand cmd = conn.CreateCommand();
-                conn.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "VaciarCarrito";
-                cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = carrito.IdUsuario;
-                cmd.ExecuteNonQuery();
-                conn.Close();
-            }
-            return Ok();
-        }
+        
     }
 }
