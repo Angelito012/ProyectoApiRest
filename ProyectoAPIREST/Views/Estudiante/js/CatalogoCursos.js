@@ -203,17 +203,12 @@ function obtenercursos(token){
                     precio.innerHTML += `<br>`
                     contenido_card.appendChild(precio);
         
-                    let botonInformacion = document.createElement("button");
-                    botonInformacion.classList.add('btn');
-                    botonInformacion.className += " btn-info"
-                    botonInformacion.innerHTML = "Informacion"
-                    
-                    contenido_card.appendChild(botonInformacion);
-        
                     let botoncomprar = document.createElement("button");
                     botoncomprar.classList.add('btn');
                     botoncomprar.className += "agregar-carrito"
                     botoncomprar.innerHTML = "Añadir a Carrito"
+                    botoncomprar.style.background = "#2fb4cc"
+                    botoncomprar.style.color = "#ffffff"
                     botoncomprar.idCursoCarrito = Data[i].idCurso;
                     botoncomprar.precioCarrito = Data[i].precio;
                     botoncomprar.addEventListener ("click", function (button){
