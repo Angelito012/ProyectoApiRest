@@ -57,6 +57,7 @@ namespace ProyectoAPIREST.Controllers
                 var crusos = (from d in db.Carritos
                               where d.IdCurso == carrito.IdCurso && d.IdUsuario == carrito.IdUsuario
                               select d.IdCurso).ToList();
+
                 if(crusos.Count == 0)
                 {
                     string conexion = db.connectionString();

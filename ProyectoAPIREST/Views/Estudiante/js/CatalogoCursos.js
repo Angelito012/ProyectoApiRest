@@ -7,6 +7,8 @@ var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
 var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
 var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
 var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
+var urlGenerarFactura = "https://localhost:7076/api/controller/CrearFactura";
+var urlGenerarDetalle = "https://localhost:7076/api/controller/CrearDetalleFactura"
 var url = urlTotal
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
@@ -22,6 +24,7 @@ let carritocursos = [];
 let validate;
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
+var comprarCarrito = document.getElementById("comprar-carrito");
 
 
 buscador.addEventListener('input',() => {
@@ -93,6 +96,7 @@ function obtenerToken(){
         tokenValido = Data.token;
         obtenercursos(tokenValido);
         CursoHtml(tokenValido);
+        
       
     })
 
@@ -101,6 +105,8 @@ function obtenerToken(){
 var btnLogout = document.getElementById('btnLogout');
 
 vaciarCarritoBtn.addEventListener('click',vaciarCarrito);
+
+comprarCarrito.addEventListener('click',CrearCompra)
 
 btnLogout.addEventListener('click',salir);
 
@@ -264,6 +270,7 @@ function agregarCurso(idCursoCarrito,precioCarrito,token){
 function CursoHtml(token){
     
     console.log(DatosEstudianteCarrito)
+
     fetch(urlGetCarrito, {
         method: "POST",
         body: JSON.stringify({
@@ -293,14 +300,16 @@ function CursoHtml(token){
             console.log(Data)
             let row = document.createElement("tr");
             row.innerHTML = `
-               <td>${Data[i].idCurso}</td>
+               <td class="idCursoDetalle">${Data[i].idCurso}</td>
                <td>${Data[i].nombre}</td>
-               <td>${Data[i].precioactual} </td>
+               <td class="PrecioTotal">${Data[i].precioactual}</td>
                <td >
                     <div id="${Data[i].idCurso}">
                     
                     </div>
                </td>`;
+
+               row.className = "DataItems";
                
             let botonEliminarCurso = document.createElement("button");
 
@@ -376,7 +385,108 @@ function vaciarCarrito(token){
         
     })  
     
+
 }
 
+function totalCompra(){
+
+    let DataItems = document.getElementsByClassName("DataItems");
+    
+    var total = 0;
+    
+
+    for(var i = 0; i<DataItems.length; i++){
+
+        total = (total+Number(DataItems.item(i).getElementsByClassName("PrecioTotal").item(0).textContent))
+
+        
+    }
+    
+
+    return total;
+
+}
+
+function CrearCompra(token){
+    if(confirm("Esta seguro de hacer la compra?")==true){
+
+        var total = totalCompra();
+
+    fetch(urlGenerarFactura, {
+        method: "POST",
+        body: JSON.stringify({ 
+            total: total,
+            idUsuario: DatosEstudianteCarrito.idUsuario
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.json();
+        }else{
+            alert("Error al Crear una factura")
+        }
+    }).then(function(Data){
+       
+            var json = JSON.stringify({
+                "noFactura": Data.value.noFactura,
+                "detalleFacturaList": obtenerInfoDetalle()
+              });
+              console.log(json)
+           
+           fetch(urlGenerarDetalle, {
+            method: "POST",
+            body: json,
+            headers:{
+                'Accept' : "application/json",
+                "Content-Type" : "application/json",
+                'Authorization': 'Bearer ' + token
+            }
+           }).then(function(response){
+            if(response.ok){
+                alert("Compra exitosa")
+                vaciarCarrito(token);
+                localStorage.setItem("factura",Data.value.noFactura)
+                location.href="/Estudiante/factura.html"
+                return response;
+            }else{
+                alert("Error al Crear un detalle de factura")
+            }
+        })
+           
+
+    })
+    }
+
+    
+
+    
+}
+
+function obtenerInfoDetalle(){
+    let arrayDetalle = [];
+    let DataItems = document.getElementsByClassName("DataItems");
+    
+    
+    
+
+    for(var i = 0; i<DataItems.length; i++){
+
+        var json =   {
+            "idCurso": Number(DataItems.item(i).getElementsByClassName("idCursoDetalle").item(0).textContent),
+            "precioactual": Number(DataItems.item(i).getElementsByClassName("PrecioTotal").item(0).textContent)
+          }
+
+          arrayDetalle.push(json);
+
+        
+    }
+    
+
+    return arrayDetalle;
+}
 
 obtenerToken();
