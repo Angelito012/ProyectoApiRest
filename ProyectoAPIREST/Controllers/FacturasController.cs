@@ -7,6 +7,7 @@ using ProyectoAPIREST.Models;
 using ProyectoAPIREST.Models.Solicitudes;
 using System.Text;
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 
 namespace ProyectoAPIREST.Controllers
 {
@@ -133,6 +134,7 @@ namespace ProyectoAPIREST.Controllers
 
         public ActionResult CrearFactura(Models.Solicitudes.SolicitudFacturas facturas)
         {
+        
             using (Models.DataBaseAPIContext db = new DataBaseAPIContext())
             {
                 string conexion = db.connectionString();
@@ -141,7 +143,6 @@ namespace ProyectoAPIREST.Controllers
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "CrearFactura";
-                cmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = facturas.Fecha;
                 cmd.Parameters.Add("@TOTAL", SqlDbType.Float).Value = facturas.Total;
                 cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = facturas.IdUsuario;
                 cmd.ExecuteNonQuery();
