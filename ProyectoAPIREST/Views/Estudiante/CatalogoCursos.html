@@ -16,7 +16,9 @@
                 <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
             </div>
 			<div class="logo">
-                <h1>MENU PRINCIPAL ESTUDIANTE</h1>
+                <h1>MENU PRINCIPAL ESTUDIANTE</h1>                
+            </diV>
+
 			</div>
             
             <div class="title-cards">
@@ -29,12 +31,10 @@
             <p></p>
             <div class="container-buscador">
                 <div class="filtros">
-                    <label for="seleccion">-Comprados:</label>
+                    <label for="seleccion">     -Comprados:  </label>
                     <input id="rb1" type="radio" name="seleccion" value="comprado">
-                    <label for="seleccion"> -No Comprados:</label>
+                    <label for="seleccion">     -No Comprados:  </label>
                     <input id="rb2" type="radio" name="seleccion" value="Nocomprado">
-                    <label for="seleccion"> -Todos los cursos:</label>
-                    <input id="rb3" type="radio" name="seleccion" value="Todos" checked>
                     <button onclick="verificar()" id="btn1">Aplicar Filtro</button>
                 </div>
             </div>
@@ -49,12 +49,14 @@
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="/Estudiante/MenuEstudiante.html">Inicio</a>			
-                <a href="/Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
-                <a href="/Estudiante/MisCursos.html">Ver mis Cursos</a>
-				<a href="/Estudiante/VerLeccion.html">Ver Leccion</a>
-				<a href="/Estudiante/VerFacturas.html">Ver Facturas</a>
-                <a href="/Estudiante/EditarEstudiante.html">Editar mis datos</a>
+                <img src="./img/user.png" alt="" class="user">
+                    <h1 id="nombre"></h1>
+                <a href="../Estudiante/MenuEstudiante.html">Inicio</a>			
+                <a href="../Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
+                <a href="../Estudiante/MisCursos.html">Ver mis Cursos</a>
+				<a href="../Estudiante/VerLeccion.html">Ver Leccion</a>
+				<a href="../Estudiante/VerFacturas.html">Ver Facturas</a>
+                <a href="../Estudiante/EditarEstudiante.html">Editar mis datos</a>
                 <a id="btnLogout" style="cursor: pointer; color: #c7c7c7;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>

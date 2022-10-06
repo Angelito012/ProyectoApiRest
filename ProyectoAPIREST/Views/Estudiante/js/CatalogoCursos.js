@@ -2,8 +2,7 @@ var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
 var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
 var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
-var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
-var url = urlTotal
+var url = urlfiltro2
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
@@ -16,10 +15,9 @@ buscador.addEventListener('input',() => {
         url = urlFiltrado
         document.getElementById('rb1').checked=false
         document.getElementById('rb2').checked=false
-        document.getElementById('rb3').checked=false
 
     }else if(buscador.value == ""){
-        url = urlTotal
+        url = urlfiltro2
         
     }
     obtenerToken()
@@ -35,12 +33,9 @@ function verificar(){
         url = urlfiltro2
         obtenerToken()
     }
-    if(document.getElementById('rb3').checked){
-        url = urlfiltro3
-        obtenerToken()
-    }
 }
-
+var h1 = document.getElementById('nombre');
+        h1.innerText = email
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -115,11 +110,6 @@ function obtenercursos(token){
             Correo: email,
             Clave: ""  
         };
-    }else if(url == urlfiltro3){
-        var InformacionCurso = {
-            Correo: email,
-            Clave: ""  
-        };
     }
 
 
@@ -186,12 +176,15 @@ function obtenercursos(token){
                     
                     contenido_card.appendChild(botonInformacion);
         
-                    let botoncomprar = document.createElement("button");
-                    botoncomprar.classList.add('btn');
-                    botoncomprar.className += " btn-danger"
-                    botoncomprar.innerHTML = "Añadir a Carrito"
-                    
-                    contenido_card.appendChild(botoncomprar);
+                    if(url != urlfiltro1){
+                        let botoncomprar = document.createElement("button");
+                        botoncomprar.classList.add('btn');
+                        botoncomprar.className += " btn-danger"
+                        botoncomprar.innerHTML = "Añadir a Carrito"
+                        
+                        contenido_card.appendChild(botoncomprar);
+                    };
+                   
         
         
                     newcard.appendChild(contenido_card);            
