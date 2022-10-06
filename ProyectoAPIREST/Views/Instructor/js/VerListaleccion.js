@@ -1,6 +1,6 @@
 var rol = getCookie('rol');
 var email = getCookie('email');
-var datos = JSON.parse(localStorage.getItem('cursoLecciones'));
+var datos = JSON.parse(localStorage.getItem('curso'));
 let card = document.getElementById("contenedor")
 
 window.addEventListener('load',(event) => {
@@ -10,7 +10,7 @@ window.addEventListener('load',(event) => {
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')
         location.href="../index.html";
-    }else if(rol != "Estudiante"){
+    }else if(rol != "Instructor"){
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
     }
@@ -147,7 +147,7 @@ function getCookie(cname) {
             botonVerLeccion.addEventListener("click",function(boton){
                 
                 guardarDatos(boton.target.idLeccion);
-                location.href = "../Estudiante/VerLeccion.html";
+                location.href = "../Instructor/VerLeccion.html";
             })
             contenido_card.appendChild(botonVerLeccion);
            
@@ -169,7 +169,7 @@ function guardarDatos(id){
             enlace: "string",
             idCurso: 0
           };
-    localStorage.setItem("LeccionSelect",JSON.stringify(InformacionLeccion))
+    localStorage.setItem("SelectLeccion",JSON.stringify(InformacionLeccion))
     };
     
 

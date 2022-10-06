@@ -1,6 +1,6 @@
 var rol = getCookie('rol');
-var datos = JSON.parse(localStorage.getItem('LeccionSelect'));
-var datosEst = JSON.parse(localStorage.getItem('estudiante'));
+var datoslec = JSON.parse(localStorage.getItem('SelectLeccion'));
+var datos = JSON.parse(localStorage.getItem('instructor'));
 var email = getCookie('email');
 var ps = 1;
 
@@ -11,7 +11,7 @@ window.addEventListener('load',(event) => {
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')
         location.href="../index.html";
-    }else if(rol != "Estudiante"){
+    }else if(rol != "Instructor"){
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
     }
@@ -75,11 +75,11 @@ function getCookie(cname) {
     })
   }
   function Get(token){
-    console.log(datos)
+    console.log(datoslec)
     var url = "https://localhost:7076/api/MainLeccion/VerLeccionPorId";
     fetch(url, {
         method: "POST",
-        body: JSON.stringify(datos),
+        body: JSON.stringify(datoslec),
         headers:{
             'Accept' : "application/json",
             "Content-Type" : "application/json",
@@ -105,7 +105,7 @@ function getCookie(cname) {
             console.log(Data.preguntas[i])
             if(Data.preguntas[i].respuesta != ""){
             
-            foro = foro +
+            document.getElementById("foro").innerHTML += 
         `
             <form>
             <div class="form-group">
@@ -119,7 +119,7 @@ function getCookie(cname) {
             </form>
             `
             }else{
-            foro = foro +
+            document.getElementById("foro").innerHTML += 
             `
                 <form>
                 <div class="form-group">
@@ -128,48 +128,56 @@ function getCookie(cname) {
                 </div>
                 <div class="form-group">
                 <label>Respuesta</label>
-                <textarea disabled id="comment" class="form-control">Respuesta pendiente</textarea></label>
+                <textarea id="respuesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
                 </div>
+                <div id="button-${Data.preguntas[i].idPregunta}"></div>
                 </form>
-                `    
+                `   
+                
+                let botonResponder = document.createElement("button");
+                
+                botonResponder.classList.add('btn');
+                botonResponder.className += " btn btn-primary"
+                botonResponder.innerHTML = "Reponder"
+
+                botonResponder.idPregunta = Data.preguntas[i].idPregunta;
+                 
+                
+
+                botonResponder.addEventListener("click",function(button){
+                
+                    console.log(button.target.idPregunta);
+                   // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
+                   
+                   
+                   
+                    Responder(button.target.idPregunta,token);
+                   
+                })
+                
+                document.getElementById("button-"+ Data.preguntas[i].idPregunta).appendChild(botonResponder);
             }
         }
-        foro = foro +
-        `
-        <form>
-        <div class="form-group">
-        <label>Pregunta</label>
-        <textarea disable id="pregunta" class="form-control"></textarea></label>
-        <div id="button-preguntar"></div>
-        </form>
-        `
-        document.getElementById("foro").innerHTML=foro;
         
-        let botonPreguntar = document.createElement("button");
-        botonPreguntar.classList.add('btn');
-        botonPreguntar.className += " btn btn-primary"
-        botonPreguntar.innerHTML = "Preguntar"
-        botonPreguntar.setAttribute('id', 'botonpreguntar');
-        botonPreguntar.addEventListener("click",function(){
-                Preguntar(token); 
-            })
-        document.getElementById("foro").appendChild(botonPreguntar);
-        ps = 2;
-    
+        
+        
         
         
   })
 }
-function Preguntar(token){
-    var url = "https://localhost:7076/api/MainLeccion/CrearPregunta";
+function Responder(idPregunta,token){
+   
+    alert("respuesta guardada")
+    
+    var url = "https://localhost:7076/api/MainLeccion/ResponderPregunta";
     fetch(url, {
-        method: "POST",
+        method: "PUT",
         body: JSON.stringify({
-            idPregunta:0,
-            duda: document.getElementById("pregunta").value,
-            respuesta: "",
-            idLeccion: datos.idLeccion,
-            idUsuario: datosEst.idUsuario
+            idPregunta: idPregunta,
+            duda: "",
+            respuesta: document.getElementById("respuesta-"+idPregunta).value,
+            idLeccion: 0,
+            idUsuario: 0
         }
         ),
         headers:{
@@ -179,14 +187,14 @@ function Preguntar(token){
         }
     }).then(function(response){
         if(response.ok){
-            Get(token);
+            alert("sdfdsfds")
             return response.json();
         }else{
             alert("Error al ejecutar solicitud")
 
         }
   }).then(function(){
-    Get(token);
+    alert("11111")
   })
 
 }

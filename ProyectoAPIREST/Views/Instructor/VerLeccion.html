@@ -3,8 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Menù Lateral con Css</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/menuLateral.css">
     <link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/style-video-foro.css">
 </head>
 <body>
 	<header class="header">
@@ -13,29 +15,39 @@
 			<label id="btnIcono" for="btn-menu" class="icon-menu"></label>
 		</div>
 			<div class="logo">
-				<h1>MENU PRINCIPAL ESTUDIANTE</h1>
+				<h1>MENU PRINCIPAL INSTRUCTOR</h1>
 			</div>
 		</div>
+
 	</header>
 	<div class="capa"></div>
     <div class="title-cards">
-		<h2 id="name"></h2>
+		<h1 id="name"></h1>
 	</div>
+	<div class="descripcion">
+		<h4 id="desc"></h4>
+	</div>
+	
     <input type="checkbox" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="/Estudiante/MenuEstudiante.html">Inicio</a>			
-                <a href="/Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
-                <a href="/Estudiante/MisCursos.html">Ver mis Cursos</a>
-				<a href="/Estudiante/VerFacturas.html">Ver Facturas</a>
-                <a href="/Estudiante/EditarEstudiante.html">Editar mis datos</a>
+                <a href="/Instructor/MenuInstructor.html">Inicio</a>			
+                <a href="/Instructor/cursos/crearCurso.html">Crear un Curso</a>
+                <a href="/Instructor/VerCursos.html">Ver mis Cursos</a>
+                <a href="/Instructor/EditarInstructor.html">Editar mis datos</a>
                 <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>
         </div>
     </div>
 
+	<div id="video">
+	</div>
+	<h1>Foro</h1>
+	<div id="foro" class="col-md-8">
+
+	</div>
 </body>
 </html>
-<script src="./js/Estudiante.js"></script>
+<script src="./js/VerLeccion.js"></script>
