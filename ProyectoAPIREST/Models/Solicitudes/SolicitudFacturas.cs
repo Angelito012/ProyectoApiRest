@@ -5,7 +5,8 @@
         public int NoFactura { get; set; }
         public DateTime? Fecha { get; set; }
         public double? Total { get; set; }
-        public string nombre{ get; set; }
+        public string? nombre{ get; set; }
 
+        public int? IdUsuario { get; set; }
     }
 }
