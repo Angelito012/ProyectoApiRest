@@ -10,7 +10,13 @@
 #foro{
     margin: auto;
 	text-align: left;
-    overflow-y: scroll;
+    z-index: 50;
+}
+#menu{
+    margin: auto;
+	text-align: left;
+    z-index: 100;
+}
 }
 h1{
     text-align: center;
