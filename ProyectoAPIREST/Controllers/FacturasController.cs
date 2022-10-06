@@ -128,5 +128,50 @@ namespace ProyectoAPIREST.Controllers
             
         }
 
+        [HttpPost]
+        [Route("CrearFactura")]
+
+        public ActionResult CrearFactura(Models.Solicitudes.SolicitudFacturas facturas)
+        {
+            using (Models.DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "CrearFactura";
+                cmd.Parameters.Add("@FECHA", SqlDbType.DateTime).Value = facturas.Fecha;
+                cmd.Parameters.Add("@TOTAL", SqlDbType.Float).Value = facturas.Total;
+                cmd.Parameters.Add("@IDUSUARIO", SqlDbType.Int).Value = facturas.IdUsuario;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("CrearDetalleFactura")]
+
+        public ActionResult CrearDetalleFactura(Models.Solicitudes.SolicitudDetalle facturas)
+        {
+            using (Models.DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "CrearDetalleFactura";
+                cmd.Parameters.Add("@NOFACTURA", SqlDbType.Int).Value = facturas.NoFactura;
+                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = facturas.IdCurso;
+                cmd.Parameters.Add("@PRECIOACTUAL", SqlDbType.Float).Value = facturas.Precioactual;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
+        }
+
+
     }
 }
