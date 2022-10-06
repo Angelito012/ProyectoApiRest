@@ -92,7 +92,7 @@ function getCookie(cname) {
             alert("Error al ejecutar solicitud")
         }
   }).then(function(Data){
-        console.log(Data)
+       
         let foro = "";
         var h2 = document.getElementById('name');
         h2.innerText = Data.nombre  
@@ -138,23 +138,19 @@ function getCookie(cname) {
                 
                 botonResponder.classList.add('btn');
                 botonResponder.className += " btn btn-primary"
-                botonResponder.innerHTML = "Reponder"
+                botonResponder.innerHTML = "Responder"
 
                 botonResponder.idPregunta = Data.preguntas[i].idPregunta;
                  
-                
+                console.log(botonResponder.idPregunta);
 
                 botonResponder.addEventListener("click",function(button){
-                
-                    console.log(button.target.idPregunta);
+                  
+                   // console.log(button.target.idPregunta);
                    // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
-                   
-                   
-                   
                     Responder(button.target.idPregunta,token);
-                   
-                })
-                
+                });
+
                 document.getElementById("button-"+ Data.preguntas[i].idPregunta).appendChild(botonResponder);
             }
         }
@@ -167,8 +163,6 @@ function getCookie(cname) {
 }
 function Responder(idPregunta,token){
    
-    alert("respuesta guardada")
-    
     var url = "https://localhost:7076/api/MainLeccion/ResponderPregunta";
     fetch(url, {
         method: "PUT",
