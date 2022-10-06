@@ -144,7 +144,7 @@ function getCookie(cname) {
         </form>
         `
         document.getElementById("foro").innerHTML=foro;
-        
+
         let botonPreguntar = document.createElement("button");
         botonPreguntar.classList.add('btn');
         botonPreguntar.className += " btn btn-primary"
@@ -155,7 +155,7 @@ function getCookie(cname) {
             })
         document.getElementById("foro").appendChild(botonPreguntar);
         ps = 2;
-    
+
         
         
   })

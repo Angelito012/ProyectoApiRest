@@ -166,9 +166,6 @@ function getCookie(cname) {
   })
 }
 function Responder(idPregunta,token){
-   
-    alert("respuesta guardada")
-    
     var url = "https://localhost:7076/api/MainLeccion/ResponderPregunta";
     fetch(url, {
         method: "PUT",
@@ -187,7 +184,6 @@ function Responder(idPregunta,token){
         }
     }).then(function(response){
         if(response.ok){
-            alert("sdfdsfds")
             return response.json();
         }else{
             alert("Error al ejecutar solicitud")
