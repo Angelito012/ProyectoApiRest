@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using ProyectoAPIREST.Models;
 using ProyectoAPIREST.Models.Solicitudes;
+using System.Data;
 
 namespace ProyectoAPIREST.Controllers
 {
@@ -24,5 +27,5 @@ namespace ProyectoAPIREST.Controllers
             }
         }
 
+        }
     }
-}

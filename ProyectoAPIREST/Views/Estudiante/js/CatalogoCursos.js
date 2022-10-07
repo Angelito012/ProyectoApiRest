@@ -9,7 +9,7 @@ var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
 var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
 var urlGenerarFactura = "https://localhost:7076/api/controller/CrearFactura";
 var urlGenerarDetalle = "https://localhost:7076/api/controller/CrearDetalleFactura"
-var url = urlTotal
+var url = urlfiltro2;
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
@@ -22,7 +22,6 @@ let articulosCarrito = [];
 let idsMisCursos = [];
 let carritocursos = [];
 let validate;
-var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
 
@@ -33,7 +32,6 @@ buscador.addEventListener('input',() => {
         url = urlFiltrado
         document.getElementById('rb1').checked=false
         document.getElementById('rb2').checked=false
-        document.getElementById('rb3').checked=false
 
     }else if(buscador.value == ""){
         url = urlTotal
@@ -50,10 +48,6 @@ function verificar(){
     }
     if(document.getElementById('rb2').checked){
         url = urlfiltro2
-        obtenerToken()
-    }
-    if(document.getElementById('rb3').checked){
-        url = urlfiltro3
         obtenerToken()
     }
 }
@@ -139,11 +133,6 @@ function obtenercursos(token){
             Correo: email,
             Clave: ""  
         };
-    }else if(url == urlfiltro3){
-        var InformacionCurso = {
-            Correo: email,
-            Clave: ""  
-        };
     }
 
 
@@ -203,7 +192,8 @@ function obtenercursos(token){
                     precio.innerHTML += `<br>`
                     contenido_card.appendChild(precio);
         
-                    let botoncomprar = document.createElement("button");
+                    if(url!=urlfiltro1){
+                        let botoncomprar = document.createElement("button");
                     botoncomprar.classList.add('btn');
                     botoncomprar.className += "agregar-carrito"
                     botoncomprar.innerHTML = "Añadir a Carrito"
@@ -217,6 +207,8 @@ function obtenercursos(token){
                                         token);
                     })
                     contenido_card.appendChild(botoncomprar);
+                    }
+                    
 
         
         
