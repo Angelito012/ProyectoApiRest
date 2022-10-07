@@ -1,6 +1,10 @@
 var url = "https://localhost:7076/api/MainInstructor/VerCursos";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosInstructor.nombre;
+
 
 function getCookie(cname) {
     let name = cname + "=";

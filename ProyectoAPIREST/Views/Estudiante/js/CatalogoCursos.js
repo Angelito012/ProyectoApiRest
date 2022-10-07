@@ -2,14 +2,13 @@ var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
 var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
 var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
-var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
 var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
 var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
 var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
 var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
 var urlGenerarFactura = "https://localhost:7076/api/controller/CrearFactura";
 var urlGenerarDetalle = "https://localhost:7076/api/controller/CrearDetalleFactura"
-var url = urlTotal
+var url = urlfiltro2;
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
@@ -22,9 +21,12 @@ let articulosCarrito = [];
 let idsMisCursos = [];
 let carritocursos = [];
 let validate;
-var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
 
 
 buscador.addEventListener('input',() => {
@@ -52,8 +54,6 @@ function verificar(){
         obtenerToken()
     }
 }
-var h1 = document.getElementById('nombre');
-        h1.innerText = email
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);

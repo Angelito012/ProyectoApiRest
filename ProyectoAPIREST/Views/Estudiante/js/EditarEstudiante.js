@@ -2,7 +2,9 @@ var email = getCookie('email');
 var datos = JSON.parse(localStorage.getItem('estudiante'));
 var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
-
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
 MostrarDatos();
 
 function getCookie(cname) {

@@ -1,3 +1,5 @@
+
+
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
     var email = getCookie('email'); 
@@ -17,6 +19,10 @@ window.addEventListener('load',(event) => {
 
 
 })
+
+var datos = JSON.parse(localStorage.getItem('administrador'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = datos.nombre;
 
 var btnLogout = document.getElementById('btnLogout');
 
@@ -42,3 +48,4 @@ function getCookie(cname) {
     }
     return "";
   }
+

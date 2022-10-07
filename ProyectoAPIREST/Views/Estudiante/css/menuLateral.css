@@ -6,7 +6,7 @@
 		font-family: 'Montserrat Alternates', sans-serif;
 	}
 	body{
-        background-image: url(/Estudiante/img/fondo.jpg);
+        background-image: url(../img/fondo.jpg);
 		background-size: 100vw 100vh;
 		background-repeat: no-repeat;
 		background-attachment: fixed;
@@ -136,3 +136,18 @@
 		cursor: pointer;
 		font-size: 18px;
 	}
+	.user-section{
+		border-left: 5px solid #c7c7c7;
+		background: #1f1f1f;
+		display: flex; /* NUEVO */
+		  align-items: center; /* NUEVO */
+		vertical-align:middle;
+		
+		
+	}
+	
+	.user{
+		height: 30px;
+		width: 30px;
+		
+	} 

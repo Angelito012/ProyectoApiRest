@@ -7,7 +7,7 @@
 
 }
 body{
-    background-image: url(/Instructor/img/fondo.jpg);
+    background-image: url(../../../img/fondo.jpg);
 	background-size: 104%;
 	background-attachment: fixed;
     align-items: center ;
@@ -177,20 +177,7 @@ body{
 	height: 100px;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
 
-}
-body{
-    background-image: url(/Instructor/img/fondo.jpg);
-	background-size: 104%;
-	background-attachment: fixed;
-    align-items: center ;
-}
 /*Cards*/
 .container-card{
 	width: 100%;
