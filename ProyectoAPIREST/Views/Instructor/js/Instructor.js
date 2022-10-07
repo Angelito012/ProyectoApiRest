@@ -1,8 +1,7 @@
 var rol = getCookie('rol');
 var email = getCookie('email');
 var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
-var h1 = document.getElementById('nombre');
-        h1.innerText = DatosInstructor.nombre;
+
 
 window.addEventListener('load',(event) => { 
     if(rol == ""){
