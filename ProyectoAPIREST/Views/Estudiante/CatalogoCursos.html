@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="./css/user.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
+
     <title>Cursos</title>
 </head>
 <body>
@@ -19,7 +21,9 @@
                 <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
             </div>
 			<div class="logo">
-                <h1>MENU PRINCIPAL ESTUDIANTE</h1>
+                <h1>MENU PRINCIPAL ESTUDIANTE</h1>                
+            </diV>
+
 			</div>
             <div class="two columns u-pull-right">
                 <ul>
@@ -52,7 +56,6 @@
                 <img src="./img/lupa.png" alt="" class="lupa">
                 <input type="text" class="buscador" placeholder="Buscar" id="buscador">
             </div>
-            <p></p>
             <div class="container-buscador">
                 <div class="filtros">
 
@@ -76,11 +79,13 @@
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="/Estudiante/MenuEstudiante.html">Inicio</a>			
-                <a href="/Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
-                <a href="/Estudiante/MisCursos.html">Ver mis Cursos</a>
-				<a href="/Estudiante/VerFacturas.html">Ver Facturas</a>
-                <a href="/Estudiante/EditarEstudiante.html">Editar mis datos</a>
+                <div class="user-section"><img src="./img/user.png" alt="" class="user"> <h2 id="nombre"></h2></div>
+                <a href="../Estudiante/MenuEstudiante.html">Inicio</a>			
+                <a href="../Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
+                <a href="../Estudiante/MisCursos.html">Ver mis Cursos</a>
+				<a href="../Estudiante/VerLeccion.html">Ver Leccion</a>
+				<a href="../Estudiante/VerFacturas.html">Ver Facturas</a>
+                <a href="../Estudiante/EditarEstudiante.html">Editar mis datos</a>
                 <a id="btnLogout" style="cursor: pointer; color: #c7c7c7;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>

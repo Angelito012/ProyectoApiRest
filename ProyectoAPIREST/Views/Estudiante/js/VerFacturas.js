@@ -1,7 +1,9 @@
 var url = "https://localhost:7076/api/controller/VerFacturas";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
-
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);

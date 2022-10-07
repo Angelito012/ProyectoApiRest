@@ -2,7 +2,6 @@ var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
 var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
 var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
-var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
 var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
 var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
 var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
@@ -24,6 +23,9 @@ let carritocursos = [];
 let validate;
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
 
 
 buscador.addEventListener('input',() => {
@@ -34,7 +36,7 @@ buscador.addEventListener('input',() => {
         document.getElementById('rb2').checked=false
 
     }else if(buscador.value == ""){
-        url = urlTotal
+        url = urlfiltro2
         
     }
     obtenerToken()
@@ -51,7 +53,6 @@ function verificar(){
         obtenerToken()
     }
 }
-
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -197,6 +198,7 @@ function obtenercursos(token){
                     botoncomprar.classList.add('btn');
                     botoncomprar.className += "agregar-carrito"
                     botoncomprar.innerHTML = "Añadir a Carrito"
+
                     botoncomprar.style.background = "#2fb4cc"
                     botoncomprar.style.color = "#ffffff"
                     botoncomprar.idCursoCarrito = Data[i].idCurso;
@@ -205,11 +207,14 @@ function obtenercursos(token){
                         agregarCurso(button.target.idCursoCarrito, 
                                         button.target.precioCarrito,
                                         token);
+
                     })
                     contenido_card.appendChild(botoncomprar);
                     }
                     
 
+                    };
+                   
         
         
                     newcard.appendChild(contenido_card);            
