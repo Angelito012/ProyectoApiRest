@@ -207,7 +207,12 @@ function obtenerToken(){
 
 				tblBody.appendChild(hilera);
 
+				
+				body.style.borderCollapse = "collapse";
 
+						tabla.style.borderCollapse = "collapse";
+
+						hilera.style.background = "#e1fcfc";
         		celdaID.style.fontFamily = "sans-serif";
 				celdaNombre.style.fontFamily = "sans-serif";
 				celdaApelldio.style.fontFamily = "sans-serif";

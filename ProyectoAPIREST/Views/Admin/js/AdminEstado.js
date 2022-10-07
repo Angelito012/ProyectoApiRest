@@ -112,13 +112,7 @@ function obtenerToken(){
 					headTelefono.appendChild(textoTelefono)
 					headEstado.appendChild(textoEstado)
 					headRol.appendChild(textoRol)
-					headID.style.fontFamily = "Franklin Gothic Medium";
-					headNombre.style.fontFamily = "Franklin Gothic Medium";
-					headApellido.style.fontFamily = "Franklin Gothic Medium";
-					headCorreo.style.fontFamily = "Franklin Gothic Medium";
-					headTelefono.style.fontFamily = "Franklin Gothic Medium";
-					headEstado.style.fontFamily = "Franklin Gothic Medium";
-					headRol.style.fontFamily = "Franklin Gothic Medium";
+					
 
 
 					headID.style.fontSize = 'x-large';
@@ -186,6 +180,23 @@ function obtenerToken(){
 						hilera.appendChild(celdaRol);
 						tblBody.appendChild(hilera);
 						
+
+						
+						
+						hilera.style.borderCollapse = "collapse";
+
+						
+						
+						body.style.borderCollapse = "collapse";
+
+						tabla.style.borderCollapse = "collapse";
+
+						hilera.style.background = "#e1fcfc";
+						
+						
+						tblBody.style.borderCollapse = "collapse";
+
+
 						celdaID.style.fontFamily = "sans-serif";
 						celdaNombre.style.fontFamily = "sans-serif";
 						celdaApelldio.style.fontFamily = "sans-serif";
