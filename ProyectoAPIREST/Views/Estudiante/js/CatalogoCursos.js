@@ -21,7 +21,6 @@ let articulosCarrito = [];
 let idsMisCursos = [];
 let carritocursos = [];
 let validate;
-
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
@@ -194,11 +193,12 @@ function obtenercursos(token){
                     precio.innerHTML += `<br>`
                     contenido_card.appendChild(precio);
         
-                    if(url != urlfiltro1){
+                    if(url!=urlfiltro1){
                         let botoncomprar = document.createElement("button");
-                        botoncomprar.classList.add('btn');
-                        botoncomprar.className += "agregar-carrito"
-                        botoncomprar.innerHTML = "Añadir a Carrito"
+                    botoncomprar.classList.add('btn');
+                    botoncomprar.className += "agregar-carrito"
+                    botoncomprar.innerHTML = "Añadir a Carrito"
+
                     botoncomprar.style.background = "#2fb4cc"
                     botoncomprar.style.color = "#ffffff"
                     botoncomprar.idCursoCarrito = Data[i].idCurso;
@@ -207,8 +207,11 @@ function obtenercursos(token){
                         agregarCurso(button.target.idCursoCarrito, 
                                         button.target.precioCarrito,
                                         token);
-                    })    
-                        contenido_card.appendChild(botoncomprar);
+
+                    })
+                    contenido_card.appendChild(botoncomprar);
+                    }
+                    
 
                     };
                    
