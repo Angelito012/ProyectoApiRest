@@ -189,11 +189,20 @@
 	background: #ffffff;
 	color: rgb(0, 0, 0);
 }
-.card .contenido-card .btn-info{
+.card .contenido-card .info-edit{
     background: #2fb4cc;
     color: #ffffff;
 }
 .card .contenido-card .btn-info:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #2fb4cc;
+}
+.card .contenido-card .btn-edit{
+    background: #2fb4cc;
+    color: #ffffff;
+}
+.card .contenido-card .btn-edit:hover{
 	background: #ffffff;
 	color: rgb(0, 0, 0);
 	border: solid 1px #2fb4cc;

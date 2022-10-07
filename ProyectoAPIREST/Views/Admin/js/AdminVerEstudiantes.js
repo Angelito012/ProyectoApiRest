@@ -193,6 +193,12 @@ function obtenerToken(){
 				celdaNIT.style.fontFamily = "sans-serif";
 
 
+				body.style.borderCollapse = "collapse";
+
+						tabla.style.borderCollapse = "collapse";
+
+						hilera.style.background = "#e1fcfc";
+
 
 				document.getElementById("divLista").appendChild(divElement);
 
