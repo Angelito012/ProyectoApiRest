@@ -107,7 +107,7 @@ function getCookie(cname) {
 
             let figure = document.createElement('figure');
             let imagen = document.createElement('img');
-            imagen.src = "/images/cursos.jpg";
+            imagen.src = "/images/lecciones.jpg";
             figure.appendChild(imagen);
             newcard.appendChild(figure);
 
