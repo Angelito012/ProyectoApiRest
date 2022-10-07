@@ -1,5 +1,9 @@
 var rol = getCookie('rol');
 var email = getCookie('email');
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
+
 
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');

@@ -3,7 +3,9 @@ var detalle = document.getElementById('tablaDetalle');
 var foot = document.querySelector('tfoot');
 var email = getCookie('email'); 
 var factura = JSON.parse(localStorage.getItem('Facturas'))
-
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
 //COOKIES
 function getCookie(cname) {
     let name = cname + "=";

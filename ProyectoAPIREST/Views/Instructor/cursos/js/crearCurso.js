@@ -1,7 +1,9 @@
 var datos = JSON.parse(localStorage.getItem('instructor'));
 var email = getCookie('email');
-let card = document.getElementById("contenedor")
-// localStorage.clear();
+let card = document.getElementById("contenedor");
+
+
+
 obtenerToken();
 
 

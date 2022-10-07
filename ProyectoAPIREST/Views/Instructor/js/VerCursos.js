@@ -1,6 +1,10 @@
 var url = "https://localhost:7076/api/MainInstructor/VerCursos";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosInstructor.nombre;
+
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -178,7 +182,7 @@ function ValidacionInstructor(token){
             let botonVerLecciones = document.createElement("button");
             botonVerLecciones.Idcurso = Data[i].idCurso;
             botonVerLecciones.classList.add('btn');
-            botonVerLecciones.className += " btn-info"
+            botonVerLecciones.className += " btn-leccion"
             botonVerLecciones.innerHTML = "Lecciones"
             botonVerLecciones.addEventListener("click",function(boton){
                 guardarDatos(boton.target.Idcurso);

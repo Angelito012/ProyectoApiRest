@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/user.css">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/custom.css">
+
     <title>Cursos</title>
 </head>
 <body>
@@ -18,7 +21,9 @@
                 <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
             </div>
 			<div class="logo">
-                <h1>MENU PRINCIPAL ESTUDIANTE</h1>
+                <h1>MENU PRINCIPAL ESTUDIANTE</h1>                
+            </diV>
+
 			</div>
             <div class="two columns u-pull-right">
                 <ul>
@@ -51,16 +56,15 @@
                 <img src="./img/lupa.png" alt="" class="lupa">
                 <input type="text" class="buscador" placeholder="Buscar" id="buscador">
             </div>
-            <p></p>
             <div class="container-buscador">
                 <div class="filtros">
-                    <label for="seleccion">-Comprados:</label>
-                    <input id="rb1" type="radio" name="seleccion" value="comprado">
-                    <label for="seleccion"> -No Comprados:</label>
-                    <input id="rb2" type="radio" name="seleccion" value="Nocomprado">
-                    <label for="seleccion"> -Todos los cursos:</label>
-                    <input id="rb3" type="radio" name="seleccion" value="Todos" checked>
+
+                    <input id="rb1" type="radio" name="seleccion" value="comprado"> Comprados
+                    
+                    <input id="rb2" type="radio" name="seleccion" value="Nocomprado"> No comprados
                     <button onclick="verificar()" id="btn1">Aplicar Filtro</button>
+
+                    
                 </div>
             </div>
             <div class="container-card" id="contenedor">
@@ -75,12 +79,13 @@
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="/Estudiante/MenuEstudiante.html">Inicio</a>			
-                <a href="/Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
-                <a href="/Estudiante/MisCursos.html">Ver mis Cursos</a>
-				<a href="/Estudiante/VerLeccion.html">Ver Leccion</a>
-				<a href="/Estudiante/VerFacturas.html">Ver Facturas</a>
-                <a href="/Estudiante/EditarEstudiante.html">Editar mis datos</a>
+                <div class="user-section"><img src="./img/user.png" alt="" class="user"> <h2 id="nombre"></h2></div>
+                <a href="../Estudiante/MenuEstudiante.html">Inicio</a>			
+                <a href="../Estudiante/CatalogoCursos.html">Ver catalogo de cursos</a>
+                <a href="../Estudiante/MisCursos.html">Ver mis Cursos</a>
+				<a href="../Estudiante/VerLeccion.html">Ver Leccion</a>
+				<a href="../Estudiante/VerFacturas.html">Ver Facturas</a>
+                <a href="../Estudiante/EditarEstudiante.html">Editar mis datos</a>
                 <a id="btnLogout" style="cursor: pointer; color: #c7c7c7;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>

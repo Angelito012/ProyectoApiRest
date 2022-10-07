@@ -6,12 +6,6 @@
     font-family: 'Montserrat Alternates', sans-serif;
 
 }
-body{
-    background-image: url(../img/fondo.jpg);
-	background-size: 104%;
-	background-attachment: fixed;
-    align-items: center ;
-}
 .capa{
 	position: fixed;
 	width: 100%;
@@ -40,6 +34,7 @@ body{
 	cursor: pointer;
 }
 .logo h1{
+	display: inline;
 	color: rgb(0, 0, 0);
 	font-weight: 400;
 	font-size: 22px;
@@ -114,6 +109,7 @@ body{
 	border-left: 5px solid #c7c7c7;
 	background: #1f1f1f;
 }
+
 .cont-menu label{
 	position: absolute;
 	right: 5px;
@@ -193,11 +189,20 @@ body{
 	background: #ffffff;
 	color: rgb(0, 0, 0);
 }
-.card .contenido-card .btn-info{
+.card .contenido-card .info-edit{
     background: #2fb4cc;
     color: #ffffff;
 }
 .card .contenido-card .btn-info:hover{
+	background: #ffffff;
+	color: rgb(0, 0, 0);
+	border: solid 1px #2fb4cc;
+}
+.card .contenido-card .btn-edit{
+    background: #2fb4cc;
+    color: #ffffff;
+}
+.card .contenido-card .btn-edit:hover{
 	background: #ffffff;
 	color: rgb(0, 0, 0);
 	border: solid 1px #2fb4cc;
@@ -213,12 +218,15 @@ body{
 	width: 550px;
 	margin: 0px auto;
 	align-items: center;
+	text-align: center;
 }
 
 .lupa{
 	height: 40px;
 	width: 40px;
 }
+
+
 
 .buscador{
 	height: 80%;
@@ -241,25 +249,21 @@ body{
 		margin: 15px;
 	}
 }
-  .btn{
+.btn{
 	margin-left: 5px;
-  }
+}
 
 .filtros{
-	display: inline;
-	justify-content: center;
-	align-items: center;
+	display:inline;
 	text-align: center;
-	-webkit-appearance: checkbox; /* Chrome, Safari, Opera */
-    -moz-appearance: checkbox;    /* Firefox */
-    -ms-appearance: checkbox; 
 	background-color: #eaeaea;
 }
 #btn1{
-	width: 80%;
+	width: 30%;
 	background: #2fb4cc;
     color: #ffffff;
 	border: solid 1px #2fb4cc;
+	text-align: center;
 }
 #btn1:hover{
 	background: #ffffff;

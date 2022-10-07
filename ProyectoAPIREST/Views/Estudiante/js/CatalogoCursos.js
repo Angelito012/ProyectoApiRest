@@ -2,14 +2,13 @@ var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
 var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
 var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
-var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
 var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
 var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
 var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
 var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
 var urlGenerarFactura = "https://localhost:7076/api/controller/CrearFactura";
 var urlGenerarDetalle = "https://localhost:7076/api/controller/CrearDetalleFactura"
-var url = urlTotal
+var url = urlfiltro2;
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
@@ -22,9 +21,11 @@ let articulosCarrito = [];
 let idsMisCursos = [];
 let carritocursos = [];
 let validate;
-var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var h1 = document.getElementById('nombre');
+        h1.innerText = DatosEstudianteCarrito.nombre;
 
 
 buscador.addEventListener('input',() => {
@@ -33,10 +34,9 @@ buscador.addEventListener('input',() => {
         url = urlFiltrado
         document.getElementById('rb1').checked=false
         document.getElementById('rb2').checked=false
-        document.getElementById('rb3').checked=false
 
     }else if(buscador.value == ""){
-        url = urlTotal
+        url = urlfiltro2
         
     }
     obtenerToken()
@@ -52,12 +52,7 @@ function verificar(){
         url = urlfiltro2
         obtenerToken()
     }
-    if(document.getElementById('rb3').checked){
-        url = urlfiltro3
-        obtenerToken()
-    }
 }
-
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -139,11 +134,6 @@ function obtenercursos(token){
             Correo: email,
             Clave: ""  
         };
-    }else if(url == urlfiltro3){
-        var InformacionCurso = {
-            Correo: email,
-            Clave: ""  
-        };
     }
 
 
@@ -203,26 +193,28 @@ function obtenercursos(token){
                     precio.innerHTML += `<br>`
                     contenido_card.appendChild(precio);
         
-                    let botonInformacion = document.createElement("button");
-                    botonInformacion.classList.add('btn');
-                    botonInformacion.className += " btn-info"
-                    botonInformacion.innerHTML = "Informacion"
-                    
-                    contenido_card.appendChild(botonInformacion);
-        
-                    let botoncomprar = document.createElement("button");
+                    if(url!=urlfiltro1){
+                        let botoncomprar = document.createElement("button");
                     botoncomprar.classList.add('btn');
                     botoncomprar.className += "agregar-carrito"
                     botoncomprar.innerHTML = "Añadir a Carrito"
+
+                    botoncomprar.style.background = "#2fb4cc"
+                    botoncomprar.style.color = "#ffffff"
                     botoncomprar.idCursoCarrito = Data[i].idCurso;
                     botoncomprar.precioCarrito = Data[i].precio;
                     botoncomprar.addEventListener ("click", function (button){
                         agregarCurso(button.target.idCursoCarrito, 
                                         button.target.precioCarrito,
                                         token);
+
                     })
                     contenido_card.appendChild(botoncomprar);
+                    }
+                    
 
+                    };
+                   
         
         
                     newcard.appendChild(contenido_card);            

@@ -6,6 +6,12 @@
     font-family: 'Montserrat Alternates', sans-serif;
 
 }
+body{
+  background-image: url("../img/fondo.jpg");
+background-size: 104%;
+background-attachment: fixed;
+  align-items: center ;
+}
 
 ol, ul {
   list-style: none;
@@ -201,11 +207,6 @@ input {
   padding: 0;
 }
 
-.fondoinstructores{
-  background-image: url(/Register/images/fondoProfesores.jpg);
-  background-size: 100%;
-  background-attachment: fixed;
-}
 
 .form-seleccion {
   position: relative;
@@ -380,4 +381,30 @@ label{
 	color: #fff;
 	cursor: pointer;
 	font-size: 18px;
+}
+
+#nombre{
+	color: #f6a10f;
+	vertical-align:middle;
+	margin: 0%;
+}
+.user-section{
+	border-left: 5px solid #c7c7c7;
+	background: #1f1f1f;
+	display: flex; /* NUEVO */
+  	align-items: center; /* NUEVO */
+	vertical-align:middle;
+	
+}
+
+.user{
+	height: 30px;
+	width: 30px;
+} 
+
+.logo h1{
+	color: rgb(0, 0, 0);
+	font-weight: 400;
+	font-size: 22px;
+	margin-left: 10px;
 }
