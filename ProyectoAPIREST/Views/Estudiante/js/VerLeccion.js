@@ -4,8 +4,7 @@ var datosEst = JSON.parse(localStorage.getItem('estudiante'));
 var email = getCookie('email');
 var ps = 1;
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
-var h1 = document.getElementById('nombre');
-        h1.innerText = DatosEstudianteCarrito.nombre;
+
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
     var email = getCookie('email'); 

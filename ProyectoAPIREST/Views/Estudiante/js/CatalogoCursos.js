@@ -2,6 +2,7 @@ var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
 var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
 var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
 var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
+var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
 var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
 var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
 var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
@@ -21,12 +22,11 @@ let articulosCarrito = [];
 let idsMisCursos = [];
 let carritocursos = [];
 let validate;
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
-var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
-var h1 = document.getElementById('nombre');
-        h1.innerText = DatosEstudianteCarrito.nombre;
 
+document.getElementById('rb2').checked=true
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
@@ -53,6 +53,7 @@ function verificar(){
         obtenerToken()
     }
 }
+
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -184,12 +185,12 @@ function obtenercursos(token){
                     contenido_card.appendChild(descripcion);
         
                     let duracion = document.createElement('h5');
-                    duracion.innerText = "Duracion: " + Data[i].duracion;
+                    duracion.innerText = "Duracion: " + Data[i].duracion +" Minutos";
                     duracion.innerHTML += `<br><br>`;
                     contenido_card.appendChild(duracion);
         
                     let precio = document.createElement('h5');
-                    precio.innerText = "Precio: " + Data[i].precio;
+                    precio.innerText = "Precio: Q" + Data[i].precio;
                     precio.innerHTML += `<br>`
                     contenido_card.appendChild(precio);
         
@@ -198,7 +199,6 @@ function obtenercursos(token){
                     botoncomprar.classList.add('btn');
                     botoncomprar.className += "agregar-carrito"
                     botoncomprar.innerHTML = "Añadir a Carrito"
-
                     botoncomprar.style.background = "#2fb4cc"
                     botoncomprar.style.color = "#ffffff"
                     botoncomprar.idCursoCarrito = Data[i].idCurso;
@@ -207,14 +207,11 @@ function obtenercursos(token){
                         agregarCurso(button.target.idCursoCarrito, 
                                         button.target.precioCarrito,
                                         token);
-
                     })
                     contenido_card.appendChild(botoncomprar);
                     }
                     
 
-                    };
-                   
         
         
                     newcard.appendChild(contenido_card);            

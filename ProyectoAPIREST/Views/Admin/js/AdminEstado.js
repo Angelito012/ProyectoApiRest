@@ -113,7 +113,8 @@ function obtenerToken(){
 					headEstado.appendChild(textoEstado)
 					headRol.appendChild(textoRol)
 					
-
+					//headID.classList.add("")
+					//clase para darle estilo a la tabla
 
 					headID.style.fontSize = 'x-large';
 					headNombre.style.fontSize = "x-large";
@@ -186,7 +187,7 @@ function obtenerToken(){
 						hilera.style.borderCollapse = "collapse";
 
 						
-						
+						headCorreo.style.width = "150";
 						body.style.borderCollapse = "collapse";
 
 						tabla.style.borderCollapse = "collapse";
@@ -230,12 +231,12 @@ function obtenerToken(){
 				document.getElementById("divLista").appendChild(divElement);
 				if(Data[i].estado === 'A'){
 					divBotonEditar.innerHTML = "Habilitado";
-					divBotonEditar.style.backgroundColor = 'Green';
-					divBotonEditar.style.color = "White"
+					divBotonEditar.style.backgroundColor = 'white';
+					divBotonEditar.style.color = "green"
 				}else{
 					divBotonEditar.innerHTML = "Inhabilitado";
-					divBotonEditar.style.backgroundColor = 'Red';
-					divBotonEditar.style.color = "White"
+					divBotonEditar.style.backgroundColor = 'white';
+					divBotonEditar.style.color = "red"
 				}
 				divBotonEditar.MiID = Data[i].idUsuario;
                 divBotonEditar.Estado = Data[i].estado;
@@ -257,9 +258,9 @@ function obtenerToken(){
 				divBotonEliminar.style.fontFamily = "sans-serif";
 				divBotonEliminar.style.fontSize = "x-large";
 				divBotonEliminar.style.width = '150px';
-				divBotonEliminar.style.backgroundColor = 'Red';
+				divBotonEliminar.style.backgroundColor = 'white';
 				divBotonEliminar.style.borderBlockColor = 'white';
-				divBotonEliminar.style.color = 'white';
+				divBotonEliminar.style.color = 'red';
 				divBotonEliminar.style.cursor = 'pointer';
 				divBotonEliminar.addEventListener("click",function(mibutton){
 					Delete(mibutton.target.Correo,

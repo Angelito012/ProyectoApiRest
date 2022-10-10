@@ -12,17 +12,11 @@ window.addEventListener('load',(event) => {
         location.href="../index.html";
     }
 
-    if(email != ""){
-        var h2 = document.getElementById('name');
-        h2.innerText = 'Bienvenido de nuevo ' + email
-    }
 
 
 })
 
-var datos = JSON.parse(localStorage.getItem('administrador'));
-var h1 = document.getElementById('nombre');
-        h1.innerText = datos.nombre;
+
 
 var btnLogout = document.getElementById('btnLogout');
 
@@ -49,3 +43,63 @@ function getCookie(cname) {
     return "";
   }
 
+  function obtenerToken(){
+    var url = "https://localhost:7076/api/Autenticacion/Validar";
+  
+    fetch(url,{
+        method: "POST",
+        body: JSON.stringify({
+            correo: email,
+            clave: ""
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type":"application/json"
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.json();
+        }else{
+            validarEstado(correo,clave);
+        }
+    }).then(function(Data){
+        console.log(Data.token);
+        tokenValido = Data.token;
+        Get(Data.token)
+
+    })
+  }
+  function Get(token){
+    var url = "https://localhost:7076/api/Estudiantes/GetEstudiantesinfo";
+    fetch(url,{
+      method: "POST",
+      body: JSON.stringify({
+          Correo: email,
+          Clave: ""          
+      }),
+      headers:{
+          'Accept' : "application/json",
+          "Content-Type" : "application/json",
+          'Authorization': 'Bearer ' + token
+      }
+  }).then(function(response){
+      if(response.ok){
+          return response.json();
+      }else{
+          alert("Error al ejecutar solicitud")
+      }
+  }).then(function(Data){
+      console.log(Data);
+    
+      
+     
+
+      for (let i = 0; i < Data.length; i++) {
+        var h2 = document.getElementById('name');
+        h2.innerText = 'Bienvenido de nuevo ' + rol + ' '+Data[i].nombre +' '+Data[i].apellido
+          
+      }     
+    })
+  }
+
+  obtenerToken();
