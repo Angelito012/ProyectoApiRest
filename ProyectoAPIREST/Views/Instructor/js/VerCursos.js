@@ -97,7 +97,7 @@ function ValidacionInstructor(token){
             contenido_card.appendChild(descripcion);
 
             let duracion = document.createElement('h5');
-            duracion.innerText = "Duracion: " + Data[i].duracion;
+            duracion.innerText = "Duracion: " + Data[i].duracion+" minutos";
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
@@ -107,7 +107,7 @@ function ValidacionInstructor(token){
             contenido_card.appendChild(estado);
 
             let costo = document.createElement('h5');
-            costo.innerText = "Costo: " + Data[i].costo;
+            costo.innerText = "Costo: Q " + Data[i].costo;
             costo.innerHTML += `<br>`
             contenido_card.appendChild(costo);
 
