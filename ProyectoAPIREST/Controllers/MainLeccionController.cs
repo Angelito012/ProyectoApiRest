@@ -66,6 +66,25 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
+        [HttpDelete]
+        [Route("EliminarPregunta")]
+        public ActionResult EliminarPregunta(leccionId leccion)
+        {
+            using (DataBaseAPIContext db = new DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ELIMINARPREGUNTA";
+                cmd.Parameters.Add("@ID", SqlDbType.Int).Value = leccion.IdLeccion;
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            return Ok();
+        }
+
         [HttpPost]
         [Route("VerLeccionPorId")]
         public ActionResult VerLeccionPorId(SolicitudLeccion leccionSol)

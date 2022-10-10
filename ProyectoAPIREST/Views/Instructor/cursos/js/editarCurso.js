@@ -1,9 +1,44 @@
 var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email');
 let card = document.getElementById("contenedor")
+var totalEstudiante = 0;
 // localStorage.clear();
 OpenEdit();
 obtenerToken();
+
+var select = document.getElementById('estado');
+
+select.addEventListener('click',() => {
+    if(select.value == 'A'){
+        if(totalEstudiante > 0){
+            alert('EL curso no se puede desactivar porque ya ha sido comprado por ' + totalEstudiante + ' estudiantes')
+        }
+    }
+})
+
+function validarCurso(token){
+    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    fetch(url,{
+        method: "POST",
+        body: JSON.stringify({
+            idCurso: datos.Idcurso,
+            nombre: "string",
+            descripcion: "string",
+            duracion: 0,
+            costo: 0,
+            estado: "string"
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type":"application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        return response.json();
+    }).then(function(Data){
+        totalEstudiante = Data
+    })
+}
 
 function OpenEdit(){
     document.getElementById('codigo').value = datos.Idcurso;
@@ -42,6 +77,7 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        validarCurso(tokenValido);
         verLeccion(tokenValido);
     })
 }
