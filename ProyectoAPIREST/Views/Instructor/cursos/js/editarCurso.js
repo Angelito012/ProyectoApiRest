@@ -173,7 +173,7 @@ function verLeccion(token){
             contenido_card.innerHTML += `<hr>`
 
             let duracion = document.createElement('h5');
-            duracion.innerText = "Duracion: " + Data[i].duración;
+            duracion.innerText = "Duracion: " + Data[i].duración +" minutos";
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
