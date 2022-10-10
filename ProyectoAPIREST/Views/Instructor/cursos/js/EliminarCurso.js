@@ -195,6 +195,21 @@ function eliminarLeccion(token){
             "Content-Type" : "application/json",
             'Authorization': 'Bearer ' + token
         }
+    }).then().then(eliminarCarrito(token)
+        )
+}
+
+function eliminarCarrito(token){
+    var url = "https://localhost:7076/api/MainCarrito/EliminarCursosCarrito";
+    
+    fetch(url,{
+        method: "DELETE",
+        body: JSON.stringify(datos),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
     }).then().then(eliminarCurso(token))
 }
 
