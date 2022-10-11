@@ -3,8 +3,7 @@ var datos = JSON.parse(localStorage.getItem('instructor'));
 var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
 var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
-var h1 = document.getElementById('nombre');
-        h1.innerText = DatosInstructor.nombre;
+
 
 MostrarDatos();
 
