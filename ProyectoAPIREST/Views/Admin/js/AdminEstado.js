@@ -99,6 +99,10 @@ function obtenerToken(){
 					var headTelefono = document.createElement("th")
 					var headEstado = document.createElement("th")
 					var headRol = document.createElement("th")
+					var btnHabilitar = document.createElement("th")
+
+					var btnEliminar = document.createElement("th")
+					btnEliminar.colSpan= "2";
 
 					var textoID = document.createTextNode( "ID");
 					var textoNombre = document.createTextNode( "Nombre");
@@ -118,7 +122,7 @@ function obtenerToken(){
 					
 					
 
-					//clase para darle estilo a la tabla
+				
 
 					
 
@@ -129,7 +133,7 @@ function obtenerToken(){
 					hilera.appendChild(headTelefono);
 					hilera.appendChild(headEstado);
 					hilera.appendChild(headRol);
-
+					hilera.appendChild(btnEliminar);
 					tblBody.appendChild(hilera);
 					for(i=0;i < Data.length;i++){
 						let divElement = document.createElement("div");
@@ -182,35 +186,18 @@ function obtenerToken(){
 						tblBody.appendChild(hilera);
 						
 
-						
-						
-						
-
-
-						
-
-
-
-
-
-
-				
 				var divBotonEliminar = document.createElement("button");
 				var divBotonEditar = document.createElement("button");
-				celdaUsuario.appendChild(divBotonEditar);
-				celdaEliminar.appendChild(divBotonEliminar);				
-				hilera.appendChild(celdaUsuario);
-				hilera.appendChild(celdaEliminar);
+				
+				
 
 				document.getElementById("divLista").appendChild(divElement);
 				if(Data[i].estado === 'A'){
 					divBotonEditar.innerHTML = "Habilitado";
-					divBotonEditar.style.backgroundColor = 'white';
-					divBotonEditar.style.color = "green"
+					
 				}else{
 					divBotonEditar.innerHTML = "Inhabilitado";
-					divBotonEditar.style.backgroundColor = 'white';
-					divBotonEditar.style.color = "red"
+					
 				}
 				divBotonEditar.MiID = Data[i].idUsuario;
                 divBotonEditar.Estado = Data[i].estado;
@@ -238,16 +225,8 @@ function obtenerToken(){
 						);
 				})
 
-			}
-			tabla.appendChild(tblBody);
-			// appends <table> into <body>
-			
-			body.appendChild(tabla);
-			// modifica el atributo "border" de la tabla y lo fija a "2";
-      
-      tabla.style.backgroundColor = "white";
-     
-	  		tblBody.classList.add("tbalaInstructor")
+
+				tblBody.classList.add("tbalaInstructor")
 				
 				headID.classList.add("claseInstructor1")
 				headNombre.classList.add("claseInstructor1")
@@ -256,6 +235,8 @@ function obtenerToken(){
 				headTelefono.classList.add("claseInstructor1")
 				headEstado.classList.add("claseInstructor1")
 				headRol.classList.add("claseInstructor1")
+
+				btnEliminar.classList.add("claseInstructor1")
 
 				celdaID.classList.add("claseInstructor")
 				celdaNombre.classList.add("claseInstructor")
@@ -268,8 +249,24 @@ function obtenerToken(){
 				
 				hilera.classList.add("theadInstructor")
 
-				divBotonEliminar.classList.add("btnJs")
 				divBotonEditar.classList.add("btnJs1")
+				divBotonEliminar.classList.add("btnJs")
+				
+
+				celdaUsuario.appendChild(divBotonEditar);
+				celdaEliminar.appendChild(divBotonEliminar);
+				hilera.appendChild(celdaUsuario);
+				hilera.appendChild(celdaEliminar);	
+			}
+			tabla.appendChild(tblBody);
+			// appends <table> into <body>
+			
+			body.appendChild(tabla);
+			// modifica el atributo "border" de la tabla y lo fija a "2";
+      
+      tabla.style.backgroundColor = "white";
+     
+	  		
     
       
 	////////////////////////////////////////////////////////		

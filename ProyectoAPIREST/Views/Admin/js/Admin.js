@@ -1,8 +1,8 @@
 
-
-window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
     var email = getCookie('email'); 
+window.addEventListener('load',(event) => {
+
 
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')
