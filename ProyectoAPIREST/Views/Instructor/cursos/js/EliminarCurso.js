@@ -135,7 +135,7 @@ function ValidacionInstructor(token){
             contenido_card.innerHTML += `<hr>`
 
             let duracion = document.createElement('h5');
-            duracion.innerText = "Duracion: " + Data[i].duración;
+            duracion.innerText = "Duracion: " + Data[i].duración +" minutos";
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
@@ -186,6 +186,21 @@ boton.addEventListener('click', () => {
 
 function eliminarLeccion(token){
     var url = "https://localhost:7076/api/MainLeccion/EliminarLeccion";
+    
+    fetch(url,{
+        method: "DELETE",
+        body: JSON.stringify(datos),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then().then(eliminarCarrito(token)
+        )
+}
+
+function eliminarCarrito(token){
+    var url = "https://localhost:7076/api/MainCarrito/EliminarCursosCarrito";
     
     fetch(url,{
         method: "DELETE",

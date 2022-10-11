@@ -146,6 +146,7 @@ function getCookie(cname) {
         `
         document.getElementById("foro").innerHTML=foro;
 
+
         let botonPreguntar = document.createElement("button");
         botonPreguntar.classList.add('btn');
         botonPreguntar.className += " btn btn-primary"

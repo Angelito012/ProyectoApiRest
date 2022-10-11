@@ -133,4 +133,5 @@ if(aleatorio === 0){
 }
 
 //MANEJO DE LOCALSTORAGE
+// localStorage.setItem("factura",1)
 var factura = localStorage.getItem('factura')
