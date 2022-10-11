@@ -6,14 +6,102 @@ body{
     font-family: 'Noto Sans JP', sans-serif;
 
 }
-
-.tablaEstado{
-    width: 90%;
-    max-width: 1200px;
-    margin: auto;
+.nombreClass,.nombreClass2{
+    
+    padding: 20px;
 }
+/*Tabla instructor*/
+.claseInstructor1,.claseInstructor{
+    
+    padding: 20px;
+}
+/*Tabla instructor*/
+.claseInstructor1{
+    background-color: #246355;
+    border-bottom: solid 5px #0F362D;
+    color: white;
+}
+.nombreClass2{
+    background-color: #246355;
+    border-bottom: solid 5px #0F362D;
+    color: white;
+}
+.theadJs:nth-child(even){
+    background-color: white
+}
+.theadJs:hover{
+    background-color: #369681;
+    color: white;
+}
+/*Tabla instructor*/
+.theadInstructor:nth-child(even){
+    background-color: #ddd
+}
+.theadInstructor:hover{
+    background-color: #369681;
+    color: white;
+}
+.tbalaInstructor{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+}
+.claseTabla{
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    width: 100%;
+    border-collapse: collapse;
+    
+   
+}
+.tableContainer{
+    table-layout: fixed;
+    margin: 15px auto;
+    width: fit-content;
+    border-collapse: collapse;
+}
+/*Tabla instructor*/
+.tableContainer2{
+    table-layout: fixed;
+    margin: auto;
+    width: fit-content;
+    border-collapse: collapse;
+}
+.btnJs,.btnJs1{
+    color: #0099CC;
 
+    background: transparent;
 
+    border: 2px solid #0099CC;
+
+    border-radius: 6px;
+
+    border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      display: inline-block;
+      font-size: 10px;
+      margin: 4px 2px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+
+      background-color: white; 
+      color: black; 
+      border: 2px solid #050505;
+}
+.btnJs:hover {
+    background-color: #e5cf2a;
+    color: rgb(121, 0, 0);
+}
+.btnJs1:hover{
+    background-color: #e5cf2a;
+    color: rgb(121, 0, 0);
+}
 .botones{
     font-family: 'Noto Sans JP', sans-serif;
     background-color: #000000;
