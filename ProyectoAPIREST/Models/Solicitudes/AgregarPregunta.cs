@@ -7,5 +7,7 @@
         public string Respuesta { get; set; } = null!;
         public int IdLeccion { get; set; }
         public int IdUsuario { get; set; }
+        public string? Estudiante { get; set; }
+        public string? Instructor { get; set; }
     }
 }

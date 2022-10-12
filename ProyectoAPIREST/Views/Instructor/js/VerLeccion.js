@@ -109,11 +109,11 @@ function getCookie(cname) {
             `
             <form>
             <div class="form-group">
-            <label>Pregunta por ${Data.preguntas[i].usuario}</label>
+            <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
             <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
             </div>
             <div class="form-group">
-            <label>Respuesta</label>
+            <label>Respuesta por ${Data.preguntas[i].instructor}</label>
             <textarea disabled id="comment" class="form-control">${Data.preguntas[i].respuesta}</textarea></label>
             </div>
             </form>
@@ -123,7 +123,7 @@ function getCookie(cname) {
             `
                 <form>
                 <div class="form-group">
-                <label>Pregunta por ${Data.preguntas[i].usuario}</label>
+                <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
                 <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
                 </div>
                 <div id="div-respuesta" class="form-group">
@@ -147,7 +147,7 @@ function getCookie(cname) {
             
             botonResponder.classList.add('btn');
             botonResponder.className += " btn btn-primary"
-            botonResponder.innerHTML = "Reponder a "+Data.preguntas[i].usuario;
+            botonResponder.innerHTML = "Reponder a "+Data.preguntas[i].estudiante;
 
             botonResponder.IdPregunta = Data.preguntas[i].idPregunta;
             
@@ -176,7 +176,9 @@ function Responder(idPregunta,token){
             duda: "",
             respuesta: document.getElementById("respuesta-"+idPregunta).value,
             idLeccion: 0,
-            idUsuario: 0
+            idUsuario: 0,
+            estudiante: "",
+            instructor: datos.nombre+" "+datos.apellido
         }
         ),
         headers:{

@@ -4,6 +4,9 @@ var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
 var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
 
+
+
+
 MostrarDatos();
 
 function getCookie(cname) {

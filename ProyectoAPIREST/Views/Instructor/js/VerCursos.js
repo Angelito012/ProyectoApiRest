@@ -102,7 +102,12 @@ function ValidacionInstructor(token){
             contenido_card.appendChild(duracion);
 
             let estado = document.createElement('h5');
-            estado.innerText = "Estado: " + Data[i].estado;
+            if(Data[i].estado == "A"){
+                var textoEstado = "Activo"
+            }else{
+                var textoEstado = "Inactivo"
+            }
+            estado.innerText = "Estado: " + textoEstado;
             estado.innerHTML += `<br><br>`;
             contenido_card.appendChild(estado);
 
