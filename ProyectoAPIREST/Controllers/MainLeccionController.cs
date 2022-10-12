@@ -101,31 +101,41 @@ namespace ProyectoAPIREST.Controllers
                 cmd.CommandText = "VERLECCIONPORID";
                 cmd.Parameters.Add("@LECCION", SqlDbType.Int).Value = leccionSol.IdLeccion;
                 SqlDataReader dr = cmd.ExecuteReader();
-  
-                while (dr.Read())
-                {
-                    SolicitudPregunta pregunta = new SolicitudPregunta();
-                    conpreguntas.IdLeccion = dr.GetInt32(0);
-                    conpreguntas.Nombre = dr.GetString(1);
-                    conpreguntas.Descripcion = dr.GetString(2);
-                    conpreguntas.Duración = dr.GetInt32(3);
-                    conpreguntas.Enlace = dr.GetString(4);
-                    var idLeccion = conpreguntas.Enlace.Split("=");
-                    conpreguntas.Enlace = idLeccion[1];
 
-                    if(! dr.IsDBNull(5))
-                    {
-                        pregunta.IdPregunta = dr.GetInt32(5);
-                        pregunta.Duda = dr.GetString(6);
-                        pregunta.usuario = dr.GetString(8);
-                        pregunta.Correo = dr.GetString(9);
-                        pregunta.Respuesta = dr.GetString(7);
-                        conpreguntas.preguntas.Add(pregunta);
-                    }
-                    
-                }
+                dr.Read();
+                conpreguntas.IdLeccion = dr.GetInt32(0);
+                conpreguntas.Nombre = dr.GetString(1);
+                conpreguntas.Descripcion = dr.GetString(2);
+                conpreguntas.Duración = dr.GetInt32(3);
+                conpreguntas.Enlace = dr.GetString(4);
+                var idLeccion = conpreguntas.Enlace.Split("=");
+                conpreguntas.Enlace = idLeccion[1];
                 conn.Close();
                 dr.Close();
+
+
+
+                SqlConnection con = new SqlConnection(conexion);
+                SqlCommand cmds = con.CreateCommand();
+                con.Open();
+                cmds.CommandType = CommandType.StoredProcedure;
+                cmds.CommandText = "VERPREGUNTASLECCIONPORID";
+                cmds.Parameters.Add("@LECCION", SqlDbType.Int).Value = leccionSol.IdLeccion;
+                SqlDataReader pr = cmds.ExecuteReader();
+                while(pr.Read())
+                    {
+                    SolicitudPregunta pregunta = new SolicitudPregunta();
+                    pregunta.IdPregunta = pr.GetInt32(0);
+                        pregunta.Estudiante = pr.GetString(1);
+                        pregunta.Duda = pr.GetString(2);
+                        pregunta.Instructor = pr.GetString(3);
+                        pregunta.Respuesta = pr.GetString(4);
+                        conpreguntas.preguntas.Add(pregunta);
+                    }
+                con.Close();
+                pr.Close();
+
+
             }
 
             return Ok(conpreguntas);
@@ -147,6 +157,8 @@ namespace ProyectoAPIREST.Controllers
                 cmd.Parameters.Add("@RESPUESTA", SqlDbType.NVarChar).Value = pregunta.Respuesta;
                 cmd.Parameters.Add("@LECCION", SqlDbType.Int).Value = pregunta.IdLeccion;
                 cmd.Parameters.Add("@USUARIO", SqlDbType.Int).Value = pregunta.IdUsuario;
+                cmd.Parameters.Add("@ESTUDIANTE", SqlDbType.NVarChar).Value = pregunta.Estudiante;
+                cmd.Parameters.Add("@INSTRUCTOR", SqlDbType.NVarChar).Value = pregunta.Instructor;
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -167,6 +179,7 @@ namespace ProyectoAPIREST.Controllers
                 cmd.CommandText = "CrearRespuesta";
                 cmd.Parameters.Add("@ID", SqlDbType.Int).Value = respuesta.IdPregunta;
                 cmd.Parameters.Add("@RESPUESTA", SqlDbType.VarChar).Value = respuesta.Respuesta;
+                cmd.Parameters.Add("@INSTRUCTOR", SqlDbType.VarChar).Value = respuesta.Instructor;
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }

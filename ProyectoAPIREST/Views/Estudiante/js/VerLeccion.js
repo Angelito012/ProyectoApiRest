@@ -110,11 +110,11 @@ function getCookie(cname) {
         `
             <form>
             <div class="form-group">
-            <label>Pregunta por ${Data.preguntas[i].usuario}</label>
+            <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
             <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
             </div>
             <div class="form-group">
-            <label>Respuesta</label>
+            <label>Respuesta por ${Data.preguntas[i].instructor}</label>
             <textarea disabled id="comment" class="form-control">${Data.preguntas[i].respuesta}</textarea></label>
             </div>
             </form>
@@ -124,7 +124,7 @@ function getCookie(cname) {
             `
                 <form>
                 <div class="form-group">
-                <label>Pregunta por ${Data.preguntas[i].usuario}</label>
+                <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
                 <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
                 </div>
                 <div class="form-group">
@@ -171,7 +171,9 @@ function Preguntar(token){
             duda: document.getElementById("pregunta").value,
             respuesta: "",
             idLeccion: datos.idLeccion,
-            idUsuario: datosEst.idUsuario
+            idUsuario: datosEst.idUsuario,
+            estudiante: datosEst.nombre+" "+datosEst.apellido,
+            instructor: ""
         }
         ),
         headers:{

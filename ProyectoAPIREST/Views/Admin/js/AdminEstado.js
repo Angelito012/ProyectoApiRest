@@ -166,7 +166,12 @@ function obtenerToken(){
 						var textoApelldio = document.createTextNode( Data[i].apellido);
 						var textoCorreo = document.createTextNode( Data[i].correo);
 						var textoTelefono = document.createTextNode( Data[i].telefono);
-						var textoEstado = document.createTextNode( Data[i].estado);
+						console.log(Data[i].estado)
+						if(Data[i].estado == "A"){
+							var textoEstado = document.createTextNode("Activo")
+						}else{
+							var textoEstado = document.createTextNode("Inactivo")
+						}
 						var textoRol = document.createTextNode( Data[i].rol);
 						
 						celdaID.appendChild(textoID);
