@@ -25,6 +25,21 @@ namespace ProyectoAPIREST.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetCursos")]
+
+        public ActionResult GetCursos()
+        {
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                var Curso = (from d in db.Cursos
+                               select d).ToList();
+                return Ok(Curso);
+            }
+        }
+
+
+
         [HttpDelete]
         [Route("EliminarUsuario")]
         public ActionResult EliminarUsuario(AutorizacionUsuarios usuario)
