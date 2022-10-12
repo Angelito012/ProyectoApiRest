@@ -22,8 +22,6 @@ namespace ProyectoAPIREST.Controllers
         {
             using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
-
-                
                     Models.Leccion leccion = new Models.Leccion();
                     leccion.IdCurso = modelo.IdCurso;
                     leccion.Nombre = modelo.Nombre;
