@@ -183,22 +183,29 @@ function obtenerToken(){
 
 				
 				tblBody.appendChild(hilera);
-        		celdaID.style.fontFamily = "sans-serif";
-				celdaNombre.style.fontFamily = "sans-serif";
-				celdaApelldio.style.fontFamily = "sans-serif";
-				celdaCorreo.style.fontFamily = "sans-serif";
-				celdaTelefono.style.fontFamily = "sans-serif";
-        		celdaEstado.style.fontFamily = "sans-serif";
-				celdaTarjeta.style.fontFamily = "sans-serif";
-				celdaNIT.style.fontFamily = "sans-serif";
+        		
 
 
-				body.style.borderCollapse = "collapse";
-
-						tabla.style.borderCollapse = "collapse";
-
-						hilera.style.background = "#e1fcfc";
-
+				tblBody.classList.add("claseTabla")
+				headTarjeta.classList.add("nombreClass2")
+				headID.classList.add("nombreClass2")
+				headNombre.classList.add("nombreClass2")
+				headApellido.classList.add("nombreClass2")
+				headCorreo.classList.add("nombreClass2")
+				headTelefono.classList.add("nombreClass2")
+				headEstado.classList.add("nombreClass2")
+				headNIT.classList.add("nombreClass2")
+				celdaID.classList.add("nombreClass")
+				celdaNombre.classList.add("nombreClass")
+				celdaApelldio.classList.add("nombreClass")
+				celdaCorreo.classList.add("nombreClass") 
+				celdaTelefono.classList.add("nombreClass") 
+				celdaEstado.classList.add("nombreClass") 
+				celdaTarjeta.classList.add("nombreClass")
+				celdaNIT.classList.add("nombreClass")
+				hilera.classList.add("theadJs")
+				
+				
 
 				document.getElementById("divLista").appendChild(divElement);
 
@@ -208,17 +215,9 @@ function obtenerToken(){
 			
 			body.appendChild(tabla);
 			// modifica el atributo "border" de la tabla y lo fija a "2";
-			tabla.setAttribute("color-background", "white");
-			tabla.setAttribute("border", "3");
-			tabla.setAttribute("align", "center");
-			tabla.setAttribute("text-shadow", "1px 1px 1px black");
-			tabla.setAttribute("class", "tablaUsuarios");
-			tabla.style.backgroundColor = "white";
-			tabla.style.color = "black";
-			tabla.style.margin = "25px 0";
-			tabla.style.fontSize = "23px";
-			tabla.style.fontFamily = "sans-serif";
-    
+			
+			
+
       
 	////////////////////////////////////////////////////////		
 // Crea un elemento <table> y un elemento <tbody>
