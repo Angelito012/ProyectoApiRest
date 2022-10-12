@@ -12,10 +12,7 @@ window.addEventListener('load',(event) => {
         location.href="../index.html";
     }
 
-    if(email != ""){
-        var h2 = document.getElementById('name');
-        h2.innerText = 'Bienvenido de nuevo ' + email
-    }
+
 
 })
 
@@ -93,6 +90,8 @@ function Get(token){
 }).then(function(Data){
     console.log(Data);
     for (let i = 0; i < Data.length; i++) {
+            var h2 = document.getElementById('name');
+            h2.innerText = 'Bienvenido de nuevo ' + rol +' '+Data[i].nombre + ' ' +Data[i].apellido
         let btnEditar = document.getElementById("btnIcono");
         btnEditar.Idusuario = Data[i].idUsuario
         btnEditar.Nombre = Data[i].nombre

@@ -159,7 +159,11 @@ function obtenerToken(){
 				var textoApelldio = document.createTextNode( Data[i].apellido);
 				var textoCorreo = document.createTextNode( Data[i].correo);
 				var textoTelefono = document.createTextNode( Data[i].telefono);
-				var textoEstado = document.createTextNode( Data[i].estado);
+				if(Data[i].estado == "A"){
+					var textoEstado = document.createTextNode("Activo")
+				}else{
+					var textoEstado = document.createTextNode("Inactivo")
+				}
 				var textoTarjeta = document.createTextNode( Data[i].tarjetaCredito);
 				var textoNIT = document.createTextNode( Data[i].nit);
 				

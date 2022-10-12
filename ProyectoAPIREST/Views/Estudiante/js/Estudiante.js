@@ -13,11 +13,6 @@ window.addEventListener('load',(event) => {
         location.href="../index.html";
     }
 
-    if(email != ""){
-        var h2 = document.getElementById('name');
-        h2.innerText = 'Bienvenido de nuevo ' + email
-    }
-
 
 })
 
@@ -70,6 +65,7 @@ function getCookie(cname) {
         console.log(Data.token);
         tokenValido = Data.token;
         Get(Data.token)
+
     })
   }
   function Get(token){
@@ -93,7 +89,13 @@ function getCookie(cname) {
       }
   }).then(function(Data){
       console.log(Data);
+    
+      
+     
+
       for (let i = 0; i < Data.length; i++) {
+        var h2 = document.getElementById('name');
+        h2.innerText = 'Bienvenido de nuevo ' + rol+' s'+Data[i].nombre +' '+Data[i].apellido
           let btnEditar = document.getElementById("btnIcono");
           btnEditar.Idusuario = Data[i].idUsuario
           btnEditar.Nombre = Data[i].nombre

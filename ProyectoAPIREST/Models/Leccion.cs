@@ -15,6 +15,8 @@ namespace ProyectoAPIREST.Models
         public string Descripcion { get; set; } = null!;
         public int Duración { get; set; } 
         public string Enlace { get; set; } = null!;
+
+        public int Orden { get; set; }
         public int IdCurso { get; set; }
 
         public virtual Curso IdCursoNavigation { get; set; } = null!;

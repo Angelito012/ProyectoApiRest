@@ -97,17 +97,22 @@ function ValidacionInstructor(token){
             contenido_card.appendChild(descripcion);
 
             let duracion = document.createElement('h5');
-            duracion.innerText = "Duracion: " + Data[i].duracion;
+            duracion.innerText = "Duracion: " + Data[i].duracion+" minutos";
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
             let estado = document.createElement('h5');
-            estado.innerText = "Estado: " + Data[i].estado;
+            if(Data[i].estado == "A"){
+                var textoEstado = "Activo"
+            }else{
+                var textoEstado = "Inactivo"
+            }
+            estado.innerText = "Estado: " + textoEstado;
             estado.innerHTML += `<br><br>`;
             contenido_card.appendChild(estado);
 
             let costo = document.createElement('h5');
-            costo.innerText = "Costo: " + Data[i].costo;
+            costo.innerText = "Costo: Q " + Data[i].costo;
             costo.innerHTML += `<br>`
             contenido_card.appendChild(costo);
 

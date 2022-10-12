@@ -34,7 +34,7 @@ function Datos(){
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
-    EliminarLeccion(tokenValido);
+    EliminarPregunta(tokenValido);
 })
 
 function obtenerToken(){
@@ -62,6 +62,21 @@ function obtenerToken(){
     })
 }
 
+function EliminarPregunta(token){
+    var url = "https://localhost:7076/api/MainLeccion/EliminarPregunta";
+    fetch(url, {
+        method: "DELETE",
+        body: JSON.stringify({ 
+            IdLeccion: leccion.Idleccion
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then().then(EliminarLeccion(token))
+}
+
 function EliminarLeccion(token){
     var url = "https://localhost:7076/api/Leccion/EliminarUnaLeccion";
     fetch(url, {
@@ -82,6 +97,6 @@ function EliminarLeccion(token){
         }
     }).then(function(Data){
         alert('Lección Eliminada')
-        location.href = '/Instructor/VerCursos.html';
+        location.href = '/Instructor/cursos/editarCurso.html';
     })
 }

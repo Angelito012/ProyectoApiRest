@@ -98,12 +98,12 @@ function obtenercursos(token){
             contenido_card.appendChild(descripcion);
 
             let duracion = document.createElement('h5');
-            duracion.innerText = "Duracion: " + Data[i].duracion;
+            duracion.innerText = "Duracion: " + Data[i].duracion+" minutos";
             duracion.innerHTML += `<br><br>`;
             contenido_card.appendChild(duracion);
 
             let precio = document.createElement('h5');
-            precio.innerText = "Precio: " + Data[i].costo;
+            precio.innerText = "Precio: Q" + Data[i].costo;
             precio.innerHTML += `<br>`
             contenido_card.appendChild(precio);
 

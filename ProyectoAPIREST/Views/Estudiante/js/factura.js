@@ -6,7 +6,9 @@ var tablaDetalle = document.getElementById('tablaDetalle');
 var detalle = document.getElementById('tablaDetalle');
 var foot = document.querySelector('tfoot');
 var email = getCookie('email'); 
+
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+
 
 //COOKIES
 function getCookie(cname) {
@@ -135,4 +137,5 @@ if(aleatorio === 0){
 }
 
 //MANEJO DE LOCALSTORAGE
+// localStorage.setItem("factura",1)
 var factura = localStorage.getItem('factura')

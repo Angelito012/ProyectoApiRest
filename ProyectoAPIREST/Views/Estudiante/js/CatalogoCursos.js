@@ -26,6 +26,7 @@ var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
 
+document.getElementById('rb2').checked=true
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
@@ -184,12 +185,12 @@ function obtenercursos(token){
                     contenido_card.appendChild(descripcion);
         
                     let duracion = document.createElement('h5');
-                    duracion.innerText = "Duracion: " + Data[i].duracion;
+                    duracion.innerText = "Duracion: " + Data[i].duracion +" Minutos";
                     duracion.innerHTML += `<br><br>`;
                     contenido_card.appendChild(duracion);
         
                     let precio = document.createElement('h5');
-                    precio.innerText = "Precio: " + Data[i].precio;
+                    precio.innerText = "Precio: Q" + Data[i].precio;
                     precio.innerHTML += `<br>`
                     contenido_card.appendChild(precio);
         
