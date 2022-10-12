@@ -1,9 +1,7 @@
-
+var rol = getCookie('rol');
+var email = getCookie('email'); 
 
 window.addEventListener('load',(event) => {
-    var rol = getCookie('rol');
-    var email = getCookie('email'); 
-
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')
         location.href="../index.html";
@@ -11,8 +9,6 @@ window.addEventListener('load',(event) => {
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
     }
-
-
 
 })
 

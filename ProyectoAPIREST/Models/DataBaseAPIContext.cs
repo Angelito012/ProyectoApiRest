@@ -26,18 +26,14 @@ namespace ProyectoAPIREST.Models
 
         public string connectionString()
         {
-
             return "Server=ERICKKDANIEL;Database=DataBaseAPI;user=prueba;password=daniel1234;";
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-
                 optionsBuilder.UseSqlServer("Server=ERICKKDANIEL;Database=DataBaseAPI;user=prueba;password=daniel1234;");
-
             }
         }
 
@@ -162,5 +158,6 @@ namespace ProyectoAPIREST.Models
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
-
 //"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678"
+//"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DBAPIREST;user=PlusTi;password=12345678"
+

@@ -1,8 +1,9 @@
 var datos = JSON.parse(localStorage.getItem('curso'));
-
 var leccion = JSON.parse(localStorage.getItem('leccion'));
 console.log(leccion.Idleccion)
 var email = getCookie('email');
+var totalEstudiante = 0;
+var tokenValido;
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -34,8 +35,36 @@ function Datos(){
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
-    EliminarPregunta(tokenValido);
+    if(totalEstudiante > 0){
+        alert('No se puede eliminar esta leccion porque el curso ya ha sido comprado por ' + totalEstudiante + " estudiantes")
+    }else{
+        EliminarPregunta(tokenValido);
+    }
 })
+
+function validarCurso(token){
+    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    fetch(url,{
+        method: "POST",
+        body: JSON.stringify({
+            idCurso: datos.Idcurso,
+            nombre: "string",
+            descripcion: "string",
+            duracion: 0,
+            costo: 0,
+            estado: "string"
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type":"application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        return response.json();
+    }).then(function(Data){
+        totalEstudiante = Data
+    })
+}
 
 function obtenerToken(){
     var url = "https://localhost:7076/api/Autenticacion/Validar";
@@ -59,6 +88,7 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        validarCurso(tokenValido);
     })
 }
 

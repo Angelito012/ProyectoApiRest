@@ -91,6 +91,7 @@ function obtenerToken(){
 					var tabla   = document.createElement("table");
 					var tblBody = document.createElement("tbody");
 					var hilera = document.createElement("tr")
+
 					var headID = document.createElement("th")
 					var headNombre = document.createElement("th")
 					var headApellido = document.createElement("th")
@@ -98,6 +99,11 @@ function obtenerToken(){
 					var headTelefono = document.createElement("th")
 					var headEstado = document.createElement("th")
 					var headRol = document.createElement("th")
+					var btnHabilitar = document.createElement("th")
+
+					var btnEliminar = document.createElement("th")
+					btnEliminar.colSpan= "2";
+
 					var textoID = document.createTextNode( "ID");
 					var textoNombre = document.createTextNode( "Nombre");
 					var textoApellido = document.createTextNode( "Apellido");
@@ -105,6 +111,7 @@ function obtenerToken(){
 					var textoTelefono = document.createTextNode( "Telefono");
 					var textoEstado = document.createTextNode("Estado");
 					var textoRol = document.createTextNode("Rol");
+
 					headID.appendChild(textoID);
 					headNombre.appendChild(textoNombre)
 					headApellido.appendChild(textoApellido)
@@ -113,16 +120,11 @@ function obtenerToken(){
 					headEstado.appendChild(textoEstado)
 					headRol.appendChild(textoRol)
 					
-					//headID.classList.add("")
-					//clase para darle estilo a la tabla
+					
 
-					headID.style.fontSize = 'x-large';
-					headNombre.style.fontSize = "x-large";
-					headApellido.style.fontSize = "x-large";
-					headCorreo.style.fontSize = "x-large";
-					headTelefono.style.fontSize = "x-large";
-					headEstado.style.fontSize = "x-large";
-					headRol.style.fontSize = "x-large";
+				
+
+					
 
 					hilera.appendChild(headID);
 					hilera.appendChild(headNombre);
@@ -131,6 +133,7 @@ function obtenerToken(){
 					hilera.appendChild(headTelefono);
 					hilera.appendChild(headEstado);
 					hilera.appendChild(headRol);
+					hilera.appendChild(btnEliminar);
 					tblBody.appendChild(hilera);
 					for(i=0;i < Data.length;i++){
 						let divElement = document.createElement("div");
@@ -170,6 +173,7 @@ function obtenerToken(){
 							var textoEstado = document.createTextNode("Inactivo")
 						}
 						var textoRol = document.createTextNode( Data[i].rol);
+						
 						celdaID.appendChild(textoID);
 						celdaNombre.appendChild(textoNombre)
 						celdaApelldio.appendChild(textoApelldio)
@@ -187,68 +191,23 @@ function obtenerToken(){
 						tblBody.appendChild(hilera);
 						
 
-						
-						
-						hilera.style.borderCollapse = "collapse";
-
-						
-						headCorreo.style.width = "150";
-						body.style.borderCollapse = "collapse";
-
-						tabla.style.borderCollapse = "collapse";
-
-						hilera.style.background = "#e1fcfc";
-						
-						
-						tblBody.style.borderCollapse = "collapse";
-
-
-						celdaID.style.fontFamily = "sans-serif";
-						celdaNombre.style.fontFamily = "sans-serif";
-						celdaApelldio.style.fontFamily = "sans-serif";
-						celdaCorreo.style.fontFamily = "sans-serif";
-						celdaTelefono.style.fontFamily = "sans-serif";
-						celdaEstado.style.fontFamily = "sans-serif";
-						celdaRol.style.fontFamily = "sans-serif";
-						celdaEstado.style.textAlign = "center";
-
-						celdaID.style.fontSize = 'x-large';
-						celdaNombre.style.fontSize = "x-large";
-						celdaApelldio.style.fontSize = "x-large";
-						celdaCorreo.style.fontSize = "x-large";
-						celdaTelefono.style.fontSize = "x-large";
-						celdaEstado.style.fontSize = "x-large";
-						celdaRol.style.fontSize = "x-large";
-
-
-
-
-
-
+				var divBotonEliminar = document.createElement("button");
+				var divBotonEditar = document.createElement("button");
 				
-				let divBotonEliminar = document.createElement("button");
-				let divBotonEditar = document.createElement("button");
-				celdaUsuario.appendChild(divBotonEditar);
-				celdaEliminar.appendChild(divBotonEliminar);				
-				hilera.appendChild(celdaUsuario);
-				hilera.appendChild(celdaEliminar);
+				
 
 				document.getElementById("divLista").appendChild(divElement);
 				if(Data[i].estado === 'A'){
 					divBotonEditar.innerHTML = "Habilitado";
-					divBotonEditar.style.backgroundColor = 'white';
-					divBotonEditar.style.color = "green"
+					
 				}else{
 					divBotonEditar.innerHTML = "Inhabilitado";
-					divBotonEditar.style.backgroundColor = 'white';
-					divBotonEditar.style.color = "red"
+					
 				}
 				divBotonEditar.MiID = Data[i].idUsuario;
                 divBotonEditar.Estado = Data[i].estado;
-        		divBotonEditar.style.fontFamily = "sans-serif";
-				divBotonEditar.style.fontSize = "x-large";
-				divBotonEditar.style.width = '150px';
-				divBotonEditar.style.borderBlockColor = 'white';
+
+
 				divBotonEditar.style.cursor = 'pointer';
 				divBotonEditar.addEventListener("click",function(mibutton){
 					console.log(mibutton.target.MiID,mibutton.target.Estado);
@@ -260,12 +219,10 @@ function obtenerToken(){
 				})
 				divBotonEliminar.Correo = Data[i].correo;
 				divBotonEliminar.innerHTML = "Eliminar";
-				divBotonEliminar.style.fontFamily = "sans-serif";
-				divBotonEliminar.style.fontSize = "x-large";
-				divBotonEliminar.style.width = '150px';
-				divBotonEliminar.style.backgroundColor = 'white';
-				divBotonEliminar.style.borderBlockColor = 'white';
-				divBotonEliminar.style.color = 'red';
+
+				
+
+				
 				divBotonEliminar.style.cursor = 'pointer';
 				divBotonEliminar.addEventListener("click",function(mibutton){
 					Delete(mibutton.target.Correo,
@@ -273,24 +230,48 @@ function obtenerToken(){
 						);
 				})
 
+
+				tblBody.classList.add("tbalaInstructor")
+				
+				headID.classList.add("claseInstructor1")
+				headNombre.classList.add("claseInstructor1")
+				headApellido.classList.add("claseInstructor1")
+				headCorreo.classList.add("claseInstructor1")
+				headTelefono.classList.add("claseInstructor1")
+				headEstado.classList.add("claseInstructor1")
+				headRol.classList.add("claseInstructor1")
+
+				btnEliminar.classList.add("claseInstructor1")
+
+				celdaID.classList.add("claseInstructor")
+				celdaNombre.classList.add("claseInstructor")
+				celdaApelldio.classList.add("claseInstructor")
+				celdaCorreo.classList.add("claseInstructor") 
+				celdaTelefono.classList.add("claseInstructor") 
+				celdaEstado.classList.add("claseInstructor") 
+				celdaRol.classList.add("claseInstructor") 
+
+				
+				hilera.classList.add("theadInstructor")
+
+				divBotonEditar.classList.add("btnJs1")
+				divBotonEliminar.classList.add("btnJs")
+				
+
+				celdaUsuario.appendChild(divBotonEditar);
+				celdaEliminar.appendChild(divBotonEliminar);
+				hilera.appendChild(celdaUsuario);
+				hilera.appendChild(celdaEliminar);	
 			}
 			tabla.appendChild(tblBody);
 			// appends <table> into <body>
 			
 			body.appendChild(tabla);
 			// modifica el atributo "border" de la tabla y lo fija a "2";
-      tabla.setAttribute("color-background", "white");
-      tabla.setAttribute("border", "3");
-			tabla.setAttribute("align", "center");
-      tabla.setAttribute("text-shadow", "1px 1px 1px black");
-      tabla.setAttribute("class", "tablaUsuarios");
+      
       tabla.style.backgroundColor = "white";
-      tabla.style.color = "black";
-	  tabla.style.margin = "auto";
-      tabla.style.margin = "25px 40px";
-      tabla.style.fontSize = "0.9em";
-      tabla.style.fontFamily = "sans-serif";
-	  
+     
+	  		
     
       
 	////////////////////////////////////////////////////////		
