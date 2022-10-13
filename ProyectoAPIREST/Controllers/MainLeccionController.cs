@@ -38,6 +38,7 @@ namespace ProyectoAPIREST.Controllers
                     leccion.Descripcion = dr.GetString(2);
                     leccion.Duración = dr.GetInt32(3);
                     leccion.Enlace = dr.GetString(4);
+                    leccion.Orden = dr.GetInt32(5);
                     lecciones.Add(leccion);
                 }
                 conn.Close();
