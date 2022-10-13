@@ -212,20 +212,29 @@ function obtenerToken(){
 				tblBody.appendChild(hilera);
 
 				
-				body.style.borderCollapse = "collapse";
+				tblBody.classList.add("tbalaInstructor")
+				
+				headID.classList.add("claseInstructor1")
+				headNombre.classList.add("claseInstructor1")
+				headApellido.classList.add("claseInstructor1")
+				headCorreo.classList.add("claseInstructor1")
+				headTelefono.classList.add("claseInstructor1")
+				headEstado.classList.add("claseInstructor1")
+				headBanco.classList.add("claseInstructor1")
+				headTipo.classList.add("claseInstructor1")
+				headNumenro.classList.add("claseInstructor1")
 
-						tabla.style.borderCollapse = "collapse";
-
-						hilera.style.background = "#e1fcfc";
-        		celdaID.style.fontFamily = "sans-serif";
-				celdaNombre.style.fontFamily = "sans-serif";
-				celdaApelldio.style.fontFamily = "sans-serif";
-				celdaCorreo.style.fontFamily = "sans-serif";
-				celdaTelefono.style.fontFamily = "sans-serif";
-        		celdaEstado.style.fontFamily = "sans-serif";
-				celdaBanco.style.fontFamily = "sans-serif";
-				celdaTipo.style.fontFamily = "sans-serif";
-				celdaCuenta.style.fontFamily = "sans-serif";
+				celdaID.classList.add("claseInstructor")
+				celdaNombre.classList.add("claseInstructor")
+				celdaApelldio.classList.add("claseInstructor")
+				celdaCorreo.classList.add("claseInstructor") 
+				celdaTelefono.classList.add("claseInstructor") 
+				celdaEstado.classList.add("claseInstructor") 
+				celdaBanco.classList.add("claseInstructor") 
+				celdaCuenta.classList.add("claseInstructor") 
+				celdaTipo.classList.add("claseInstructor") 
+				
+				hilera.classList.add("theadInstructor")
 
 			}
 			tabla.appendChild(tblBody);
@@ -233,16 +242,13 @@ function obtenerToken(){
 			
 			body.appendChild(tabla);
 			// modifica el atributo "border" de la tabla y lo fija a "2";
-      tabla.setAttribute("color-background", "white");
-      tabla.setAttribute("border", "3");
-			tabla.setAttribute("align", "center");
-      tabla.setAttribute("text-shadow", "1px 1px 1px black");
-      tabla.setAttribute("class", "tablaUsuarios");
+     
+     
+		
+      
+      
       tabla.style.backgroundColor = "white";
-      tabla.style.color = "black";
-      tabla.style.margin = "25px 0";
-      tabla.style.fontSize = "23px";
-      tabla.style.fontFamily = "sans-serif";
+      
     
       
 	////////////////////////////////////////////////////////		

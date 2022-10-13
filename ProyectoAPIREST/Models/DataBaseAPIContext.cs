@@ -162,5 +162,6 @@ namespace ProyectoAPIREST.Models
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }
-
 //"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678"
+//"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DBAPIREST;user=PlusTi;password=12345678"
+
