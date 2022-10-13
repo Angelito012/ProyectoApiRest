@@ -12,7 +12,7 @@ a{
 
 
 .factura{
-    width: 60%;
+    width: 70%;
     min-width: 350px;
     padding-bottom: 0%;
     border: 0ch;
@@ -32,7 +32,7 @@ a{
 .headerfact{
     width: 100%;
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 33% 33% 33%;
     background-color: #f7f7f7;
 }
 
@@ -93,16 +93,30 @@ a{
 }
 
 label{
-    padding: 10px;
+    padding-bottom: 20px;
+    margin: 0%;
     color: #aaa;
 }
 
-.total{
-    padding-left: 50px;
+.idCurso{
+    margin-left: 30px;
+}
+
+.correo{
+    padding-left: 0px;
+    margin-left: 42px;
+}
+
+.estudiantes{
+    margin-left: 0%;
 }
 
 .fecha{
     padding-left: 17px;
+}
+
+.total{
+    margin-left: 28px;
 }
 
 .detalle{
@@ -160,6 +174,10 @@ label{
     color: var(--main);
 }
 
+input{
+    width: 200px;
+}
+
 @media only screen and (min-width:0px) and (max-width:750px){
     .factura{
         width: 100%;
@@ -175,7 +193,7 @@ label{
     }
 
     .total{
-        padding-left: 45px;
+        padding-left: 35px;
     }
 
     .cliente{
