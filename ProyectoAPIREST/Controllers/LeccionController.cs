@@ -3,10 +3,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using ProyectoAPIREST.Models;
+using ProyectoAPIREST.Models.Solicitudes;
 using System.Data;
+using System.Reflection.PortableExecutable;
 
 namespace ProyectoAPIREST.Controllers
 {
+    public class modIndex
+    {
+        public int curso { get; set; }
+        public int index { get; set; }
+    }
+
     [Route("api/[controller]")]
     [Authorize]
     [ApiController]
@@ -25,6 +33,7 @@ namespace ProyectoAPIREST.Controllers
                     leccion.Duración = modelo.Duración;
                     leccion.Enlace = modelo.Enlace;
                     leccion.IdLeccion = modelo.IdLeccion;
+                    leccion.Orden = modelo.Orden;
 
                     db.Leccions.Add(leccion);
                     db.SaveChanges();
@@ -60,6 +69,7 @@ namespace ProyectoAPIREST.Controllers
                 leccion.Descripcion = modelo.Descripcion;
                 leccion.Duración = modelo.Duración;
                 leccion.Enlace = modelo.Enlace;
+                leccion.Orden = modelo.Orden;
 
                 db.Entry(leccion).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 db.SaveChanges();
@@ -94,5 +104,60 @@ namespace ProyectoAPIREST.Controllers
             return Ok("Se elimino la leccion correctamente");
         }
 
+        [HttpPost]
+        [Route("ValidarIndex")]
+        public ActionResult ValidarIndex(modIndex modelo)
+        {
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "VALIDARINDEX";
+                cmd.Parameters.Add("@CURSO", SqlDbType.Int).Value = modelo.curso;
+                cmd.Parameters.Add("@ORDEN", SqlDbType.Int).Value = modelo.index;
+                SqlDataReader dr = cmd.ExecuteReader();
+                int contador = 0;
+
+                while (dr.Read())
+                {
+                    contador++;
+                }
+
+                conn.Close();
+                dr.Close();
+
+                if (contador == 0)
+                {
+                    return Ok("Index libre");
+                }
+                else
+                {
+                    return Ok("Index Ocupado");
+                }
+            }
+        }
+
+        [HttpPost]
+        [Route("ModificarIndex")]
+        public ActionResult ModificarIndex(modIndex modelo)
+        {
+            using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd2 = conn.CreateCommand();
+                conn.Open();
+                cmd2.CommandType = CommandType.StoredProcedure;
+                cmd2.CommandText = "MODIFICARORDEN";
+                cmd2.Parameters.Add("@CURSO", SqlDbType.Int).Value = modelo.curso;
+                cmd2.Parameters.Add("@ORDEN", SqlDbType.Int).Value = modelo.index;
+                cmd2.ExecuteNonQuery();
+                conn.Close();
+                return Ok("Orden Modificado");
+            } 
+        }
     }
 }

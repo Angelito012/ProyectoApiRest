@@ -8,5 +8,6 @@
         public int Duración { get; set; }
         public string Enlace { get; set; } = null!;
         public int IdCurso { get; set; }
+        public int Orden { get; set; }
     }
 }
