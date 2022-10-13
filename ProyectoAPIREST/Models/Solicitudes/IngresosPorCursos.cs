@@ -16,5 +16,6 @@
 
         public DateTime? Fecha { get; set; }
 
+        public int IdUsuario { get; set; }
     }
 }

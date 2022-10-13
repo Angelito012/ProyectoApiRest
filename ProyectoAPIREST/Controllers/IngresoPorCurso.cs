@@ -47,7 +47,7 @@ namespace ProyectoAPIREST.Controllers
                 while (dr.Read())
                 {
                     IngresosPorCursos list = new IngresosPorCursos();
-                    list.idCurso = dr.GetInt32(0);
+                    list.IdUsuario = dr.GetInt32(0);
                     list.nombre = dr.GetString(1);
                     list.correo = dr.GetString(2);
                     list.Fecha = dr.GetDateTime(3);
