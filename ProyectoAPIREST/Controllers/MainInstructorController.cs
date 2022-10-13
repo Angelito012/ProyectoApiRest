@@ -33,14 +33,18 @@ namespace ProyectoAPIREST.Controllers
 
                 while (dr.Read())
                 {
-                    SolicitudCurso curso = new SolicitudCurso();
-                    curso.IdCurso = dr.GetInt32(0);
-                    curso.Nombre = dr.GetString(1);
-                    curso.Descripcion = dr.GetString(2);
-                    curso.Duracion = dr.GetInt32(3);
-                    curso.Costo = dr.GetDouble(4);
-                    curso.Estado = dr.GetString(5);
-                    cursos.Add(curso);
+                    if(dr.GetString(5) == "A")
+                    {
+                        SolicitudCurso curso = new SolicitudCurso();
+                        curso.IdCurso = dr.GetInt32(0);
+                        curso.Nombre = dr.GetString(1);
+                        curso.Descripcion = dr.GetString(2);
+                        curso.Duracion = dr.GetInt32(3);
+                        curso.Costo = dr.GetDouble(4);
+                        curso.Estado = dr.GetString(5);
+                        cursos.Add(curso);
+                    }
+                   
                 }
                 conn.Close();
                 dr.Close();

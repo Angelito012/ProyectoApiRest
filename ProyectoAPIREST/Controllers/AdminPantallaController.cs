@@ -32,6 +32,24 @@ namespace ProyectoAPIREST.Controllers
         public string Estado { get; set; }
     }
 
+    public class SolicitudCursosGetProfesor
+    {
+        public int idCurso { get; set; }
+
+        public string Nombre { get; set; }
+
+        public string Descripcion { get; set; }
+
+        public int Duracion { get; set; }
+
+        public double? Costo { get; set; }
+        public double? Precio { get; set; }
+        public string Estado { get; set; }
+
+        public string Profesor { get; set; }
+    }
+
+
 
     [Route("api/[controller]")]
     [Authorize]
@@ -43,12 +61,34 @@ namespace ProyectoAPIREST.Controllers
 
         public ActionResult GetCursosCompletos()
         {
+            List<SolicitudCursosGetProfesor> getCursos = new List<SolicitudCursosGetProfesor>();
             using (Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
             {
-                var curso = (from d in db.Cursos
-                               select d).ToList();
-                return Ok(curso);
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "VerCursosCom";
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    SolicitudCursosGetProfesor curso = new SolicitudCursosGetProfesor();
+                    curso.idCurso = dr.GetInt32(0);
+                    curso.Nombre = dr.GetString(1);
+                    curso.Descripcion = dr.GetString(2);
+                    curso.Duracion = dr.GetInt32(3);
+                    curso.Costo = dr.GetDouble(4);
+                    curso.Precio = dr.GetDouble(5);
+                    curso.Estado = dr.GetString(6);
+                    curso.Profesor = dr.GetString(7);
+                    getCursos.Add(curso);
+                }
+                conn.Close();
+                dr.Close();
             }
+            return Ok(getCursos);
         }
 
 
@@ -77,7 +117,7 @@ namespace ProyectoAPIREST.Controllers
                 SqlCommand cmd = conn.CreateCommand();
                 conn.Open();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "CursosNoCompradosAdmin";
+                cmd.CommandText = "verCursosAdmin";
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 while (dr.Read())
