@@ -17,11 +17,48 @@ namespace ProyectoAPIREST.Controllers
         public string curso { get; set; }
     }
 
+    public class SolicitudListado
+    {
+        public int idCurso { get; set; }
+    }
+
     [Route("api/[controller]")]
     //[Authorize]
     [ApiController]
     public class IngresoPorCurso : ControllerBase
     {
+        [HttpPost]
+        [Route("ListadoEstudiantes")]
+
+        public ActionResult ListadoEstudiantes(SolicitudListado curso)
+        {
+            List<IngresosPorCursos> ingresosPorCursos = new List<IngresosPorCursos>();
+            using(Models.DataBaseAPIContext db = new Models.DataBaseAPIContext())
+            {
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "listaEstudiantes";
+                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = curso.idCurso;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    IngresosPorCursos list = new IngresosPorCursos();
+                    list.IdUsuario = dr.GetInt32(0);
+                    list.nombre = dr.GetString(1);
+                    list.correo = dr.GetString(2);
+                    list.Fecha = dr.GetDateTime(3);
+                    ingresosPorCursos.Add(list);
+                }
+                conn.Close();
+                dr.Close();
+            }
+            return Ok(ingresosPorCursos);
+        }
+
         [HttpPost]
         [Route("IngresoCursoProfesor")]
         public ActionResult INGRESOCURSOPROFESOR(SolicitudProfesor profesor)

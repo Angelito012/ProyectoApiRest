@@ -27,7 +27,7 @@ function getCookie(cname) {
 }
 
 //OBTENER TOKEN
-// obtenerToken();
+obtenerToken();
 
 function obtenerToken(){
     var url = "https://localhost:7076/api/Autenticacion/Validar";
@@ -51,12 +51,12 @@ function obtenerToken(){
 }
 
 function leerEstudiantes(token){
-    var url = "https://localhost:7076/api/controller/VerFactura";
+    var url = "https://localhost:7076/api/IngresoPorCurso/ListadoEstudiantes";
 
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
-            noFactura: factura
+            idCurso: factura.idCurso
         }),
         headers:{
             'Accept' : "application/json",
@@ -70,12 +70,31 @@ function leerEstudiantes(token){
             aleatorio('Numero de factura no valido')
         }
     }).then(function(Data){
-        for(i=0; i<Data.detalle.length; i++){
+        console.log(Data)
+        for(i=0; i<Data.length; i++){
             let fila = document.createElement('tr');
+            let Cno = document.createElement('td');
             let Ccodigo = document.createElement('td');
             let CNombre = document.createElement('td');
             let Ccorreo = document.createElement('td');
             let Cfecha = document.createElement('td');
+
+            Cno.innerText = i + 1;
+            fila.appendChild(Cno);
+
+            Ccodigo.innerText = Data[i].idUsuario;
+            fila.appendChild(Ccodigo);
+
+            CNombre.innerText = Data[i].nombre;
+            fila.appendChild(CNombre);
+
+            Ccorreo.innerText = Data[i].correo;
+            fila.appendChild(Ccorreo);
+
+            Cfecha.innerText = Data[i].fecha;
+            fila.appendChild(Cfecha);
+
+            tablaDetalle.appendChild(fila);
         }
     })
 }

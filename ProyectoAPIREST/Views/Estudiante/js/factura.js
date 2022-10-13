@@ -6,6 +6,10 @@ var tablaDetalle = document.getElementById('tablaDetalle');
 var detalle = document.getElementById('tablaDetalle');
 var foot = document.querySelector('tfoot');
 var email = getCookie('email'); 
+
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+
+
 //COOKIES
 function getCookie(cname) {
     let name = cname + "=";

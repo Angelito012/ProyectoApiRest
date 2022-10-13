@@ -173,7 +173,11 @@ function obtenerToken(){
 				var textoApelldio = document.createTextNode( Data[i].apellido);
 				var textoCorreo = document.createTextNode( Data[i].correo);
 				var textoTelefono = document.createTextNode( Data[i].telefono);
-				var textoEstado = document.createTextNode( Data[i].estado);
+				if(Data[i].estado == "A"){
+					var textoEstado = document.createTextNode("Activo")
+				}else{
+					var textoEstado = document.createTextNode("Inactivo")
+				}
 				var textoBanco = document.createTextNode( Data[i].nombreBanco);
 				var textoTipo = document.createTextNode( Data[i].tipoCuenta);
 				var textoCuenta = document.createTextNode( Data[i].noCuenta);
