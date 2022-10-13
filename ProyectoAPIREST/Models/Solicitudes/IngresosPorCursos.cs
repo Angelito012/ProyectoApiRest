@@ -12,5 +12,9 @@
         public double TotalProfesor { get; set; }
         public double totalVenta { get; set; }
         public double ganancia { get; set; }
+        public string nombre { get; set; }
+
+        public DateTime? Fecha { get; set; }
+
     }
 }
