@@ -27,7 +27,6 @@ namespace ProyectoAPIREST.Models
         public string connectionString()
         {
             return "Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678";
-
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
