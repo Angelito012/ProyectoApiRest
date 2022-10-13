@@ -126,14 +126,20 @@ namespace ProyectoAPIREST.Controllers
 
                 while (dr.Read())
                 {
-                    BusquedaCurso curso = new BusquedaCurso();
-                    curso.IdCurso = dr.GetInt32(0);
-                    curso.Nombre = dr.GetString(1);
-                    curso.Descripcion = dr.GetString(2);
-                    curso.Duracion = dr.GetInt32(3);
-                    curso.Precio = dr.GetDouble(4);
-                    curso.Estado = dr.GetString(5);
-                    BusquedaCursos.Add(curso);
+                    if(dr.GetString(5) == "A")
+                    {
+                        BusquedaCurso curso = new BusquedaCurso();
+                        curso.IdCurso = dr.GetInt32(0);
+                        curso.Nombre = dr.GetString(1);
+                        curso.Descripcion = dr.GetString(2);
+                        curso.Duracion = dr.GetInt32(3);
+                        curso.Precio = dr.GetDouble(4);
+                        curso.Estado = dr.GetString(5);
+                        BusquedaCursos.Add(curso);
+
+                    }
+
+                    
                 }
                 conn.Close();
                 dr.Close();
@@ -160,14 +166,18 @@ namespace ProyectoAPIREST.Controllers
 
                 while (dr.Read())
                 {
-                    BusquedaCurso curso = new BusquedaCurso();
-                    curso.IdCurso = dr.GetInt32(0);
-                    curso.Nombre = dr.GetString(1);
-                    curso.Descripcion = dr.GetString(2);
-                    curso.Duracion = dr.GetInt32(3);
-                    curso.Precio = dr.GetDouble(4);
-                    curso.Estado = dr.GetString(5);
-                    BusquedaCursos.Add(curso);
+                    if(dr.GetString(5) == "A")
+                    {
+                        BusquedaCurso curso = new BusquedaCurso();
+                        curso.IdCurso = dr.GetInt32(0);
+                        curso.Nombre = dr.GetString(1);
+                        curso.Descripcion = dr.GetString(2);
+                        curso.Duracion = dr.GetInt32(3);
+                        curso.Precio = dr.GetDouble(4);
+                        curso.Estado = dr.GetString(5);
+                        BusquedaCursos.Add(curso);
+                    }
+                    
                 }
                 conn.Close();
                 dr.Close();
