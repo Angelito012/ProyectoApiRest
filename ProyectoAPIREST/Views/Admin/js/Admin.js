@@ -12,8 +12,6 @@ window.addEventListener('load',(event) => {
 
 })
 
-
-
 var btnLogout = document.getElementById('btnLogout');
 
 btnLogout.addEventListener('click',salir);
