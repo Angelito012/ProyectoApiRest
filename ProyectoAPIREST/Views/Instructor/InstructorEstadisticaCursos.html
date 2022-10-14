@@ -4,62 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
     <link rel="stylesheet" type="text/css" href="css/estilos.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="stylesheet" href="css/menuLateral.css">
 	<link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="css/styles.css">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Noto+Sans+JP&display=swap" rel="stylesheet">
-
-
-
+    <title>Estadisticas</title>
 </head>
 <body>
-	<header class="header">
+    <header class="header">
 		<div class="container">
 		<div class="btn-menu">
 			<label for="btn-menu" class="icon-menu"></label>
 		</div>
 			<div class="logo">
-				<h1>MENU PRINCIPAL ADMINISTRADOR</h1>
+				<h1>MENU PRINCIPAL INSTRUCTOR</h1>
 			</div>
 		</div>
-	</header>
-
-	<div class="capa"></div>
+    </div>
     <div class="title-cards">
-		<h2 id="name"></h2>
-        <img src="../images/admin.png" width:"20px";
-		height:"20px">
-	</div>
+        <h1>Estadistica Cursos</h1>
+    </div>
+    <div class="container-card" id="contenedor">
+    </div>
+	</header>
+    <div class="capa"></div>
     <input type="checkbox" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="../Admin/Admin.html">Inicio</a>
-                <a href="../Admin/AdminVerEstudiante.html">Ver Estudiantes</a>
-                <a href="../Admin/AdminVerInstructor.html">Ver Instructores</a>
-                <a href="../Admin/AdminVerCursos.html">Ver Cursos</a>
-                <a href="../Admin/AdminEditarEstado.html">Habilitar/Deshabilitar Usuarios</a>
-                <a href="../Admin/AdminEstadoCursos.html">Habilitar/Deshabilitar Cursos</a>
-                <a href="../Admin/AdminEstadisticaCursos.html">Estadistica Curso</a>
-                <a href="../Admin/AdminReporteEstudiante.html">Reporte de Estudiantes</a>
+                <a href="../Instructor/MenuInstructor.html">Inicio</a>			
+                <a href="../Instructor/cursos/crearCurso.html">Crear un Curso</a>
+                <a href="../Instructor/VerCursos.html">Ver mis Cursos</a>
+                <a href="../Instructor/EditarInstructor.html">Editar mis datos</a>
+                <a href="../Instructor/InstructorEstadisticaCursos.html">Estadistica cursos</a>
                 <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>
         </div>
     </div>
-	<div class="container" id="divLista"></div>
-
 </body>
 </html>
-
-<script src="./js/Admin.js"></script>
-<script>
-
-
-
-
-</script>
+<script src="js/instructorEstadisticaCursos.js"></script>
