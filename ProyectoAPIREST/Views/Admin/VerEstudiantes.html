@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/user.css">
-    <link rel="stylesheet" href="/Instructor/css/VerEstudiantes.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="/Admin/css/VerEstudiantes.css">
+    <link rel="stylesheet" type="text/css" href="css/estilos.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="stylesheet" href="css/menuLateral.css">
+	<link rel="stylesheet" href="css/fontello.css">
+    <link rel="stylesheet" href="/Instructor/css/styles.css">
+
     <title>Estadisticas</title>
 </head>
 <body>
@@ -25,7 +28,7 @@
     <center>
         <div class="factura" id="factura">
             <div class="imagen">
-                <a href="/Estudiante/MisCursos.html">Volver A Estadisticas<img src="https://cdn.icon-icons.com/icons2/65/PNG/128/shoppingcart_accept_compra_12832.png" alt="" width="35px"></a> 
+                <a href="/Estudiante/MisCursos.html">Volver A Estadisticas<img class="imagenfact" src="https://cdn.icon-icons.com/icons2/65/PNG/128/shoppingcart_accept_compra_12832.png" alt="" width="35px"></a> 
                 <br>
                 <br>
             </div>
@@ -41,9 +44,13 @@
                 <label align="right" for="curso" class="curso">Curso <input type="text" name="" id="curso" disabled></label>
                 <label align="right" for="profesor" class="profesor">Profesor <input type="text" name="" id="profesor" disabled></label>
                 <label align="right" for="correo" class="correo">Correo <input type="text" name="" id="correo" disabled></label>
-                <label align="right" for="precio" class="precio">Precio <input type="text" name="" id="precio" disabled></label>
-                <label align="right" for="total" class="total">Ganancias <input type="text" name="" id="total" disabled></label>
+                <label align="right" for="precioProfesor" class="precioProfesor">Precio Profesor<input type="text" name="" id="precioProfesor" disabled></label>
+                <label align="right" for="totalProfesor" class="totalProfesor">Total Profesor<input type="text" name="" id="totalProfesor" disabled></label>
                 <label align="right" for="estudiantes" class="estudiantes">Estudiantes <input type="text" name="" id="estudiantes" disabled></label>
+                <label align="right" for="precioVenta" class="precioVenta">Precio Venta<input type="text" name="" id="precioVenta" disabled></label>
+                <label align="right" for="totalVenta" class="totalVenta">Total Venta<input type="text" name="" id="totalVenta" disabled></label>
+                <label></label><label></label>
+                <label align="right" for="ganancias" class="ganancias">Ganancias <input type="text" name="" id="ganancias" disabled></label>
             </div>
             <div class="titulo">
                 <center>LISTADO DE ESTUDIANTES</center>
@@ -84,4 +91,4 @@
     </div>
 </body>
 </html>
-<script src="/Instructor/js/VerEstudiantes.js"></script>
+<script src="/Admin/js/VerEstudiantes.js"></script>

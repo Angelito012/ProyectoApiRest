@@ -12,7 +12,7 @@ a{
 
 
 .factura{
-    width: 75%;
+    width: 85%;
     min-width: 650px;
     padding-bottom: 0%;
     border: 0ch;
@@ -167,6 +167,10 @@ input{
 .imagenfact{
     height: 40px;
     width: 40px;
+}
+
+.imagen{
+    margin-top: 70px;
 }
 
 @media only screen and (min-width:0px) and (max-width:750px){
