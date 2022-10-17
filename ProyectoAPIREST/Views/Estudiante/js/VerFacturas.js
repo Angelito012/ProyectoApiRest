@@ -54,6 +54,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerFacturas(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
     })
 
 }
@@ -65,6 +67,7 @@ btnLogout.addEventListener('click',salir);
 function salir(){
     alert('Sesion cerrada')
     location.href="../index.html";
+    localStorage.clear();
 }
 
 function obtenerFacturas(token){

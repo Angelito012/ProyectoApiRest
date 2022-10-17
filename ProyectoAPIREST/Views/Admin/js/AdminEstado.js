@@ -1,3 +1,7 @@
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
+
+
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
 
@@ -8,11 +12,6 @@ window.addEventListener('load',(event) => {
     }else if(rol != "Administrador"){
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
-    }
-
-    if(email != ""){
-        var h2 = document.getElementById('name');
-        
     }
 })
 
@@ -67,6 +66,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
 		Get(tokenValido);
+		var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 	
 }

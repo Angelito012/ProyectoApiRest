@@ -41,6 +41,8 @@ window.addEventListener('load',(event) => {
 
 document.getElementById('rb2').checked=true
 
+
+
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
     if(buscador.value != ""){
@@ -105,7 +107,8 @@ function obtenerToken(){
         tokenValido = Data.token;
         obtenercursos(tokenValido);
         CursoHtml(tokenValido);
-        
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
       
     })
 
@@ -122,6 +125,7 @@ btnLogout.addEventListener('click',salir);
 function salir(){
     alert('Sesion cerrada')
     location.href="../index.html";
+    localStorage.clear();
 }
 
 function obtenercursos(token){
@@ -170,9 +174,6 @@ function obtenercursos(token){
         if(DatosApi === Data){
             alert('same')
         }else if(DatosApi != Data){
-            console.log(DatosApi)
-            console.log(Data)
-            DatosApi = Data;
             if(Data.length > 0){
                 card.innerHTML = "";
                 for(i=0; i<Data.length; i++){
@@ -271,7 +272,6 @@ function agregarCurso(idCursoCarrito,precioCarrito,token){
 
 function CursoHtml(token){
     
-    console.log(DatosEstudianteCarrito)
 
     fetch(urlGetCarrito, {
         method: "POST",
@@ -299,7 +299,6 @@ function CursoHtml(token){
 
         for(i=0; i<Data.length; i++){
             
-            console.log(Data)
             let row = document.createElement("tr");
             row.innerHTML = `
                <td class="idCursoDetalle">${Data[i].idCurso}</td>
@@ -319,7 +318,8 @@ function CursoHtml(token){
 
             
 
-            botonEliminarCurso.innerHTML = "X"
+    
+            botonEliminarCurso.innerHTML=`<img src="../images/trash.png">`
 
             botonEliminarCurso.addEventListener("click", function(button){
                 EliminarElementoCarrito(button.target.idCurso,token);

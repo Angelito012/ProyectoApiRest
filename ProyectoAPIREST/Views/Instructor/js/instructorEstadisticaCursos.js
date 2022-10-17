@@ -2,7 +2,10 @@
 
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
 
+var h2 = document.getElementById('nombre');
+h2.innerText = DatosInstructor.nombre
 
 var rol = getCookie('rol');
 window.addEventListener('load',(event) => { 

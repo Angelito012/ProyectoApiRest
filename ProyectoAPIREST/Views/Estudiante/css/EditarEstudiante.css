@@ -405,6 +405,7 @@ label{
 }
 
 #nombre{
+
 	color: #f6a10f;
 	vertical-align:middle;
 	margin: 0%;
@@ -421,7 +422,12 @@ label{
 .user{
 	height: 30px;
 	width: 30px;
+
 } 
+h2{
+	font-size: 24px;
+	font-weight: bold;
+}
 
 .logo h1{
 	color: rgb(0, 0, 0);

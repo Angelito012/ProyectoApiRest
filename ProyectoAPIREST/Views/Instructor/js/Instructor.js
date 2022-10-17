@@ -86,6 +86,8 @@ function Get(token){
     }
 }).then(function(Data){
     console.log(Data);
+    var h2 = document.getElementById('nombre');
+    h2.innerText = Data[0].nombre
     for (let i = 0; i < Data.length; i++) {
             var h2 = document.getElementById('name');
             h2.innerText = 'Bienvenido de nuevo ' + rol +' '+Data[i].nombre + ' ' +Data[i].apellido

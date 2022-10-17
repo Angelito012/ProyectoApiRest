@@ -1,3 +1,6 @@
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
+
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
 
@@ -66,7 +69,10 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+		
 		Get(tokenValido);
+		var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 	
 }

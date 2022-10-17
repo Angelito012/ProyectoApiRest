@@ -18,6 +18,8 @@ window.addEventListener('load',(event) => {
 })
 
 MostrarDatos();
+var h2 = document.getElementById('nombre');
+h2.innerText = DatosEstudianteCarrito.nombre;
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -44,6 +46,7 @@ btnLogout.addEventListener('click',salir);
 function salir(){
     alert('Sesion cerrada')
     location.href="../index.html";
+    localStorage.clear();
 }
 
 function MostrarDatos(){
@@ -80,6 +83,8 @@ function obtenerToken(){
         }
     }).then(function(Data){
         console.log(Data.token);
+        console.log(DatosEstudianteCarrito)
+
         tokenValido = Data.token;
         if (document.getElementById("inputNombre").value != "" && 
             document.getElementById("inputApellido").value != "" &&
@@ -90,6 +95,7 @@ function obtenerToken(){
             document.getElementById("inputTarjetaCredito").value != "" 
         ){
             EditarEstudiante(Data.token);
+            
         } else {
             alert('Todos los datos son necesarios, por favor intente de nuevo');
         }

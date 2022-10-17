@@ -16,7 +16,8 @@ window.addEventListener('load',(event) => {
 })
 
 MostrarDatos();
-
+var h2 = document.getElementById('nombre');
+h2.innerText = DatosInstructor.nombre
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -83,6 +84,7 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        
         if (document.getElementById("inputNombre").value != "" && 
             document.getElementById("inputApellido").value != "" &&
             document.getElementById("inputCorreo").value != "" &&

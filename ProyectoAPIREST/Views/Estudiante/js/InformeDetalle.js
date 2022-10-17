@@ -64,6 +64,8 @@ function obtenerToken(){
     }).then(function(Data){
         tokenValido = Data.token;
         MostrarFactura(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
     })
 }
 
