@@ -122,20 +122,20 @@ if(aleatorio === 0){
     style.setProperty('--main', '#62c2e4');
 }
 
-var InformacionCurso = {
-    idCurso : 6,
-    curso : "Matematicas",
-    profesor : "Giancarlo Loarca",
-    correo : "giancarlo@gmail.com",
-    precioProfesor : 200,
-    totalProfesor : 1000,
-    estudiantes : 5,
-    precioVenta : 300,
-    totalVenta: 1500,
-    ganancias: 500
-};
+// var InformacionCurso = {
+//     idCurso : 6,
+//     curso : "Matematicas",
+//     profesor : "Giancarlo Loarca",
+//     correo : "giancarlo@gmail.com",
+//     precioProfesor : 200,
+//     totalProfesor : 1000,
+//     estudiantes : 5,
+//     precioVenta : 300,
+//     totalVenta: 1500,
+//     ganancias: 500
+// };
 
-localStorage.setItem("curso",JSON.stringify(InformacionCurso))
+// localStorage.setItem("curso",JSON.stringify(InformacionCurso))
 var factura = JSON.parse(localStorage.getItem('curso'))
 console.log(factura)
 

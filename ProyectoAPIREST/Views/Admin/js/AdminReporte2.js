@@ -176,7 +176,7 @@ function obtenerCursos(token){
                                 boton.target.PrecioVenta,
                                 boton.target.TotalVenta,
                                 boton.target.Ganancias);
-                    location.href = "" 
+                    location.href = "./VerEstudiantes.html" 
                 })
                 contenido_card.appendChild(botonVerCursos);
                 
