@@ -1,5 +1,16 @@
 var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email');
+var rol = getCookie('rol');
+
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 function getCookie(cname) {
     let name = cname + "=";

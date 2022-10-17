@@ -1,6 +1,10 @@
-var rol = getCookie('rol');
 var email = getCookie('email');
+<<<<<<< HEAD
+
+var rol = getCookie('rol');
+=======
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+>>>>>>> 83c167eb5cd88fc65c356768461a4be63a31f4a1
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
     var email = getCookie('email'); 
@@ -12,8 +16,6 @@ window.addEventListener('load',(event) => {
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
     }
-
-
 })
 
 var btnLogout = document.getElementById('btnLogout');

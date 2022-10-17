@@ -3,7 +3,17 @@ var detalle = document.getElementById('tablaDetalle');
 var foot = document.querySelector('tfoot');
 var email = getCookie('email'); 
 var Estudiante = JSON.parse(localStorage.getItem('InformeEstudiante'))
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Administrador"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
 
+})
 //COOKIES
 function getCookie(cname) {
     let name = cname + "=";
@@ -104,10 +114,10 @@ function MostrarCursos(token){
 
             detalle.appendChild(fila);
         }
-        fila.appendChild(footTitulo);
-        fila.appendChild(footCurso);
-        fila.appendChild(footTotal);
-        foot.appendChild(fila);
+        // fila.appendChild(footTitulo);
+        // fila.appendChild(footCurso);
+        // fila.appendChild(footTotal);
+        // foot.appendChild(fila);
     })
 }
 

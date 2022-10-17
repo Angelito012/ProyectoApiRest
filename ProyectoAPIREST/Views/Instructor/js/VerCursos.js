@@ -2,7 +2,16 @@ var url = "https://localhost:7076/api/MainInstructor/VerCursos";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
-
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 
 function getCookie(cname) {
