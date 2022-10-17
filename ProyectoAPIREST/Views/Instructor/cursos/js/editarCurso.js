@@ -160,6 +160,10 @@ function verLeccion(token){
             let contenido_card = document.createElement('div');
             contenido_card.classList.add('contenido-card');
 
+            let orden = document.createElement('h3');
+            orden.innerText = Data[i].orden;
+            contenido_card.appendChild(orden);
+            
             let nombre = document.createElement('h3');
             nombre.innerText = Data[i].nombre;
             contenido_card.appendChild(nombre);
@@ -182,6 +186,7 @@ function verLeccion(token){
             botonEditar.Nombre = Data[i].nombre;
             botonEditar.Descripcion = Data[i].descripcion;
             botonEditar.Duracion = Data[i].duración;
+            botonEditar.Orden = Data[i].orden;
             botonEditar.Enlace = Data[i].enlace;
             botonEditar.Idcurso = Data[i].idCurso;
             botonEditar.classList.add('btn');
@@ -193,6 +198,7 @@ function verLeccion(token){
                     boton.target.Nombre,
                     boton.target.Descripcion,
                     boton.target.Duracion,
+                    boton.target.Orden,
                     boton.target.Enlace,
                     boton.target.Idcurso);
                 location.href = "lecciones/EditarLeccion.html"
@@ -204,7 +210,9 @@ function verLeccion(token){
             botonEliminar.Nombre = Data[i].nombre;
             botonEliminar.Descripcion = Data[i].descripcion;
             botonEliminar.Duracion = Data[i].duración;
+            botonEliminar.Orden = Data[i].orden;
             botonEliminar.Enlace = Data[i].enlace;
+            console.log(Data[i].orden)
             botonEliminar.Idcurso = Data[i].idCurso;
             botonEliminar.classList.add('btn');
             botonEliminar.className += " btn-danger"
@@ -216,6 +224,7 @@ function verLeccion(token){
                     boton.target.Nombre,
                     boton.target.Descripcion,
                     boton.target.Duracion,
+                    boton.target.Orden,
                     boton.target.Enlace,
                     boton.target.Idcurso);
                 location.href = "lecciones/EliminarLeccion.html"
@@ -227,12 +236,13 @@ function verLeccion(token){
     })
 }
 
-function guardarDatos(id,nombre,descripcion,duracion,enlace,idcurso){
+function guardarDatos(id,nombre,descripcion,duracion,orden,enlace,idcurso){
     var InformacionLeccion = {
         Idleccion : id,
         nombre : nombre,
         descripcion : descripcion,
         duración : duracion,
+        orden : orden,
         enlace : enlace,
         Idcurso: idcurso
     };
