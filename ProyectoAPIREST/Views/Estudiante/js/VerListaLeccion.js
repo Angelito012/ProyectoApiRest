@@ -115,9 +115,18 @@ function getCookie(cname) {
             let contenido_card = document.createElement('div');
             contenido_card.classList.add('contenido-card');
 
+
             let nombre = document.createElement('h3');
             nombre.innerText = Data[i].nombre;
             contenido_card.appendChild(nombre);
+
+            let Orden = document.createElement('h5');
+            let label_Orden = document.createElement('label')
+            label_Orden.innerText = "Leccion Numero: ";
+            Orden.innerHTML = Data[i].orden;
+            Orden.innerHTML += `<hr>`;
+            contenido_card.appendChild(label_Orden)
+            contenido_card.appendChild(Orden);
 
             let descripcion = document.createElement('textarea');
             descripcion.innerText = Data[i].descripcion;

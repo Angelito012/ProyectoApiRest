@@ -28,13 +28,18 @@ function Datos(){
     document.getElementById('descripcion').value = leccion.descripcion;
     document.getElementById('duracion').value = leccion.duración;
     document.getElementById('enlace').value = leccion.enlace;
+    document.getElementById('orden').value = leccion.orden;
     document.getElementById('nombreCurso').value = datos.nombre;
 }
 
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
-    ActualizarLeccion(tokenValido);
+    if(leccion.orden!=document.getElementById('orden').value){
+    ValidarIndex(tokenValido);
+    }else{
+        ActualizarLeccion(tokenValido);
+    }
 })
 
 function obtenerToken(){
@@ -62,6 +67,67 @@ function obtenerToken(){
     })
 }
 
+function ValidarIndex(token){
+    var url = "https://localhost:7076/api/Leccion/ValidarIndex";
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ 
+            curso: datos.Idcurso,
+            index: document.getElementById('orden').value
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.text();
+        }else{
+            alert("Error al ejecutar solicitud")
+        }
+    }).then(function(Data){
+        if(Data==='"Index libre"'){
+            ActualizarLeccion(token);
+            location.href = '/Instructor/VerCursos.html';
+        }else{
+            if(confirm("Esta posicion ya existe una lección, desea insertarla de todas formas, esto aumentara una posicion el resto de lecciones?")==true){
+                ModificarIndex(token);
+                ActualizarLeccion(token);
+                location.href = '/Instructor/VerCursos.html';
+                }else{
+                    alert("Ingrese otro numero para el orden de la leccion")
+                }
+        }
+    })
+}
+
+function ModificarIndex(token){
+    var url = "https://localhost:7076/api/Leccion/ModificarIndex";
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ 
+            curso: datos.Idcurso,
+            index: document.getElementById('orden').value
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.text();
+        }else{
+            alert("Error al ejecutar solicitud")
+        }
+    }).then(function(Data){
+        console.log(Data);
+        return;
+    })
+}
+
+
 function ActualizarLeccion(token){
     var url = "https://localhost:7076/api/Leccion/EditarLeccion";
     fetch(url, {
@@ -72,7 +138,8 @@ function ActualizarLeccion(token){
             descripcion: document.getElementById('descripcion').value,        
             Duración: document.getElementById('duracion').value,        
             enlace: document.getElementById('enlace').value,
-            idCurso: leccion.Idcurso
+            idCurso: leccion.Idcurso,
+            orden: document.getElementById('orden').value
         }),
         headers:{
             'Accept' : "application/json",

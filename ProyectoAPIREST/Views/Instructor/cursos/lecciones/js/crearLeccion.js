@@ -27,7 +27,9 @@ function Datos(){
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
-    CrearLeccion(tokenValido);
+    //Agregamos la validacion antes
+    ValidarIndex(tokenValido);
+    //CrearLeccion(tokenValido);
 })
 
 function obtenerToken(){
@@ -54,6 +56,68 @@ function obtenerToken(){
         tokenValido = Data.token;
     })
 }
+function ValidarIndex(token){
+    var url = "https://localhost:7076/api/Leccion/ValidarIndex";
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ 
+            curso: datos.Idcurso,
+            index: document.getElementById('orden').value
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.text();
+        }else{
+            alert("Error al ejecutar solicitud")
+        }
+    }).then(function(Data){
+
+        if(Data==='"Index libre"'){
+        CrearLeccion(token);
+        location.href = '/Instructor/VerCursos.html';
+        }else{
+            if(confirm("Esta posicion ya existe una lección, desea insertarla de todas formas, esto aumentara una posicion el resto de lecciones?")==true){
+                ModificarIndex(token);
+                CrearLeccion(token);
+                location.href = '/Instructor/VerCursos.html';
+                }else{
+                    alert("Ingrese otro numero para el orden de la leccion")
+                }
+        }
+    })
+}
+
+function ModificarIndex(token){
+    var url = "https://localhost:7076/api/Leccion/ModificarIndex";
+    fetch(url, {
+        method: "POST",
+        body: JSON.stringify({ 
+            curso: datos.Idcurso,
+            index: document.getElementById('orden').value
+        }),
+        headers:{
+            'Accept' : "application/json",
+            "Content-Type" : "application/json",
+            'Authorization': 'Bearer ' + token
+        }
+    }).then(function(response){
+        if(response.ok){
+            return response.text();
+        }else{
+            alert("Error al ejecutar solicitud")
+        }
+    }).then(function(Data){
+        console.log(Data);
+        return;
+    })
+}
+
+
 
 function CrearLeccion(token){
     var url = "https://localhost:7076/api/Leccion/CrearLeccion";
@@ -64,7 +128,8 @@ function CrearLeccion(token){
             descripcion: document.getElementById('descripcion').value,        
             duración: document.getElementById('duracion').value,        
             enlace: document.getElementById('enlace').value,
-            idCurso: datos.Idcurso
+            idCurso: datos.Idcurso,
+            orden: document.getElementById('orden').value
         }),
         headers:{
             'Accept' : "application/json",
