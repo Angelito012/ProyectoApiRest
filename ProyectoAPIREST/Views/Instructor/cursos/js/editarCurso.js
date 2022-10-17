@@ -2,6 +2,17 @@ var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email');
 let card = document.getElementById("contenedor")
 var totalEstudiante = 0;
+var rol = getCookie('rol');
+
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 // localStorage.clear();
 OpenEdit();
 obtenerToken();

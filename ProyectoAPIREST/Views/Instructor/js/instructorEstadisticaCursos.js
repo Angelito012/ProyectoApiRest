@@ -1,10 +1,10 @@
 
 
 var email = getCookie('email'); 
-
 let card = document.getElementById("contenedor")
 
 
+var rol = getCookie('rol');
 window.addEventListener('load',(event) => { 
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')

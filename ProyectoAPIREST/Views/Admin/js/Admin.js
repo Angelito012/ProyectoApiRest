@@ -1,6 +1,5 @@
-var rol = getCookie('rol');
 var email = getCookie('email'); 
-
+var rol = getCookie('rol');
 window.addEventListener('load',(event) => {
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')

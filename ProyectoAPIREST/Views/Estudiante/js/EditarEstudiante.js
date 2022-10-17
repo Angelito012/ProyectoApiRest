@@ -3,6 +3,19 @@ var datos = JSON.parse(localStorage.getItem('estudiante'));
 var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    var rol = getCookie('rol');
+    var email = getCookie('email'); 
+
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Estudiante"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 MostrarDatos();
 

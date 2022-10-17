@@ -11,9 +11,6 @@ window.addEventListener('load',(event) => {
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
     }
-
-
-
 })
 
 var btnLogout = document.getElementById('btnLogout');

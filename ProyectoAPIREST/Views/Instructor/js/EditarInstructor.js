@@ -3,9 +3,17 @@ var datos = JSON.parse(localStorage.getItem('instructor'));
 var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
 var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
+var rol = getCookie('rol');
 
-
-
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 MostrarDatos();
 

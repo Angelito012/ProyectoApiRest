@@ -1,5 +1,16 @@
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Administrador"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+
+})
 
 function getCookie(cname) {
     let name = cname + "=";

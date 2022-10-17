@@ -2,6 +2,19 @@ var url = "https://localhost:7076/api/MainCursos/MostrarCursosComprados";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    var rol = getCookie('rol');
+    var email = getCookie('email'); 
+
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Estudiante"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 function getCookie(cname) {
     let name = cname + "=";
