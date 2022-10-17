@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -26,14 +27,14 @@ namespace ProyectoAPIREST.Models
 
         public string connectionString()
         {
-            return "Server=DESKTOP-57KII1B;Database=DataBaseAPI;user=kevin;password=081999;";
+            return "Server = ERICKKDANIEL; Database = DataBaseAPI; user = prueba; password = daniel1234;";
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=DESKTOP-57KII1B;Database=DataBaseAPI;user=kevin;password=081999;");
+                optionsBuilder.UseSqlServer("Server=ERICKKDANIEL;Database=DataBaseAPI;user=prueba;password=daniel1234;");
             }
         }
 
@@ -160,4 +161,5 @@ namespace ProyectoAPIREST.Models
 }
 //"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DataBaseAPI;user=PlusTi;password=12345678"
 //"Server=DESKTOP-UUF85QJ\\SQLEXPRESS;Database=DBAPIREST;user=PlusTi;password=12345678"
+//"Server=ERICKKDANIEL;Database=DataBaseAPI;user=prueba;password=daniel1234;"
 
