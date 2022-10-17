@@ -114,10 +114,10 @@ function MostrarCursos(token){
 
             detalle.appendChild(fila);
         }
-        fila.appendChild(footTitulo);
-        fila.appendChild(footCurso);
-        fila.appendChild(footTotal);
-        foot.appendChild(fila);
+        // fila.appendChild(footTitulo);
+        // fila.appendChild(footCurso);
+        // fila.appendChild(footTotal);
+        // foot.appendChild(fila);
     })
 }
 
