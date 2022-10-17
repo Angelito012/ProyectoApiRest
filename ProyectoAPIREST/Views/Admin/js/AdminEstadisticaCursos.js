@@ -1,3 +1,6 @@
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
+
 let card = document.getElementById("contenedor")
 
 window.addEventListener('load',(event) => {
@@ -63,6 +66,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
 		obtenerEstadisticas(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 	
 }

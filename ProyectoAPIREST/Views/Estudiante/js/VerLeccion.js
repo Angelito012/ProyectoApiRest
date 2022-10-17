@@ -73,6 +73,8 @@ function getCookie(cname) {
         console.log(Data.token);
         tokenValido = Data.token;
         Get(Data.token)
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
     })
   }
   function Get(token){

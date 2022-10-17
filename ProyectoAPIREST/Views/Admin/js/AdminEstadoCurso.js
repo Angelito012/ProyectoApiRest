@@ -1,3 +1,6 @@
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
+
 var urlEdit = "https://localhost:7076/api/AdminPantalla/EstadoCursos"
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
@@ -69,6 +72,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
 		Get(tokenValido);
+		var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 	
 }

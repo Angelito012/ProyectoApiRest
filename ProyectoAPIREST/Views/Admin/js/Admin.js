@@ -1,5 +1,6 @@
 var rol = getCookie('rol');
 var email = getCookie('email'); 
+var DatosAdmin = JSON.parse(localStorage.getItem('admin'));
 
 window.addEventListener('load',(event) => {
     if(rol == ""){
@@ -60,6 +61,7 @@ function getCookie(cname) {
         console.log(Data.token);
         tokenValido = Data.token;
         Get(Data.token)
+        
 
     })
   }
@@ -84,16 +86,53 @@ function getCookie(cname) {
       }
   }).then(function(Data){
       console.log(Data);
-    
-      
-     
-
+      var h2 = document.getElementById('nombre');
+      h2.innerText = Data[0].nombre;
       for (let i = 0; i < Data.length; i++) {
-        var h2 = document.getElementById('name');
-        h2.innerText = 'Bienvenido de nuevo ' + rol + ' '+Data[i].nombre +' '+Data[i].apellido
-          
-      }     
+            var h2 = document.getElementById('name');
+            h2.innerText = 'Bienvenido de nuevo ' + rol + ' '+Data[i].nombre +' '+Data[i].apellido
+            let btnEditar = document.getElementById("btnIcono");
+            btnEditar.Idusuario = Data[i].idUsuario
+            btnEditar.Nombre = Data[i].nombre
+            btnEditar.Apellido = Data[i].apellido
+            btnEditar.Correo = Data[i].correo
+            btnEditar.Contraseña = Data[i].contraseña  
+            btnEditar.Telefono = Data[i].telefono
+            btnEditar.Nit = Data[i].nit
+            btnEditar.TarjetaCredito = Data[i].tarjetaCredito
+            btnEditar.Estado = Data[i].estado
+            btnEditar.Rol = Data[i].rol 
+            btnEditar.addEventListener('click',function(boton){
+                guardarDatos(
+                    boton.target.Idusuario,
+                    boton.target.Nombre,
+                    boton.target.Apellido,
+                    boton.target.Correo,
+                    boton.target.Contraseña,
+                    boton.target.Telefono,
+                    boton.target.Nit,
+                    boton.target.TarjetaCredito,
+                    boton.target.Estado,
+                    boton.target.Rol
+                    )
+            })
+        }    
     })
   }
-
+  function guardarDatos(idUsuario,nombre,apellido,correo,contraseña,telefono,nit,tarjetaCredito, estado,rol){
+    var InformacionAdmin = {
+        idUsuario: idUsuario,
+        nombre: nombre,
+        apellido: apellido,
+        correo: correo,
+        contraseña: contraseña,
+        telefono: telefono,
+        nit : nit,
+        tarjetaCredito : tarjetaCredito,
+        estado: estado,
+        rol: rol
+    }
+    console.log(InformacionAdmin)
+    localStorage.setItem("admin",JSON.stringify(InformacionAdmin))
+  }
   obtenerToken();

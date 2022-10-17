@@ -1,12 +1,11 @@
 var datos = JSON.parse(localStorage.getItem('instructor'));
 var email = getCookie('email');
 let card = document.getElementById("contenedor");
-
-
+console.log(datos)
+var h2 = document.getElementById('nombres');
+h2.innerText = datos.nombre
 
 obtenerToken();
-
-
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
@@ -33,8 +32,8 @@ function obtenerToken(){
             validarEstado(correo,clave);
         }
     }).then(function(Data){
-        console.log(Data.token);
         tokenValido = Data.token;
+        console.log(Data.token)
     })
 }
 
@@ -89,5 +88,5 @@ btnLogout.addEventListener('click',salir);
 
 function salir(){
     alert('Sesion cerrada')
-    location.href="../index.html";
+    location.href="../../index.html";
 }

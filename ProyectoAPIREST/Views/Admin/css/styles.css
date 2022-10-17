@@ -234,7 +234,15 @@ body{
 	border: solid 1px #2fb4cc;
   }
 
-  #nombre{
+  
+.logo h1{
+	color: rgb(0, 0, 0);
+	font-weight: 400;
+	font-size: 22px;
+	margin-left: 10px;
+}
+#nombre{
+
 	color: #f6a10f;
 	vertical-align:middle;
 	margin: 0%;
@@ -243,7 +251,7 @@ body{
 	border-left: 5px solid #c7c7c7;
 	background: #1f1f1f;
 	display: flex; /* NUEVO */
-  	align-items: center; /* NUEVO */
+	  align-items: center; /* NUEVO */
 	vertical-align:middle;
 	
 }
@@ -251,11 +259,9 @@ body{
 .user{
 	height: 30px;
 	width: 30px;
-} 
 
-.logo h1{
-	color: rgb(0, 0, 0);
-	font-weight: 400;
-	font-size: 22px;
-	margin-left: 10px;
+} 
+h2{
+	font-size: 24px;
+	font-weight: bold;
 }

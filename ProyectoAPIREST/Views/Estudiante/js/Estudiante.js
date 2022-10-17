@@ -1,6 +1,6 @@
 var rol = getCookie('rol');
 var email = getCookie('email');
-
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
     var email = getCookie('email'); 
@@ -64,6 +64,7 @@ function getCookie(cname) {
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        
         Get(Data.token)
 
     })
@@ -84,18 +85,17 @@ function getCookie(cname) {
   }).then(function(response){
       if(response.ok){
           return response.json();
+          
       }else{
           alert("Error al ejecutar solicitud")
       }
   }).then(function(Data){
       console.log(Data);
-    
-      
-     
-
+      var h2 = document.getElementById('nombre');
+      h2.innerText = Data[0].nombre
       for (let i = 0; i < Data.length; i++) {
         var h2 = document.getElementById('name');
-        h2.innerText = 'Bienvenido de nuevo ' + rol+' s'+Data[i].nombre +' '+Data[i].apellido
+        h2.innerText = 'Bienvenido de nuevo ' + rol+' '+Data[i].nombre +' '+Data[i].apellido
           let btnEditar = document.getElementById("btnIcono");
           btnEditar.Idusuario = Data[i].idUsuario
           btnEditar.Nombre = Data[i].nombre
