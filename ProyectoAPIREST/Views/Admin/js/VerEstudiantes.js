@@ -2,9 +2,12 @@ var idCurso = document.getElementById('idCurso');
 var curso = document.getElementById('curso');
 var profesor = document.getElementById('profesor');
 var correo = document.getElementById('correo');
-var precio = document.getElementById('precio');
-var total = document.getElementById('total');
+var precioProfesor = document.getElementById('precioProfesor');
+var totalProfesor = document.getElementById('totalProfesor');
 var estudiantes = document.getElementById('estudiantes');
+var precioVenta = document.getElementById('precioVenta');
+var totalVenta = document.getElementById('totalVenta');
+var ganancias = document.getElementById('ganancias');
 
 var tablaDetalle = document.getElementById('tablaDetalle');
 var email = getCookie('email'); 
@@ -124,9 +127,12 @@ if(aleatorio === 0){
 //     curso : "Matematicas",
 //     profesor : "Giancarlo Loarca",
 //     correo : "giancarlo@gmail.com",
-//     precio : 200,
-//     total : 1000,
-//     estudiantes : 5
+//     precioProfesor : 200,
+//     totalProfesor : 1000,
+//     estudiantes : 5,
+//     precioVenta : 300,
+//     totalVenta: 1500,
+//     ganancias: 500
 // };
 
 // localStorage.setItem("curso",JSON.stringify(InformacionCurso))
@@ -140,7 +146,10 @@ function prueba(){
     curso.value = factura.curso;
     profesor.value = factura.profesor;
     correo.value = factura.correo;
-    precio.value = factura.precio;
-    total.value = factura.total;
+    precioProfesor.value = factura.precioProfesor;
+    totalProfesor.value = factura.totalProfesor;
     estudiantes.value = factura.estudiantes;
+    precioVenta.value = factura.precioVenta;
+    totalVenta.value = factura.totalVenta;
+    ganancias.value = factura.ganancias;
 }

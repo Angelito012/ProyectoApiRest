@@ -19,6 +19,33 @@ body{
 	z-index: -1;
 	top: 0;left: 0;
 }
+.container-buscador{
+	height: 50px;
+	width: 550px;
+	margin: 0px auto;
+	align-items: center;
+	text-align: center;
+}
+
+.lupa{
+	height: 40px;
+	width: 40px;
+}
+
+
+
+.buscador{
+	height: 80%;
+	width: 430px;
+	font-size: 25px;
+	padding-left: 2px;
+}
+
+.notFound{
+	margin-left: 280px;
+	margin-top: 25px;
+	position: absolute;
+}
 /*Estilos para el encabezado*/
 .header{
 	width: 100%;
