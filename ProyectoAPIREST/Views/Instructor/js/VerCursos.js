@@ -43,6 +43,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         ValidacionInstructor(Data.token)
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosInstructor.nombre
     })
 }
 var btnLogout = document.getElementById('btnLogout');

@@ -1,5 +1,7 @@
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -39,6 +41,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerEstudiantes(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 
 }
