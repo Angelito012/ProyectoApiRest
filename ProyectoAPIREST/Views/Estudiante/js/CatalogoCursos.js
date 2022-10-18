@@ -336,7 +336,7 @@ function CursoHtml(token){
 
 function EliminarElementoCarrito(idCurso,token){
 		fetch(urlEliminarCarrito, {
-			method: "DELETE",
+			method: "POST",
 			body: JSON.stringify({
 				idUsuario: DatosEstudianteCarrito.idUsuario,
                 idCurso: idCurso,
@@ -363,7 +363,7 @@ function EliminarElementoCarrito(idCurso,token){
 
 function vaciarCarrito(token){
     fetch(urlVaciarCarrito, {
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify({
             idUsuario: DatosEstudianteCarrito.idUsuario,
             idCurso: 0,

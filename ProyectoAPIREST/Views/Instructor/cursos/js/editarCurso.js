@@ -96,7 +96,7 @@ function obtenerToken(){
 function ActualizarDatos(token){
     var url = "https://25.60.14.37:80/api/MainCursos/EditarCurso";
     fetch(url, {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify({
             idCurso: document.getElementById('codigo').value,        
             nombre: document.getElementById('nombre').value,        

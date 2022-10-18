@@ -286,7 +286,7 @@ function obtenerToken(){
 	function Delete(correo,token){
 		var url ="https://25.60.14.37:80/api/AdminPantalla/EliminarUsuario";
 		fetch(url, {
-			method: "DELETE",
+			method: "POST",
 			body: JSON.stringify({
 				correo: correo,
 				clave: ""
@@ -312,8 +312,10 @@ function obtenerToken(){
 
 
 	function Edit(Id,estado,token){
+		var url ="https://25.60.14.37:80/api/AdminPantalla";
+		console.log(Id,estado);
 		fetch(url,{
-			method: "PUT",
+			method: "POST",
 			body: JSON.stringify({
 				"estado": estado,
 				"idUsuario": Id
