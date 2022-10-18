@@ -38,7 +38,7 @@ namespace ProyectoAPIREST.Controllers
             }
             return Ok();
         }
-        [HttpPut]
+        [HttpPost]
         [Route("EditarCurso")]
         public ActionResult EditarCurso(SolicitudCurso curso)
         {
@@ -89,7 +89,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok(cantidad);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarCurso")]
         public ActionResult EliminarCurso(SolicitudCurso curso)
         {

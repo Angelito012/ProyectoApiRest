@@ -81,7 +81,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok("El curso se agrego correctamente al carrito");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminardeCarrito")]
         public ActionResult EliminardeCarrito(SolicitudCarrito carrito)
         {
@@ -101,7 +101,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarCursosCarrito")]
         public ActionResult EliminarCursosCarrito(SolicitudCurso curso)
         {

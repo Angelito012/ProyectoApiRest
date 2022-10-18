@@ -135,7 +135,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok(getCursos);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarCursoAdmin")]
         public ActionResult EliminarCursoAdmin(SolicitudDeleteCurso curso)
         {
@@ -163,7 +163,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("EstadoCursos")]
         public ActionResult EstadoCursos(SolicitudEstadoCurso curso)
         {
@@ -196,7 +196,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok(msg);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarUsuario")]
         public ActionResult EliminarUsuario(AutorizacionUsuarios usuario)
         {
@@ -224,7 +224,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult CambiarEstado(CambioEstado usuario)
         {
             string msg = "";

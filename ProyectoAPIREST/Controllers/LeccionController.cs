@@ -55,7 +55,7 @@ namespace ProyectoAPIREST.Controllers
         }
 
 
-        [HttpPut]
+        [HttpPost]
         [Route ("EditarLeccion")]
         public ActionResult Put([FromBody] Models.Solicitudes.SolicitudLeccion modelo)
         {
@@ -84,7 +84,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok("datos actualizados correctamente de la leccion");
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route ("EliminarUnaLeccion")]
         public ActionResult Delete([FromBody] Models.Solicitudes.leccionId modelo)
         {
