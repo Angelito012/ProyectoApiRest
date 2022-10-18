@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Estudiante/css/factura.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="css/fontello.css">
+    <title>CURSOS</title>
+</head>
+<body>
+	<header class="header">
+		<div class="container">
+            <div class="btn-menu">
+                <label id="btnIcono" for="btn-menu" class="icon-menu"></label>
+            </div>
+            <div class="logo">
+                <h1>MENU PRINCIPAL ADMINISTRADOR</h1>
+            </div>               
+		</div>
+	</header>
+    <center>
+        <div class="factura" id="factura">
+            <div class="imagen">
+                <a href="/Admin/AdminReporteEstudiante.html">Ver Estudiantes<img src="https://w7.pngwing.com/pngs/634/631/png-transparent-computer-icons-student-student-text-hand-people.png" alt="" width="35px"></a> 
+                <br>
+                <br>
+            </div>
+            <div class="banda" id="banda">
+                <div class="b1"></div><div class="b2"></div><div class="b3"></div><div class="b4"></div>
+                <div class="b5"></div><div class="b6"></div><div class="b7"></div><div class="b8"></div>
+            </div>
+            <div class="titulo">
+                ESTUDIANTE
+            </div>
+            <div class="headerfact" id="header">
+                <label for="codigo">Codigo: <input type="text" name="" id="codigo" disabled></label>
+                <label for="estudiante" class="fecha">Estudiante: <input type="text" name="" id="estudiante" disabled></label>
+                <label for="cursos" class="total">Cursos Comprados: <input type="text" name="" id="cursos" disabled></label>
+                <label for="Cliente" class="cliente">Gasto: <input type="text" name="" id="gasto" disabled></label>
+            </div>
+            <div class="titulo">
+                <center>LISTADO DE CURSOS</center>
+            </div>
+            <div class="detalle" id="detalle">
+                <table class="tabla" id="tabla">
+                    <thead>
+                        <tr>
+                            <th>CODIGO</th>
+                            <th>CURSO</th>
+                            <th>PRECIO</th>
+                            <th>DURACION</th>
+                            <th>CANTIDAD DE LECCIONES</th>
+                        </tr> 
+                    </thead>
+                    <tbody class="tablaDetalle" id="tablaDetalle">
+
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </center>
+    <input type="checkbox" id="btn-menu">
+    <div class="container-menu">
+        <div class="cont-menu">
+            <nav>
+                <a href="../Admin/Admin.html">Inicio</a>
+                <a href="../Admin/AdminVerEstudiante.html">Ver Estudiantes</a>
+                <a href="../Admin/AdminVerInstructor.html">Ver Instructores</a>
+                <a href="../Admin/AdminVerCursos.html">Ver Cursos</a>
+                <a href="../Admin/AdminEditarEstado.html">Habilitar/Deshabilitar Usuarios</a>
+                <a href="../Admin/AdminEstadoCursos.html">Habilitar/Deshabilitar Cursos</a>
+                <a href="../Admin/AdminEstadisticaCursos.html">Estadistica Curso</a>
+                <a href="../Admin/AdminReporteEstudiante.html">Reporte de Estudiantes</a>
+                <a href="../Admin/AdminEstadisticaCursosReporte2.html">Reporte Cursos y estudiantes</a>
+                <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+            </nav>
+            <label for="btn-menu" class="icon-cancel"></label>
+        </div>
+    </div>
+</body>
+<script src="/Admin/js/AdminListadoCursos.js"></script>
+</html>
