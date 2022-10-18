@@ -43,7 +43,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -69,7 +69,7 @@ function obtenerToken(){
 	
 }
 
-var url ="https://localhost:7076/api/estadisticaCurso/EstadisticaCursoInstructor";
+var url ="https://25.60.14.37:80/api/estadisticaCurso/EstadisticaCursoInstructor";
 
 obtenerToken();
 

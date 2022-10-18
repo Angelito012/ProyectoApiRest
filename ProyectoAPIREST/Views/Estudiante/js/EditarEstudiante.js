@@ -63,7 +63,7 @@ function MostrarDatos(){
 }
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -107,7 +107,7 @@ function validarDatos(e) {
 
 }
 function EditarEstudiante(token){
-    var url = "https://localhost:7076/api/MainEstudiante/EditarInfoEstudiantes";
+    var url = "https://25.60.14.37:80/api/MainEstudiante/EditarInfoEstudiantes";
     fetch(url,{
         method: "PUT",
         body: JSON.stringify({

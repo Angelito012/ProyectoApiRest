@@ -28,7 +28,7 @@ select.addEventListener('click',() => {
 })
 
 function validarCurso(token){
-    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/ValidarCurso";
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
@@ -67,7 +67,7 @@ boton.addEventListener('click', () => {
 })
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -94,7 +94,7 @@ function obtenerToken(){
 }
 
 function ActualizarDatos(token){
-    var url = "https://localhost:7076/api/MainCursos/EditarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/EditarCurso";
     fetch(url, {
         method: "PUT",
         body: JSON.stringify({
@@ -140,7 +140,7 @@ function getCookie(cname) {
 
 function verLeccion(token){
     console.log(token)
-    var url = "https://localhost:7076/api/MainLeccion/VerLecciones";
+    var url = "https://25.60.14.37:80/api/MainLeccion/VerLecciones";
     fetch(url, {
         method: "POST",
         body: JSON.stringify(datos),

@@ -1,4 +1,4 @@
-var urlCursos = "https://localhost:7076/api/IngresoPorCurso/IngresoCursoProfesor";
+var urlCursos = "https://25.60.14.37:80/api/IngresoPorCurso/IngresoCursoProfesor";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
@@ -41,7 +41,7 @@ function getCookie(cname) {
 function obtenerToken(){
 
 
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",

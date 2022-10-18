@@ -40,7 +40,7 @@ function getCookie(cname) {
 }
 
 function obtenerToken(){
-  var url = "https://localhost:7076/api/Autenticacion/Validar";
+  var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
   fetch(url,{
       method: "POST",
@@ -66,7 +66,7 @@ function obtenerToken(){
 }
 
 function Get(token){
-  var url = "https://localhost:7076/api/Instructor/Get";
+  var url = "https://25.60.14.37:80/api/Instructor/Get";
   fetch(url,{
     method: "POST",
     body: JSON.stringify({

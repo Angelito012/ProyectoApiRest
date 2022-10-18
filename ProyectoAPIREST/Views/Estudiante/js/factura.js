@@ -44,7 +44,7 @@ function getCookie(cname) {
 obtenerToken();
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -68,7 +68,7 @@ function obtenerToken(){
 
 //LEER DETALLE DE LA FACTURA
 function leerFactura(token){
-    var url = "https://localhost:7076/api/controller/VerFactura";
+    var url = "https://25.60.14.37:80/api/controller/VerFactura";
 
     fetch(url,{
         method: "POST",

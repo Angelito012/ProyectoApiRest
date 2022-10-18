@@ -54,7 +54,7 @@ boton.addEventListener('click', () => {
 })
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -79,7 +79,7 @@ function obtenerToken(){
 }
 
 function ValidarIndex(token){
-    var url = "https://localhost:7076/api/Leccion/ValidarIndex";
+    var url = "https://25.60.14.37:80/api/Leccion/ValidarIndex";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({ 
@@ -114,7 +114,7 @@ function ValidarIndex(token){
 }
 
 function ModificarIndex(token){
-    var url = "https://localhost:7076/api/Leccion/ModificarIndex";
+    var url = "https://25.60.14.37:80/api/Leccion/ModificarIndex";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({ 
@@ -140,7 +140,7 @@ function ModificarIndex(token){
 
 
 function ActualizarLeccion(token){
-    var url = "https://localhost:7076/api/Leccion/EditarLeccion";
+    var url = "https://25.60.14.37:80/api/Leccion/EditarLeccion";
     fetch(url, {
         method: "PUT",
         body: JSON.stringify({
