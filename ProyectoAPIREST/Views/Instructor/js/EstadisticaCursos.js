@@ -3,6 +3,7 @@ var email = getCookie('email');
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
 var rol = getCookie('rol');
+var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
 
 window.addEventListener('load',(event) => { 
     if(rol == ""){
@@ -62,6 +63,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerCursos(tokenValido);
+        var h2 = document.getElementById('nombre');
+h2.innerText = DatosInstructor.nombre
     })
 
 }

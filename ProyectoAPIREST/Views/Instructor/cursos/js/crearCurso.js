@@ -1,9 +1,7 @@
 var datos = JSON.parse(localStorage.getItem('instructor'));
 var email = getCookie('email');
 let card = document.getElementById("contenedor");
-<<<<<<< HEAD
 var rol = getCookie('rol');
-
 window.addEventListener('load',(event) => { 
     if(rol == ""){
         alert('Primero Ingrese sus credenciales')
@@ -14,11 +12,9 @@ window.addEventListener('load',(event) => {
     }
 })
 
-=======
 console.log(datos)
 var h2 = document.getElementById('nombres');
 h2.innerText = datos.nombre
->>>>>>> 83c167eb5cd88fc65c356768461a4be63a31f4a1
 
 obtenerToken();
 var boton = document.getElementById('enviar');
