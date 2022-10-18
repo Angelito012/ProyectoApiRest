@@ -265,7 +265,7 @@ function obtenerToken(){
 
 	function Delete(Id){
 		fetch(url, {
-			method: "Delete",
+			method: "POST",
 			body: JSON.stringify({
 				id: Id,
 				nombre: "",
@@ -294,7 +294,7 @@ function obtenerToken(){
 
 	function Edit(Id){
 		fetch(url,{
-			method: "PUT",
+			method: "POST",
 			body: JSON.stringify({
 				id: Id,
 			}),

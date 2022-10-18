@@ -253,7 +253,7 @@ function obtenerToken(){
 	function Delete(IDCURSO,token){
 		var url ="https://25.60.14.37:80/api/AdminPantalla/EliminarCursoAdmin";
 		fetch(url, {
-			method: "DELETE",
+			method: "POST",
 			body: JSON.stringify({
 				"idCurso": IDCURSO
 			}),
@@ -279,7 +279,7 @@ function obtenerToken(){
 
 	function Edit(estado,MiId,token){
 		fetch(urlEdit,{
-			method: "PUT",
+			method: "POST",
 			body: JSON.stringify({
 				estado: estado,
 				idCurso: MiId
