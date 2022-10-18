@@ -12,7 +12,7 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class MainVaciarCarritoDelete : ControllerBase
     {
-        [HttpDelete]
+        [HttpPost]
         [Route("VaciarCarrito")]
         public ActionResult VaciarCarrito(SolicitudCarrito carrito)
         {

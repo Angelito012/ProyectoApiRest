@@ -53,7 +53,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok(cursos);
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("EditarInstructor")]
         public ActionResult EditarInstructor(SolicitudInstructor instructor)
         {
