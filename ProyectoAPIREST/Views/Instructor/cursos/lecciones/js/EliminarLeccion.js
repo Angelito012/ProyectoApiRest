@@ -54,7 +54,7 @@ boton.addEventListener('click', () => {
 })
 
 function validarCurso(token){
-    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/ValidarCurso";
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
@@ -78,7 +78,7 @@ function validarCurso(token){
 }
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -104,7 +104,7 @@ function obtenerToken(){
 }
 
 function EliminarPregunta(token){
-    var url = "https://localhost:7076/api/MainLeccion/EliminarPregunta";
+    var url = "https://25.60.14.37:80/api/MainLeccion/EliminarPregunta";
     fetch(url, {
         method: "DELETE",
         body: JSON.stringify({ 
@@ -119,7 +119,7 @@ function EliminarPregunta(token){
 }
 
 function EliminarLeccion(token){
-    var url = "https://localhost:7076/api/Leccion/EliminarUnaLeccion";
+    var url = "https://25.60.14.37:80/api/Leccion/EliminarUnaLeccion";
     fetch(url, {
         method: "DELETE",
         body: JSON.stringify({ 

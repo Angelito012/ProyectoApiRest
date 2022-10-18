@@ -1,4 +1,4 @@
-var url = "https://localhost:7076/api/Instructor";
+var url = "https://25.60.14.37:80/api/Instructor";
 
 const submitButton = document.getElementById("submitButton");
 const form = document.getElementById("form");

@@ -1,14 +1,14 @@
-var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
-var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
-var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
-var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
-var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
-var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
-var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
-var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
-var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
-var urlGenerarFactura = "https://localhost:7076/api/controller/CrearFactura";
-var urlGenerarDetalle = "https://localhost:7076/api/controller/CrearDetalleFactura"
+var urlTotal = "https://25.60.14.37:80/api/Cursos/CatalogoCursos";
+var urlFiltrado = "https://25.60.14.37:80/api/MainCursos/BusquedaCurso";
+var urlfiltro1 = "https://25.60.14.37:80/api/MainCursos/FiltrosComprados";
+var urlfiltro2 =  "https://25.60.14.37:80/api/MainCursos/FiltrosNoComprados";
+var urlfiltro3 =  "https://25.60.14.37:80/api/MainCursos/FiltrosTodos";
+var urlAgregarCarrito = "https://25.60.14.37:80/api/MainCarrito/AñadirCarrito";
+var urlEliminarCarrito = "https://25.60.14.37:80/api/MainCarrito/EliminardeCarrito";
+var urlGetCarrito = "https://25.60.14.37:80/api/MainCarrito/ObtenerCarrito";
+var urlVaciarCarrito = "https://25.60.14.37:80/api/MainVaciarCarritoDelete/VaciarCarrito"
+var urlGenerarFactura = "https://25.60.14.37:80/api/controller/CrearFactura";
+var urlGenerarDetalle = "https://25.60.14.37:80/api/controller/CrearDetalleFactura"
 var url = urlfiltro2;
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
@@ -85,7 +85,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",

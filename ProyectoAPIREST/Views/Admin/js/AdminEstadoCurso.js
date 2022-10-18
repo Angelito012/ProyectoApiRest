@@ -1,7 +1,7 @@
 var datosadmin = JSON.parse(localStorage.getItem('admin'));
 
 
-var urlEdit = "https://localhost:7076/api/AdminPantalla/EstadoCursos"
+var urlEdit = "https://25.60.14.37:80/api/AdminPantalla/EstadoCursos"
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
   
@@ -50,7 +50,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -80,7 +80,7 @@ function obtenerToken(){
 
 
 
-	var url ="https://localhost:7076/api/AdminPantalla/GetCursos";
+	var url ="https://25.60.14.37:80/api/AdminPantalla/GetCursos";
 	obtenerToken();
 	function Get(token){
 		fetch(url,{
@@ -251,7 +251,7 @@ function obtenerToken(){
 	}
 
 	function Delete(IDCURSO,token){
-		var url ="https://localhost:7076/api/AdminPantalla/EliminarCursoAdmin";
+		var url ="https://25.60.14.37:80/api/AdminPantalla/EliminarCursoAdmin";
 		fetch(url, {
 			method: "DELETE",
 			body: JSON.stringify({

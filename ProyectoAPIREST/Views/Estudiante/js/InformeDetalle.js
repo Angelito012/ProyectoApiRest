@@ -47,7 +47,7 @@ function MostrarDatos(){
 obtenerToken();
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -71,7 +71,7 @@ function obtenerToken(){
 
 //LEER DETALLE DE LA FACTURA
 function MostrarFactura(token){
-    var url = "https://localhost:7076/api/controller/VerDetalle";
+    var url = "https://25.60.14.37:80/api/controller/VerDetalle";
 
     fetch(url,{
         method: "POST",
