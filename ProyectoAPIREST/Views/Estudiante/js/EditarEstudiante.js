@@ -3,8 +3,23 @@ var datos = JSON.parse(localStorage.getItem('estudiante'));
 var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    var rol = getCookie('rol');
+    var email = getCookie('email'); 
+
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Estudiante"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 MostrarDatos();
+var h2 = document.getElementById('nombre');
+h2.innerText = DatosEstudianteCarrito.nombre;
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -31,6 +46,7 @@ btnLogout.addEventListener('click',salir);
 function salir(){
     alert('Sesion cerrada')
     location.href="../index.html";
+    localStorage.clear();
 }
 
 function MostrarDatos(){
@@ -47,7 +63,7 @@ function MostrarDatos(){
 }
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -67,6 +83,8 @@ function obtenerToken(){
         }
     }).then(function(Data){
         console.log(Data.token);
+        console.log(DatosEstudianteCarrito)
+
         tokenValido = Data.token;
         if (document.getElementById("inputNombre").value != "" && 
             document.getElementById("inputApellido").value != "" &&
@@ -77,6 +95,7 @@ function obtenerToken(){
             document.getElementById("inputTarjetaCredito").value != "" 
         ){
             EditarEstudiante(Data.token);
+            
         } else {
             alert('Todos los datos son necesarios, por favor intente de nuevo');
         }
@@ -88,7 +107,7 @@ function validarDatos(e) {
 
 }
 function EditarEstudiante(token){
-    var url = "https://localhost:7076/api/MainEstudiante/EditarInfoEstudiantes";
+    var url = "https://25.60.14.37:80/api/MainEstudiante/EditarInfoEstudiantes";
     fetch(url,{
         method: "PUT",
         body: JSON.stringify({

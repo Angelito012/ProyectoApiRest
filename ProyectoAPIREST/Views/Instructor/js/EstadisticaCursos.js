@@ -1,8 +1,19 @@
-var urlCursos = "https://localhost:7076/api/IngresoPorCurso/IngresoCursoProfesor";
+var urlCursos = "https://25.60.14.37:80/api/IngresoPorCurso/IngresoCursoProfesor";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
+var rol = getCookie('rol');
+var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
 
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
@@ -30,7 +41,7 @@ function getCookie(cname) {
 function obtenerToken(){
 
 
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -52,6 +63,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerCursos(tokenValido);
+        var h2 = document.getElementById('nombre');
+h2.innerText = DatosInstructor.nombre
     })
 
 }
@@ -157,7 +170,7 @@ function obtenerCursos(token){
                                 boton.target.PrecioProfesor,
                                 boton.target.Total,
                                 boton.target.Cantidad);
-                    location.href = "" 
+                                location.href = "./VerEstudiantes.html" 
                 })
                 contenido_card.appendChild(botonVerCursos);
                 

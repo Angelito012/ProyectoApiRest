@@ -1,5 +1,6 @@
-var rol = getCookie('rol');
 var email = getCookie('email');
+var rol = getCookie('rol');
+var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
@@ -12,8 +13,6 @@ window.addEventListener('load',(event) => {
         alert('No tiene acceso a esta pagina')
         location.href="../index.html";
     }
-
-
 })
 
 var btnLogout = document.getElementById('btnLogout');
@@ -43,7 +42,7 @@ function getCookie(cname) {
   }
 
   function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
   
     fetch(url,{
         method: "POST",
@@ -64,12 +63,13 @@ function getCookie(cname) {
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        
         Get(Data.token)
 
     })
   }
   function Get(token){
-    var url = "https://localhost:7076/api/Estudiantes/GetEstudiantesinfo";
+    var url = "https://25.60.14.37:80/api/Estudiantes/GetEstudiantesinfo";
     fetch(url,{
       method: "POST",
       body: JSON.stringify({
@@ -84,18 +84,17 @@ function getCookie(cname) {
   }).then(function(response){
       if(response.ok){
           return response.json();
+          
       }else{
           alert("Error al ejecutar solicitud")
       }
   }).then(function(Data){
       console.log(Data);
-    
-      
-     
-
+      var h2 = document.getElementById('nombre');
+      h2.innerText = Data[0].nombre
       for (let i = 0; i < Data.length; i++) {
         var h2 = document.getElementById('name');
-        h2.innerText = 'Bienvenido de nuevo ' + rol+' s'+Data[i].nombre +' '+Data[i].apellido
+        h2.innerText = 'Bienvenido de nuevo ' + rol+' '+Data[i].nombre +' '+Data[i].apellido
           let btnEditar = document.getElementById("btnIcono");
           btnEditar.Idusuario = Data[i].idUsuario
           btnEditar.Nombre = Data[i].nombre

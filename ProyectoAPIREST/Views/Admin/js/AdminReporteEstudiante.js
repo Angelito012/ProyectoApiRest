@@ -1,5 +1,17 @@
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Administrador"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+
+})
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -17,7 +29,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -39,6 +51,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerEstudiantes(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 
 }
@@ -53,7 +67,7 @@ function salir(){
 }
 
 function obtenerEstudiantes(token){
-    var url = "https://localhost:7076/api/ReporteEstudiantes/EstudianteCurso";
+    var url = "https://25.60.14.37:80/api/ReporteEstudiantes/EstudianteCurso";
 
     fetch(url, {
         method: "GET",

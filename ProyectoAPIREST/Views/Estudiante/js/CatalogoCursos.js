@@ -1,14 +1,14 @@
-var urlTotal = "https://localhost:7076/api/Cursos/CatalogoCursos";
-var urlFiltrado = "https://localhost:7076/api/MainCursos/BusquedaCurso";
-var urlfiltro1 = "https://localhost:7076/api/MainCursos/FiltrosComprados";
-var urlfiltro2 =  "https://localhost:7076/api/MainCursos/FiltrosNoComprados";
-var urlfiltro3 =  "https://localhost:7076/api/MainCursos/FiltrosTodos";
-var urlAgregarCarrito = "https://localhost:7076/api/MainCarrito/AñadirCarrito";
-var urlEliminarCarrito = "https://localhost:7076/api/MainCarrito/EliminardeCarrito";
-var urlGetCarrito = "https://localhost:7076/api/MainCarrito/ObtenerCarrito";
-var urlVaciarCarrito = "https://localhost:7076/api/MainVaciarCarritoDelete/VaciarCarrito"
-var urlGenerarFactura = "https://localhost:7076/api/controller/CrearFactura";
-var urlGenerarDetalle = "https://localhost:7076/api/controller/CrearDetalleFactura"
+var urlTotal = "https://25.60.14.37:80/api/Cursos/CatalogoCursos";
+var urlFiltrado = "https://25.60.14.37:80/api/MainCursos/BusquedaCurso";
+var urlfiltro1 = "https://25.60.14.37:80/api/MainCursos/FiltrosComprados";
+var urlfiltro2 =  "https://25.60.14.37:80/api/MainCursos/FiltrosNoComprados";
+var urlfiltro3 =  "https://25.60.14.37:80/api/MainCursos/FiltrosTodos";
+var urlAgregarCarrito = "https://25.60.14.37:80/api/MainCarrito/AñadirCarrito";
+var urlEliminarCarrito = "https://25.60.14.37:80/api/MainCarrito/EliminardeCarrito";
+var urlGetCarrito = "https://25.60.14.37:80/api/MainCarrito/ObtenerCarrito";
+var urlVaciarCarrito = "https://25.60.14.37:80/api/MainVaciarCarritoDelete/VaciarCarrito"
+var urlGenerarFactura = "https://25.60.14.37:80/api/controller/CrearFactura";
+var urlGenerarDetalle = "https://25.60.14.37:80/api/controller/CrearDetalleFactura"
 var url = urlfiltro2;
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
@@ -25,8 +25,23 @@ let validate;
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 var vaciarCarritoBtn = document.getElementById("vaciar-carrito");
 var comprarCarrito = document.getElementById("comprar-carrito");
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    var rol = getCookie('rol');
+    var email = getCookie('email'); 
+
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Estudiante"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 document.getElementById('rb2').checked=true
+
+
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
@@ -70,7 +85,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -92,7 +107,8 @@ function obtenerToken(){
         tokenValido = Data.token;
         obtenercursos(tokenValido);
         CursoHtml(tokenValido);
-        
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
       
     })
 
@@ -109,6 +125,7 @@ btnLogout.addEventListener('click',salir);
 function salir(){
     alert('Sesion cerrada')
     location.href="../index.html";
+    localStorage.clear();
 }
 
 function obtenercursos(token){
@@ -157,9 +174,6 @@ function obtenercursos(token){
         if(DatosApi === Data){
             alert('same')
         }else if(DatosApi != Data){
-            console.log(DatosApi)
-            console.log(Data)
-            DatosApi = Data;
             if(Data.length > 0){
                 card.innerHTML = "";
                 for(i=0; i<Data.length; i++){
@@ -258,7 +272,6 @@ function agregarCurso(idCursoCarrito,precioCarrito,token){
 
 function CursoHtml(token){
     
-    console.log(DatosEstudianteCarrito)
 
     fetch(urlGetCarrito, {
         method: "POST",
@@ -286,7 +299,6 @@ function CursoHtml(token){
 
         for(i=0; i<Data.length; i++){
             
-            console.log(Data)
             let row = document.createElement("tr");
             row.innerHTML = `
                <td class="idCursoDetalle">${Data[i].idCurso}</td>
@@ -306,7 +318,8 @@ function CursoHtml(token){
 
             
 
-            botonEliminarCurso.innerHTML = "X"
+    
+            botonEliminarCurso.innerHTML=`<img src="../images/trash.png">`
 
             botonEliminarCurso.addEventListener("click", function(button){
                 EliminarElementoCarrito(button.target.idCurso,token);

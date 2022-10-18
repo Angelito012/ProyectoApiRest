@@ -1,4 +1,4 @@
-var url = "https://localhost:7076/api/Estudiantes";
+var url = "https://25.60.14.37:80/api/Estudiantes";
 
 const submitButton = document.getElementById("submitButton");
 const form = document.getElementById("form");

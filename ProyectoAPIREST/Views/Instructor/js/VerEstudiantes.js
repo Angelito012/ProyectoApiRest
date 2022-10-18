@@ -8,7 +8,16 @@ var estudiantes = document.getElementById('estudiantes');
 
 var tablaDetalle = document.getElementById('tablaDetalle');
 var email = getCookie('email'); 
-
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 //COOKIES
 function getCookie(cname) {
     let name = cname + "=";
@@ -30,7 +39,7 @@ function getCookie(cname) {
 obtenerToken();
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -51,7 +60,7 @@ function obtenerToken(){
 }
 
 function leerEstudiantes(token){
-    var url = "https://localhost:7076/api/IngresoPorCurso/ListadoEstudiantes";
+    var url = "https://25.60.14.37:80/api/IngresoPorCurso/ListadoEstudiantes";
 
     fetch(url,{
         method: "POST",
@@ -119,17 +128,17 @@ if(aleatorio === 0){
     style.setProperty('--main', '#62c2e4');
 }
 
-var InformacionCurso = {
-    idCurso : 6,
-    curso : "Matematicas",
-    profesor : "Giancarlo Loarca",
-    correo : "giancarlo@gmail.com",
-    precio : 200,
-    total : 1000,
-    estudiantes : 5
-};
+// var InformacionCurso = {
+//     idCurso : 6,
+//     curso : "Matematicas",
+//     profesor : "Giancarlo Loarca",
+//     correo : "giancarlo@gmail.com",
+//     precio : 200,
+//     total : 1000,
+//     estudiantes : 5
+// };
 
-localStorage.setItem("curso",JSON.stringify(InformacionCurso))
+// localStorage.setItem("curso",JSON.stringify(InformacionCurso))
 var factura = JSON.parse(localStorage.getItem('curso'))
 console.log(factura)
 

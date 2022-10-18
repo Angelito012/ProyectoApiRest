@@ -51,7 +51,7 @@ function getCookie(cname) {
   }
 
   function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
   
     fetch(url,{
         method: "POST",
@@ -73,11 +73,13 @@ function getCookie(cname) {
         console.log(Data.token);
         tokenValido = Data.token;
         Get(Data.token)
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
     })
   }
   function Get(token){
     console.log(datos)
-    var url = "https://localhost:7076/api/MainLeccion/VerLeccionPorId";
+    var url = "https://25.60.14.37:80/api/MainLeccion/VerLeccionPorId";
     fetch(url, {
         method: "POST",
         body: JSON.stringify(datos),
@@ -163,7 +165,7 @@ function getCookie(cname) {
   })
 }
 function Preguntar(token){
-    var url = "https://localhost:7076/api/MainLeccion/CrearPregunta";
+    var url = "https://25.60.14.37:80/api/MainLeccion/CrearPregunta";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({

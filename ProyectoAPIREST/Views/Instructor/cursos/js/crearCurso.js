@@ -1,12 +1,22 @@
 var datos = JSON.parse(localStorage.getItem('instructor'));
 var email = getCookie('email');
 let card = document.getElementById("contenedor");
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
-
+console.log(datos)
+var h2 = document.getElementById('nombres');
+h2.innerText = datos.nombre
 
 obtenerToken();
-
-
 var boton = document.getElementById('enviar');
 
 boton.addEventListener('click', () => {
@@ -14,7 +24,7 @@ boton.addEventListener('click', () => {
 })
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -33,13 +43,13 @@ function obtenerToken(){
             validarEstado(correo,clave);
         }
     }).then(function(Data){
-        console.log(Data.token);
         tokenValido = Data.token;
+        console.log(Data.token)
     })
 }
 
 function CrearCursos(token){
-    var url = "https://localhost:7076/api/MainCursos/CrearCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/CrearCurso";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({ 
@@ -89,5 +99,5 @@ btnLogout.addEventListener('click',salir);
 
 function salir(){
     alert('Sesion cerrada')
-    location.href="../index.html";
+    location.href="../../index.html";
 }

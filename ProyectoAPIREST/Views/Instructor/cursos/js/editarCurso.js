@@ -2,6 +2,17 @@ var datos = JSON.parse(localStorage.getItem('curso'));
 var email = getCookie('email');
 let card = document.getElementById("contenedor")
 var totalEstudiante = 0;
+var rol = getCookie('rol');
+
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 // localStorage.clear();
 OpenEdit();
 obtenerToken();
@@ -17,7 +28,7 @@ select.addEventListener('click',() => {
 })
 
 function validarCurso(token){
-    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/ValidarCurso";
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
@@ -56,7 +67,7 @@ boton.addEventListener('click', () => {
 })
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -83,7 +94,7 @@ function obtenerToken(){
 }
 
 function ActualizarDatos(token){
-    var url = "https://localhost:7076/api/MainCursos/EditarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/EditarCurso";
     fetch(url, {
         method: "PUT",
         body: JSON.stringify({
@@ -129,7 +140,7 @@ function getCookie(cname) {
 
 function verLeccion(token){
     console.log(token)
-    var url = "https://localhost:7076/api/MainLeccion/VerLecciones";
+    var url = "https://25.60.14.37:80/api/MainLeccion/VerLecciones";
     fetch(url, {
         method: "POST",
         body: JSON.stringify(datos),

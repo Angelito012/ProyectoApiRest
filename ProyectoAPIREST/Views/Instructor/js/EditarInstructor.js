@@ -3,12 +3,21 @@ var datos = JSON.parse(localStorage.getItem('instructor'));
 var boton = document.getElementById('submitButton');
 var btnLogout = document.getElementById('btnLogout');
 var DatosInstructor = JSON.parse(localStorage.getItem('instructor'));
+var rol = getCookie('rol');
 
-
-
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 MostrarDatos();
-
+var h2 = document.getElementById('nombre');
+h2.innerText = DatosInstructor.nombre
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -54,7 +63,7 @@ function MostrarDatos(){
 }
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -75,6 +84,7 @@ function obtenerToken(){
     }).then(function(Data){
         console.log(Data.token);
         tokenValido = Data.token;
+        
         if (document.getElementById("inputNombre").value != "" && 
             document.getElementById("inputApellido").value != "" &&
             document.getElementById("inputCorreo").value != "" &&
@@ -99,7 +109,7 @@ function validarDatos(e) {
 
 }
 function EditarInstructor(token){
-    var url = "https://localhost:7076/api/MainInstructor/EditarInstructor";
+    var url = "https://25.60.14.37:80/api/MainInstructor/EditarInstructor";
     fetch(url,{
         method: "PUT",
         body: JSON.stringify({

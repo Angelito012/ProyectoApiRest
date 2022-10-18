@@ -11,7 +11,7 @@ localStorage.clear();
 formulario.addEventListener('click',obtenerToken);
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
     var correo = document.getElementById('correo').value;
     var clave = document.getElementById('clave').value;
 
@@ -43,7 +43,7 @@ function obtenerToken(){
 
 function validarEstado(correo,clave){
     if(correo != ""){
-        var url = "https://localhost:7076/api/Autenticacion/ValidarEstado";
+        var url = "https://25.60.14.37:80/api/Autenticacion/ValidarEstado";
         fetch(url,{
             method: "POST",
             body: JSON.stringify({
@@ -70,7 +70,7 @@ function validarEstado(correo,clave){
 
 function validarVentana(data,correo,clave){
     if(data != ""){
-        var url = "https://localhost:7076/api/Usuarios/Get";
+        var url = "https://25.60.14.37:80/api/Usuarios/Get";
         fetch(url,{
             method: "POST",
             body: JSON.stringify({

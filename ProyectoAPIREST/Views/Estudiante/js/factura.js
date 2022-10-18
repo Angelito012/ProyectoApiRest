@@ -6,6 +6,19 @@ var tablaDetalle = document.getElementById('tablaDetalle');
 var detalle = document.getElementById('tablaDetalle');
 var foot = document.querySelector('tfoot');
 var email = getCookie('email'); 
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    var rol = getCookie('rol');
+    var email = getCookie('email'); 
+
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Estudiante"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
 
@@ -31,7 +44,7 @@ function getCookie(cname) {
 obtenerToken();
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -48,12 +61,14 @@ function obtenerToken(){
     }).then(function(Data){
         tokenValido = Data.token;
         leerFactura(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
     })
 }
 
 //LEER DETALLE DE LA FACTURA
 function leerFactura(token){
-    var url = "https://localhost:7076/api/controller/VerFactura";
+    var url = "https://25.60.14.37:80/api/controller/VerFactura";
 
     fetch(url,{
         method: "POST",

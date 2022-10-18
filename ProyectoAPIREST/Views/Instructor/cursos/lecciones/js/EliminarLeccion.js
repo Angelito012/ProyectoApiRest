@@ -4,6 +4,17 @@ console.log(leccion.Idleccion)
 var email = getCookie('email');
 var totalEstudiante = 0;
 var tokenValido;
+var rol = getCookie('rol');
+
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -43,7 +54,7 @@ boton.addEventListener('click', () => {
 })
 
 function validarCurso(token){
-    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/ValidarCurso";
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
@@ -67,7 +78,7 @@ function validarCurso(token){
 }
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -93,7 +104,7 @@ function obtenerToken(){
 }
 
 function EliminarPregunta(token){
-    var url = "https://localhost:7076/api/MainLeccion/EliminarPregunta";
+    var url = "https://25.60.14.37:80/api/MainLeccion/EliminarPregunta";
     fetch(url, {
         method: "DELETE",
         body: JSON.stringify({ 
@@ -108,7 +119,7 @@ function EliminarPregunta(token){
 }
 
 function EliminarLeccion(token){
-    var url = "https://localhost:7076/api/Leccion/EliminarUnaLeccion";
+    var url = "https://25.60.14.37:80/api/Leccion/EliminarUnaLeccion";
     fetch(url, {
         method: "DELETE",
         body: JSON.stringify({ 

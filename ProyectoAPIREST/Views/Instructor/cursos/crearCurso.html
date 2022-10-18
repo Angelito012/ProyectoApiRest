@@ -5,7 +5,6 @@
 	<title>Menù Lateral con Css</title>
 	<link rel="stylesheet" href="css/crearCurso.css">
 	<link rel="stylesheet" href="../css/fontello.css">
-    <link rel="stylesheet" href="../css/EditarInstructor.css">
 </head>
 <body>
     <header class="header">
@@ -45,16 +44,18 @@
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-            
-                <a href="../../Instructor/MenuInstructor.html">Inicio</a>			
-          <a href="../../Instructor/cursos/crearCurso.html">Crear un Curso</a>
-          <a href="../../Instructor/VerCursos.html">Ver mis Cursos</a>
-          <a href="../../Instructor/EditarInstructor.html">Editar mis datos</a>
-          <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
+            <div class="user-section"><img src="../../Estudiante/img/user.png" alt="" class="user"> <h2 id="nombres"></h2></div>
+            <a href="../../Instructor/MenuInstructor.html">Inicio</a>			
+            <a href="../../Instructor/cursos/crearCurso.html">Crear un Curso</a>
+            <a href="../../Instructor/VerCursos.html">Ver mis Cursos</a>
+            <a href="../../Instructor/EditarInstructor.html">Editar mis datos</a>
+            <a href="../../Instructor/InstructorEstadisticaCursos.html">Estadistica cursos</a>
+            <a href="../Instructor/EstadisticaCursos.html">Estadistica cursos y estudiantes</a>
+            <a id="btnLogout" style="cursor: pointer;">Cerrar Sesión</a>
             </nav>
             <label for="btn-menu" class="icon-cancel"></label>
         </div>
     </div>
 </body>
 </html>
-<script src="./js/crearCurso.js"></script>
+<script src="js/crearCurso.js"></script>

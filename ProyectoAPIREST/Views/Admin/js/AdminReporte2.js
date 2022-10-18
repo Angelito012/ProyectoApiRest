@@ -1,8 +1,20 @@
-var urlCursos = "https://localhost:7076/api/IngresoPorCurso/IngresoCursoAdmin";
+var urlCursos = "https://25.60.14.37:80/api/IngresoPorCurso/IngresoCursoAdmin";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 let buscador = document.getElementById('buscador')
+var rol = getCookie('rol');
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
 
+window.addEventListener('load',(event) => {
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Administrador"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+
+})
 
 buscador.addEventListener('input',() => {
     card.innerHTML = "";
@@ -30,7 +42,7 @@ function getCookie(cname) {
 function obtenerToken(){
 
 
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -52,6 +64,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerCursos(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 
 }
@@ -94,7 +108,7 @@ function obtenerCursos(token){
     
                 let figure = document.createElement('figure');
                 let imagen = document.createElement('img');
-                imagen.src = "./img/reporte.png";
+                imagen.src = "./img/reporte.jpg";
                 figure.appendChild(imagen);
                 newcard.appendChild(figure);
     
@@ -176,7 +190,7 @@ function obtenerCursos(token){
                                 boton.target.PrecioVenta,
                                 boton.target.TotalVenta,
                                 boton.target.Ganancias);
-                    location.href = "" 
+                    location.href = "./VerEstudiantes.html" 
                 })
                 contenido_card.appendChild(botonVerCursos);
                 

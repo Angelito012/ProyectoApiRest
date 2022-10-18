@@ -1,3 +1,6 @@
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
+
 let card = document.getElementById("contenedor")
 
 window.addEventListener('load',(event) => {
@@ -41,7 +44,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -63,11 +66,13 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
 		obtenerEstadisticas(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 	
 }
 
-var url ="https://localhost:7076/api/estadisticaCurso/EstadisticaCursoAdmin";
+var url ="https://25.60.14.37:80/api/estadisticaCurso/EstadisticaCursoAdmin";
 
 obtenerToken();
 

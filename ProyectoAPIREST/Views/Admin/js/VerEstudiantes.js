@@ -1,8 +1,16 @@
+var idCurso = document.getElementById('idCurso');
+var curso = document.getElementById('curso');
+var profesor = document.getElementById('profesor');
+var correo = document.getElementById('correo');
+var precioProfesor = document.getElementById('precioProfesor');
+var totalProfesor = document.getElementById('totalProfesor');
+var estudiantes = document.getElementById('estudiantes');
+var precioVenta = document.getElementById('precioVenta');
+var totalVenta = document.getElementById('totalVenta');
+var ganancias = document.getElementById('ganancias');
+
 var tablaDetalle = document.getElementById('tablaDetalle');
-var detalle = document.getElementById('tablaDetalle');
-var foot = document.querySelector('tfoot');
 var email = getCookie('email'); 
-var Estudiante = JSON.parse(localStorage.getItem('InformeEstudiante'))
 var rol = getCookie('rol');
 window.addEventListener('load',(event) => {
     if(rol == ""){
@@ -30,14 +38,6 @@ function getCookie(cname) {
     }
     return "";
 }
-MostrarDatos();
-
-function MostrarDatos(){
-    document.getElementById('codigo').value = Estudiante.IdUsuario;
-    document.getElementById('estudiante').value = Estudiante.Estudiante;
-    document.getElementById('cursos').value = Estudiante.Cursos;
-    document.getElementById('gasto').value = Estudiante.Gasto;
-}
 
 //OBTENER TOKEN
 obtenerToken();
@@ -59,18 +59,17 @@ function obtenerToken(){
         return response.json();
     }).then(function(Data){
         tokenValido = Data.token;
-        MostrarCursos(tokenValido);
+        leerEstudiantes(tokenValido);
     })
 }
 
-//LEER DETALLE DE LA FACTURA
-function MostrarCursos(token){
-    var url = "https://25.60.14.37:80/api/ReporteEstudiantes/EstudianteCurso";
+function leerEstudiantes(token){
+    var url = "https://25.60.14.37:80/api/IngresoPorCurso/ListadoEstudiantes";
 
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
-            idUsuario: Estudiante.IdUsuario
+            idCurso: factura.idCurso
         }),
         headers:{
             'Accept' : "application/json",
@@ -81,43 +80,35 @@ function MostrarCursos(token){
         if(response.ok){
             return response.json();
         }else{
-            aleatorio('Código de estudiante no válido')
+            aleatorio('Numero de factura no valido')
         }
     }).then(function(Data){
-        detalle.innerHTML = "";
+        console.log(Data)
         for(i=0; i<Data.length; i++){
             let fila = document.createElement('tr');
-            let codigo = document.createElement('td');
-            let curso = document.createElement('td');
-            let precio = document.createElement('td');
-            let duracion = document.createElement('td');
-            let lecciones = document.createElement('td');
+            let Cno = document.createElement('td');
+            let Ccodigo = document.createElement('td');
+            let CNombre = document.createElement('td');
+            let Ccorreo = document.createElement('td');
+            let Cfecha = document.createElement('td');
 
-            // if(i % 2 > 0){
-            //     fila.classList.add('active-row');
-            // }
+            Cno.innerText = i + 1;
+            fila.appendChild(Cno);
 
-            codigo.innerText = Data[i].idCurso;
-            fila.appendChild(codigo);
+            Ccodigo.innerText = Data[i].idUsuario;
+            fila.appendChild(Ccodigo);
 
-            curso.innerText = Data[i].nombre;
-            fila.appendChild(curso);
+            CNombre.innerText = Data[i].nombre;
+            fila.appendChild(CNombre);
 
-            precio.innerText = Data[i].precio;
-            fila.appendChild(precio);
+            Ccorreo.innerText = Data[i].correo;
+            fila.appendChild(Ccorreo);
 
-            duracion.innerText = Data[i].duracion;
-            fila.appendChild(duracion);
+            Cfecha.innerText = Data[i].fecha;
+            fila.appendChild(Cfecha);
 
-            lecciones.innerText = Data[i].lecciones;
-            fila.appendChild(lecciones);
-
-            detalle.appendChild(fila);
+            tablaDetalle.appendChild(fila);
         }
-        // fila.appendChild(footTitulo);
-        // fila.appendChild(footCurso);
-        // fila.appendChild(footTotal);
-        // foot.appendChild(fila);
     })
 }
 
@@ -139,4 +130,36 @@ if(aleatorio === 0){
     style.setProperty('--main', '#669ae1');
 }else if(aleatorio === 7){
     style.setProperty('--main', '#62c2e4');
+}
+
+// var InformacionCurso = {
+//     idCurso : 6,
+//     curso : "Matematicas",
+//     profesor : "Giancarlo Loarca",
+//     correo : "giancarlo@gmail.com",
+//     precioProfesor : 200,
+//     totalProfesor : 1000,
+//     estudiantes : 5,
+//     precioVenta : 300,
+//     totalVenta: 1500,
+//     ganancias: 500
+// };
+
+// localStorage.setItem("curso",JSON.stringify(InformacionCurso))
+var factura = JSON.parse(localStorage.getItem('curso'))
+console.log(factura)
+
+prueba()
+
+function prueba(){
+    idCurso.value = factura.idCurso;
+    curso.value = factura.curso;
+    profesor.value = factura.profesor;
+    correo.value = factura.correo;
+    precioProfesor.value = factura.precioProfesor;
+    totalProfesor.value = factura.totalProfesor;
+    estudiantes.value = factura.estudiantes;
+    precioVenta.value = factura.precioVenta;
+    totalVenta.value = factura.totalVenta;
+    ganancias.value = factura.ganancias;
 }

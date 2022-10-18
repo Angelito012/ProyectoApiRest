@@ -1,3 +1,5 @@
+var datosadmin = JSON.parse(localStorage.getItem('admin'));
+
 window.addEventListener('load',(event) => {
     var rol = getCookie('rol');
 
@@ -45,7 +47,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -67,13 +69,15 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
 		Get(tokenValido);
+		var h2 = document.getElementById('nombre');
+        h2.innerText = datosadmin.nombre
     })
 	
 }
 
 
 
-	var url ="https://localhost:7076/api/AdminPantalla/Instructor";
+	var url ="https://25.60.14.37:80/api/AdminPantalla/Instructor";
 	obtenerToken();
 	function Get(token){
 		fetch(url,{

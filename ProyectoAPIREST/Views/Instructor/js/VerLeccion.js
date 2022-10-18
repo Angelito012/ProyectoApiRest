@@ -50,7 +50,7 @@ function getCookie(cname) {
   }
 
   function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
   
     fetch(url,{
         method: "POST",
@@ -76,7 +76,7 @@ function getCookie(cname) {
   }
   function Get(token){
     console.log(datoslec)
-    var url = "https://localhost:7076/api/MainLeccion/VerLeccionPorId";
+    var url = "https://25.60.14.37:80/api/MainLeccion/VerLeccionPorId";
     fetch(url, {
         method: "POST",
         body: JSON.stringify(datoslec),
@@ -168,7 +168,7 @@ function getCookie(cname) {
   
   
 function Responder(idPregunta,token){
-    var url = "https://localhost:7076/api/MainLeccion/ResponderPregunta";
+    var url = "https://25.60.14.37:80/api/MainLeccion/ResponderPregunta";
     fetch(url, {
         method: "PUT",
         body: JSON.stringify({

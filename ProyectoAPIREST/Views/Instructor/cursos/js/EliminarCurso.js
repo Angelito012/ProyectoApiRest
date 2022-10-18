@@ -3,7 +3,17 @@ var email = getCookie('email');
 let card = document.getElementById("contenedor")
 var totalEstudiante = 0;
 var tokenValido;
+var rol = getCookie('rol');
 
+window.addEventListener('load',(event) => { 
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Instructor"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -35,7 +45,7 @@ obtenerToken();
 llenarInformacion();
 
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -60,7 +70,7 @@ function obtenerToken(){
 }
 
 function validarCurso(token){
-    var url = "https://localhost:7076/api/MainCursos/ValidarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/ValidarCurso";
     fetch(url,{
         method: "POST",
         body: JSON.stringify({
@@ -84,7 +94,7 @@ function validarCurso(token){
 }
 
 function ValidacionInstructor(token){
-    var url = "https://localhost:7076/api/MainLeccion/VerLecciones";
+    var url = "https://25.60.14.37:80/api/MainLeccion/VerLecciones";
     fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -159,7 +169,7 @@ boton.addEventListener('click', () => {
     if(totalEstudiante > 0){
         alert('No se puede eliminar porque este curso ya ha sido comprado por ' + totalEstudiante + " estudiantes")
     }else{
-        var url = "https://localhost:7076/api/Autenticacion/Validar";
+        var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
         fetch(url,{
             method: "POST",
@@ -185,7 +195,7 @@ boton.addEventListener('click', () => {
 })
 
 function eliminarLeccion(token){
-    var url = "https://localhost:7076/api/MainLeccion/EliminarLeccion";
+    var url = "https://25.60.14.37:80/api/MainLeccion/EliminarLeccion";
     
     fetch(url,{
         method: "DELETE",
@@ -200,7 +210,7 @@ function eliminarLeccion(token){
 }
 
 function eliminarCarrito(token){
-    var url = "https://localhost:7076/api/MainCarrito/EliminarCursosCarrito";
+    var url = "https://25.60.14.37:80/api/MainCarrito/EliminarCursosCarrito";
     
     fetch(url,{
         method: "DELETE",
@@ -214,7 +224,7 @@ function eliminarCarrito(token){
 }
 
 function eliminarCurso(token){
-    var url = "https://localhost:7076/api/MainCursos/EliminarCurso";
+    var url = "https://25.60.14.37:80/api/MainCursos/EliminarCurso";
     
     fetch(url,{
         method: "DELETE",

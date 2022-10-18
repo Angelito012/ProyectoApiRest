@@ -1,7 +1,20 @@
-var url = "https://localhost:7076/api/controller/VerFacturas";
+var url = "https://25.60.14.37:80/api/controller/VerFacturas";
 var email = getCookie('email'); 
 let card = document.getElementById("contenedor")
 var DatosEstudianteCarrito = JSON.parse(localStorage.getItem('estudiante'));
+var rol = getCookie('rol');
+window.addEventListener('load',(event) => {
+    var rol = getCookie('rol');
+    var email = getCookie('email'); 
+
+    if(rol == ""){
+        alert('Primero Ingrese sus credenciales')
+        location.href="../index.html";
+    }else if(rol != "Estudiante"){
+        alert('No tiene acceso a esta pagina')
+        location.href="../index.html";
+    }
+})
 
 function getCookie(cname) {
     let name = cname + "=";
@@ -19,7 +32,7 @@ function getCookie(cname) {
     return "";
 }
 function obtenerToken(){
-    var url = "https://localhost:7076/api/Autenticacion/Validar";
+    var url = "https://25.60.14.37:80/api/Autenticacion/Validar";
 
     fetch(url,{
         method: "POST",
@@ -41,6 +54,8 @@ function obtenerToken(){
         console.log(Data.token);
         tokenValido = Data.token;
         obtenerFacturas(tokenValido);
+        var h2 = document.getElementById('nombre');
+        h2.innerText = DatosEstudianteCarrito.nombre
     })
 
 }
@@ -52,6 +67,7 @@ btnLogout.addEventListener('click',salir);
 function salir(){
     alert('Sesion cerrada')
     location.href="../index.html";
+    localStorage.clear();
 }
 
 function obtenerFacturas(token){
