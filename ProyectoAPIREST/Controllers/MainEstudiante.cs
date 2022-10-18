@@ -15,7 +15,7 @@ namespace ProyectoAPIREST.Controllers
     [ApiController]
     public class MainEstudiante : Controller
     {
-        [HttpPut]
+        [HttpPost]
         [Route("EditarInfoEstudiantes")]
         public ActionResult EditarEstuduante(SolicitudEstudiante estudiante)
         {
