@@ -294,8 +294,7 @@ function obtenerToken(){
 			headers:{
 				'Accept' : "application/json",
 				"Content-Type":"application/json",
-				'Authorization': 'Bearer ' + token,
-				Access-Control-Allow-Origin: ''
+				'Authorization': 'Bearer ' + token
 			}	
 		}).then(function(response){
 			if(response.ok){
