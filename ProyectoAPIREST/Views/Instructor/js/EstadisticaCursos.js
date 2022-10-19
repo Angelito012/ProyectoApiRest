@@ -207,7 +207,6 @@ function guardarDatos(CodigoCurso,Nombre,Profesor,correo,PrecioProfesor,total,Ca
     };
 
     console.log(InformacionCurso);
-    alert("llego");
     localStorage.setItem("curso",JSON.stringify(InformacionCurso))
     
 }
