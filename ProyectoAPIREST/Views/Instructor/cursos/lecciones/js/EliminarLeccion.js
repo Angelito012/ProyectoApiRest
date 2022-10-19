@@ -106,7 +106,7 @@ function obtenerToken(){
 function EliminarPregunta(token){
     var url = "https://25.60.14.37:80/api/MainLeccion/EliminarPregunta";
     fetch(url, {
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify({ 
             IdLeccion: leccion.Idleccion
         }),
@@ -121,7 +121,7 @@ function EliminarPregunta(token){
 function EliminarLeccion(token){
     var url = "https://25.60.14.37:80/api/Leccion/EliminarUnaLeccion";
     fetch(url, {
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify({ 
             IdLeccion: leccion.Idleccion
         }),

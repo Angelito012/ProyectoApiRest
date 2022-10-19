@@ -198,7 +198,7 @@ function eliminarLeccion(token){
     var url = "https://25.60.14.37:80/api/MainLeccion/EliminarLeccion";
     
     fetch(url,{
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify(datos),
         headers:{
             'Accept' : "application/json",
@@ -213,7 +213,7 @@ function eliminarCarrito(token){
     var url = "https://25.60.14.37:80/api/MainCarrito/EliminarCursosCarrito";
     
     fetch(url,{
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify(datos),
         headers:{
             'Accept' : "application/json",
@@ -227,7 +227,7 @@ function eliminarCurso(token){
     var url = "https://25.60.14.37:80/api/MainCursos/EliminarCurso";
     
     fetch(url,{
-        method: "DELETE",
+        method: "POST",
         body: JSON.stringify(datos),
         headers:{
             'Accept' : "application/json",

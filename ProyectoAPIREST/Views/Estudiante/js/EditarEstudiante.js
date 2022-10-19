@@ -109,7 +109,7 @@ function validarDatos(e) {
 function EditarEstudiante(token){
     var url = "https://25.60.14.37:80/api/MainEstudiante/EditarInfoEstudiantes";
     fetch(url,{
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify({
             idUsuario: document.getElementById('inputId').value,        
             nombre: document.getElementById('inputNombre').value,        

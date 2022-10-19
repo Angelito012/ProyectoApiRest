@@ -142,7 +142,7 @@ function ModificarIndex(token){
 function ActualizarLeccion(token){
     var url = "https://25.60.14.37:80/api/Leccion/EditarLeccion";
     fetch(url, {
-        method: "PUT",
+        method: "POST",
         body: JSON.stringify({
             IdLeccion: leccion.Idleccion, 
             nombre: document.getElementById('nombre').value,        
