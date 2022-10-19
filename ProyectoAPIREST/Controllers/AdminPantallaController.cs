@@ -141,15 +141,23 @@ namespace ProyectoAPIREST.Controllers
         {
             using (DataBaseAPIContext db = new DataBaseAPIContext())
             {
-                string conexion = db.connectionString();
-                SqlConnection conn = new SqlConnection(conexion);
-                SqlCommand cmd = conn.CreateCommand();
-                conn.Open();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "ELIMINARCURSOADMIN";
-                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = curso.idCurso;
-                cmd.ExecuteNonQuery();
-                conn.Close();
+                try
+                {
+                    string conexion = db.connectionString();
+                    SqlConnection conn = new SqlConnection(conexion);
+                    SqlCommand cmd = conn.CreateCommand();
+                    conn.Open();
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = "ELIMINARCURSOADMIN";
+                    cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = curso.idCurso;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+                catch (Exception e)
+                {
+                    return NotFound("Este Curso no se puede eliminar por que tiene asociado estudiantes");
+                    throw;
+                }
 
             }
             return Ok();

@@ -11,13 +11,15 @@ builder.Services.AddCors(options =>
         builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
     });
 });
-
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
-    options.AddDefaultPolicy(policy =>
-    {
-        policy.WithOrigins("http://25.60.14.37/");
-    });
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("https://25.42.172.241",
+                                              "https://25.60.14.37");
+                      });
 });
 
 builder.Configuration.AddJsonFile("appsettings.json");
@@ -59,7 +61,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 
-app.UseCors();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.UseAuthorization();
 
