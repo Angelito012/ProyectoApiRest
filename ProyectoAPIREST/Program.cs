@@ -17,8 +17,8 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       policy =>
                       {
-                          policy.WithOrigins("https://25.42..172.241/",
-                                              "http://www.contoso.com");
+                          policy.WithOrigins("https://25.42.172.241",
+                                              "https://25.60.14.37");
                       });
 });
 
