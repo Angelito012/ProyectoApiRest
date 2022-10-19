@@ -157,6 +157,9 @@ function getCookie(cname) {
             console.log(button.target.IdPregunta);
            // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
            if(confirm("Esta seguro responder?")==true){
+            if(confirm("Esta seguro responder2?")==true){
+
+            }
             Responder(botonResponder.IdPregunta,token);
 
             }
@@ -168,6 +171,7 @@ function getCookie(cname) {
   
   
 function Responder(idPregunta,token){
+
     var url = "https://25.60.14.37:80/api/MainLeccion/ResponderPregunta";
     fetch(url, {
         method: "POST",

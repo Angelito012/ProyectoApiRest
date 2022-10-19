@@ -135,35 +135,27 @@ namespace ProyectoAPIREST.Controllers
             return Ok(getCursos);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarCursoAdmin")]
         public ActionResult EliminarCursoAdmin(SolicitudDeleteCurso curso)
         {
             using (DataBaseAPIContext db = new DataBaseAPIContext())
             {
-                try
-                {
-                    string conexion = db.connectionString();
-                    SqlConnection conn = new SqlConnection(conexion);
-                    SqlCommand cmd = conn.CreateCommand();
-                    conn.Open();
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.CommandText = "ELIMINARCURSOADMIN";
-                    cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = curso.idCurso;
-                    cmd.ExecuteNonQuery();
-                    conn.Close();
-                }
-                catch (Exception e)
-                {
-                    return NotFound("Este Curso no se puede eliminar por que tiene asociado estudiantes");
-                    throw;
-                }
+                string conexion = db.connectionString();
+                SqlConnection conn = new SqlConnection(conexion);
+                SqlCommand cmd = conn.CreateCommand();
+                conn.Open();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ELIMINARCURSOADMIN";
+                cmd.Parameters.Add("@IDCURSO", SqlDbType.Int).Value = curso.idCurso;
+                cmd.ExecuteNonQuery();
+                conn.Close();
 
             }
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("EstadoCursos")]
         public ActionResult EstadoCursos(SolicitudEstadoCurso curso)
         {
@@ -196,7 +188,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok(msg);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarUsuario")]
         public ActionResult EliminarUsuario(AutorizacionUsuarios usuario)
         {
@@ -224,7 +216,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPost]
         public ActionResult CambiarEstado(CambioEstado usuario)
         {
             string msg = "";

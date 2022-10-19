@@ -12,6 +12,14 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.WithOrigins("http://25.60.14.37/");
+    });
+});
+
 builder.Configuration.AddJsonFile("appsettings.json");
 var secretkey = builder.Configuration.GetSection("settings").GetSection("secretkey").ToString();
 var keyBytes = Encoding.UTF8.GetBytes(secretkey);
@@ -50,6 +58,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthentication();
+
+app.UseCors();
 
 app.UseAuthorization();
 

@@ -39,7 +39,9 @@ namespace ProyectoAPIREST.Models
             {
 
 
+
                 optionsBuilder.UseSqlServer("Server=ERICKKDANIEL;Database=DataBaseAPI;user=prueba;password=daniel1234;");
+
 
             }
         }

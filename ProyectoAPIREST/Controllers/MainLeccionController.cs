@@ -48,7 +48,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok(lecciones);
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarLeccion")]
         public ActionResult EliminarLeccion(SolicitudCurso curso)
         {
@@ -67,7 +67,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpPost]
         [Route("EliminarPregunta")]
         public ActionResult EliminarPregunta(leccionId leccion)
         {
@@ -166,7 +166,7 @@ namespace ProyectoAPIREST.Controllers
             return Ok();
         }
 
-        [HttpPut]
+        [HttpPost]
         [Route("ResponderPregunta")]
         public ActionResult CrearRespuesta(AgregarPregunta respuesta)
         {
