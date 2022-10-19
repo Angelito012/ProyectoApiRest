@@ -121,7 +121,7 @@ function getCookie(cname) {
             }else{
             document.getElementById("foro").innerHTML += 
             `
-                <form>
+               
                 <div class="form-group">
                 <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
                 <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
@@ -131,7 +131,7 @@ function getCookie(cname) {
                 <textarea id="respuesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
                 </div>
                 <button id="button-${Data.preguntas[i].idPregunta}"></button>
-                </form>
+                
                 
                 `   
 
@@ -169,6 +169,7 @@ function getCookie(cname) {
   
 function Responder(idPregunta,token){
     var url = "https://25.60.14.37:80/api/MainLeccion/ResponderPregunta";
+
     fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -188,13 +189,15 @@ function Responder(idPregunta,token){
         }
     }).then(function(response){
         if(response.ok){
-            return response.json();
+            
+            return response;
         }else{
             alert("Error al ejecutar solicitud")
 
         }
   }).then(function(){
-    alert("11111")
+    alert("Respuesta aceptada")
+    location.reload();
   })
 
 }

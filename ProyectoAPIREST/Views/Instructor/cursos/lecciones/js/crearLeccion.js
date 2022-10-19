@@ -90,7 +90,7 @@ function ValidarIndex(token){
 
         if(Data==='"Index libre"'){
         CrearLeccion(token);
-        location.href = '/Instructor/VerCursos.html';
+        //location.href = '/Instructor/VerCursos.html';
         }else{
             if(confirm("Esta posicion ya existe una lección, desea insertarla de todas formas, esto aumentara una posicion el resto de lecciones?")==true){
                 ModificarIndex(token);
@@ -132,15 +132,16 @@ function ModificarIndex(token){
 
 function CrearLeccion(token){
     var url = "https://25.60.14.37:80/api/Leccion/CrearLeccion";
+  
     fetch(url, {
         method: "POST",
         body: JSON.stringify({ 
             nombre: document.getElementById('nombre').value,        
             descripcion: document.getElementById('descripcion').value,        
-            duración: document.getElementById('duracion').value,        
+            duración: document.getElementById('duracion').value, 
+            orden: document.getElementById('orden').value,       
             enlace: document.getElementById('enlace').value,
-            idCurso: datos.Idcurso,
-            orden: document.getElementById('orden').value
+            idCurso: datos.Idcurso
         }),
         headers:{
             'Accept' : "application/json",
