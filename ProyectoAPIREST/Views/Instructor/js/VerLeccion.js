@@ -128,7 +128,7 @@ function getCookie(cname) {
                 </div>
                 <div id="div-respuesta" class="form-group">
                 <label>Respuesta</label>
-                <textarea id="resp<uesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
+                <textarea id="respuesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
                 </div>
                 <button id="button-${Data.preguntas[i].idPregunta}"></button>
                 
@@ -171,6 +171,7 @@ function getCookie(cname) {
 function Responder(idPregunta,token){
 
     var url = "https://25.60.14.37:80/api/MainLeccion/ResponderPregunta";
+
     fetch(url, {
         method: "POST",
         body: JSON.stringify({
@@ -196,7 +197,8 @@ function Responder(idPregunta,token){
 
         }
   }).then(function(){
-    alert("11111")
+    alert("Respuesta aceptada")
+    location.reload();
   })
 
 }

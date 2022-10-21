@@ -100,12 +100,10 @@ function ValidarIndex(token){
     }).then(function(Data){
         if(Data==='"Index libre"'){
             ActualizarLeccion(token);
-            location.href = '/Instructor/VerCursos.html';
         }else{
             if(confirm("Esta posicion ya existe una lección, desea insertarla de todas formas, esto aumentara una posicion el resto de lecciones?")==true){
                 ModificarIndex(token);
                 ActualizarLeccion(token);
-                location.href = '/Instructor/VerCursos.html';
                 }else{
                     alert("Ingrese otro numero para el orden de la leccion")
                 }
