@@ -121,17 +121,17 @@ function getCookie(cname) {
             }else{
             document.getElementById("foro").innerHTML += 
             `
-                <form>
+                
                 <div class="form-group">
                 <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
                 <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
                 </div>
                 <div id="div-respuesta" class="form-group">
                 <label>Respuesta</label>
-                <textarea id="respuesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
+                <textarea id="resp<uesta-${Data.preguntas[i].idPregunta}" class="form-control">Respuesta pendiente</textarea></label>
                 </div>
                 <button id="button-${Data.preguntas[i].idPregunta}"></button>
-                </form>
+                
                 
                 `   
 
@@ -157,9 +157,7 @@ function getCookie(cname) {
             console.log(button.target.IdPregunta);
            // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
            if(confirm("Esta seguro responder?")==true){
-            if(confirm("Esta seguro responder2?")==true){
-
-            }
+            
             Responder(botonResponder.IdPregunta,token);
 
             }
@@ -192,7 +190,7 @@ function Responder(idPregunta,token){
         }
     }).then(function(response){
         if(response.ok){
-            return response.json();
+            return response;
         }else{
             alert("Error al ejecutar solicitud")
 
