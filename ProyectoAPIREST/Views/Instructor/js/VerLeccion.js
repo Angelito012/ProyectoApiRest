@@ -121,7 +121,7 @@ function getCookie(cname) {
             }else{
             document.getElementById("foro").innerHTML += 
             `
-               
+                
                 <div class="form-group">
                 <label>Pregunta por ${Data.preguntas[i].estudiante}</label>
                 <textarea disabled id="comment" class="form-control">${Data.preguntas[i].duda}</textarea></label>
@@ -157,6 +157,7 @@ function getCookie(cname) {
             console.log(button.target.IdPregunta);
            // console.log(document.getElementById("respuesta-"+button.target.idPregunta).value);
            if(confirm("Esta seguro responder?")==true){
+            
             Responder(botonResponder.IdPregunta,token);
 
             }
@@ -168,6 +169,7 @@ function getCookie(cname) {
   
   
 function Responder(idPregunta,token){
+
     var url = "https://25.60.14.37:80/api/MainLeccion/ResponderPregunta";
 
     fetch(url, {
@@ -189,7 +191,6 @@ function Responder(idPregunta,token){
         }
     }).then(function(response){
         if(response.ok){
-            
             return response;
         }else{
             alert("Error al ejecutar solicitud")

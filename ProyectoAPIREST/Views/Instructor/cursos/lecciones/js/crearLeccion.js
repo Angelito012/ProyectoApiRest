@@ -150,12 +150,13 @@ function CrearLeccion(token){
         }
     }).then(function(response){
         if(response.ok){
+            alert('Lección Creada')
             return response;
         }else{
             alert("Error al ejecutar solicitud")
         }
     }).then(function(Data){
-        alert('Lección Creada')
+        
         location.href = '/Instructor/VerCursos.html';
     })
 }

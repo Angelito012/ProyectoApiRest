@@ -89,6 +89,7 @@ function obtenerToken(){
 
     fetch(url,{
         method: "POST",
+
         body: JSON.stringify({
             correo: email,
             clave: ""
@@ -153,8 +154,9 @@ function obtenercursos(token){
             Clave: ""  
         };
     }
-
-
+    console.log(InformacionCurso);
+    console.log(url);
+   
     fetch(url, {
         method: "POST",
         body: JSON.stringify(InformacionCurso),
