@@ -95,7 +95,7 @@ function ValidarIndex(token){
             if(confirm("Esta posicion ya existe una lección, desea insertarla de todas formas, esto aumentara una posicion el resto de lecciones?")==true){
                 ModificarIndex(token);
                 CrearLeccion(token);
-                location.href = '/Instructor/VerCursos.html';
+                
                 }else{
                     alert("Ingrese otro numero para el orden de la leccion")
                 }
