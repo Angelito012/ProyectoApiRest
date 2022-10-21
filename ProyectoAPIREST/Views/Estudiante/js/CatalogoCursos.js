@@ -410,63 +410,63 @@ function totalCompra(){
 }
 
 function CrearCompra(token){
-    if(confirm("Esta seguro de hacer la compra?")==true){
+    var total = totalCompra();
+    if(total > 0){
+        if(confirm("Esta seguro de hacer la compra?")==true){
 
-        var total = totalCompra();
-
-    fetch(urlGenerarFactura, {
-        method: "POST",
-        body: JSON.stringify({ 
-            total: total,
-            idUsuario: DatosEstudianteCarrito.idUsuario
-        }),
-        headers:{
-            'Accept' : "application/json",
-            "Content-Type" : "application/json",
-            'Authorization': 'Bearer ' + token
-        }
-    }).then(function(response){
-        if(response.ok){
-            return response.json();
-        }else{
-            alert("Error al Crear una factura")
-        }
-    }).then(function(Data){
-       
-            var json = JSON.stringify({
-                "noFactura": Data.value.noFactura,
-                "detalleFacturaList": obtenerInfoDetalle()
-              });
-              console.log(json)
-           
-           fetch(urlGenerarDetalle, {
-            method: "POST",
-            body: json,
-            headers:{
-                'Accept' : "application/json",
-                "Content-Type" : "application/json",
-                'Authorization': 'Bearer ' + token
+            fetch(urlGenerarFactura, {
+                method: "POST",
+                body: JSON.stringify({ 
+                    total: total,
+                    idUsuario: DatosEstudianteCarrito.idUsuario
+                }),
+                headers:{
+                    'Accept' : "application/json",
+                    "Content-Type" : "application/json",
+                    'Authorization': 'Bearer ' + token
+                }
+            }).then(function(response){
+                if(response.ok){
+                    return response.json();
+                }else{
+                    alert("Error al Crear una factura")
+                }
+            }).then(function(Data){
+               
+                    var json = JSON.stringify({
+                        "noFactura": Data.value.noFactura,
+                        "detalleFacturaList": obtenerInfoDetalle()
+                      });
+                      console.log(json)
+                   
+                   fetch(urlGenerarDetalle, {
+                    method: "POST",
+                    body: json,
+                    headers:{
+                        'Accept' : "application/json",
+                        "Content-Type" : "application/json",
+                        'Authorization': 'Bearer ' + token
+                    }
+                   }).then(function(response){
+                    if(response.ok){
+                        alert("Compra exitosa")
+                        vaciarCarrito(token);
+                        localStorage.setItem("factura",Data.value.noFactura)
+                        location.href="/Estudiante/factura.html"
+                        return response;
+                    }else{
+                        alert("Error al Crear un detalle de factura")
+                    }
+                })
+                   
+        
+            })
             }
-           }).then(function(response){
-            if(response.ok){
-                alert("Compra exitosa")
-                vaciarCarrito(token);
-                localStorage.setItem("factura",Data.value.noFactura)
-                location.href="/Estudiante/factura.html"
-                return response;
-            }else{
-                alert("Error al Crear un detalle de factura")
-            }
-        })
-           
-
-    })
+    }else{
+        alert('carrito vacio')
     }
-
-    
-
-    
 }
+
 
 function obtenerInfoDetalle(){
     let arrayDetalle = [];
